@@ -25,7 +25,7 @@ public class Player {
 	}
 	
 	public void fire (Player player, char row, int column){
-		
+		player.getMyBoard().getSquare(row, column).placeMissle();
 	}
 }
 
