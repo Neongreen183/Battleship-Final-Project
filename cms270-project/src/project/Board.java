@@ -17,22 +17,22 @@ public class Board {
 
 
 	// returns square associated with that location in board
-	public Square getSquare(char row, int colomn){
-		return board[charToNum(row)][colomn-1];
+	public Square getSquare(char row, int column){
+		return board[charToNum(row)][column-1];
 	}
 	
 	// returns an array of squares to the specified parameters
-	public Square[] getSquares(char row, int colomn, Boolean vert, int length){
+	public Square[] getSquares(char row, int column, Boolean vert, int length){
 		Square[] array = new Square[length];
 		if(vert){
 			for(int i = 0; i<length; i++){
-				array[i] = board[charToNum(row)+i][colomn-1];
+				array[i] = board[charToNum(row)+i][column-1];
 			}
 		}
 		
 		else{
 			for(int i = 0; i<length; i++){
-				array[i] = board[charToNum(row)][colomn+i-1];
+				array[i] = board[charToNum(row)][column+i-1];
 			}
 		} 
 		return array;
