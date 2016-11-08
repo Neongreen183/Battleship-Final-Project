@@ -6,6 +6,13 @@ public class Board {
 
 	public Board() {
 		board = new Square[10][10];
+		Square square = new Square();
+		for(int i=0;i<10;i++){
+			for(int j=0;j<10;j++){
+				board[i][j] = square;
+				square = new Square();
+			}
+		}
 	}
 
 
@@ -14,7 +21,6 @@ public class Board {
 	// X = hit
 	// O = miss
 	// - = empty piece
-
 
 	// returns square associated with that location in board
 	public Square getSquare(char row, int column){
@@ -43,19 +49,19 @@ public class Board {
 		for(int i = 0;i<10;i++){
 			for(int j = 0;j<10;j++){
 				if(board[i][j].hasMissle() && board[i][j].hasShip()){
-					System.out.print("X");
+					System.out.print(" X ");
 				}
 
 				else if(board[i][j].hasMissle()){
-					System.out.print("O");
+					System.out.print(" O ");
 				}
 
 				else if(board[i][j].hasShip()){
-					System.out.print("S");
+					System.out.print(" S ");
 				}
 
 				else{
-					System.out.print("-");
+					System.out.print(" - ");
 				}
 			}
 			System.out.println("");
@@ -69,15 +75,15 @@ public class Board {
 		for(int i = 0;i<10;i++){
 			for(int j = 0;j<10;j++){
 				if(board[i][j].hasMissle() && board[i][j].hasShip()){
-					System.out.print("X");
+					System.out.print(" X ");
 				}
 
 				else if(board[i][j].hasMissle()){
-					System.out.print("O");
+					System.out.print(" O ");
 				}
 
 				else{
-					System.out.print("-");
+					System.out.print(" - ");
 				}
 			}
 			System.out.println("");
