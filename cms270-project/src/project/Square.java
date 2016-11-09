@@ -4,10 +4,12 @@ public class Square {
 	
 	private boolean ship;
 	private boolean missle;
+	private int shipNum;
 	
 	public Square(){
 		ship = false;
 		missle = false;
+		shipNum = -1;
 	}
 	
 	public boolean hasShip(){
@@ -16,8 +18,14 @@ public class Square {
 	public boolean hasMissle(){
 		return missle;
 	}
-	public void placeShip(){
+	
+	public int getShipNum(){
+		return shipNum;
+	}
+	
+	public void placeShip(int num){
 		ship = true;
+		shipNum = num;
 	}
 	public void placeMissle(){
 		missle = true;
