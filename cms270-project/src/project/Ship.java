@@ -11,7 +11,7 @@ public class Ship {
 
 	
 	public Ship() {
-		
+		System.out.println("Hello");
 	}
 	
 	public int getSize (){
