@@ -9,6 +9,7 @@ public class Square {
 	public Square(){
 		ship = false;
 		missle = false;
+		shipNum = -1;
 	}
 	
 	public boolean hasShip(){
