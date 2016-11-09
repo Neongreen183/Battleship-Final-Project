@@ -3,7 +3,8 @@ import java.util.*;
 public class Game {
 	
 	public static void playGame(){
-		System.out.println("Please Enter your Name: ");
+		System.out.print("Welcome to Battleship! "
+				+ "Please enter Player 1's name: ");
 		Scanner scan = new Scanner(System.in);
 		String name = scan.nextLine();
 		
