@@ -45,7 +45,7 @@ public class Player {
 		if(!(player.getShip(player.getMyBoard().getSquare(row, column).getShipNum()).isAfloat())){
 			System.out.println("A ship has been sunk!");
 			player.sinkShip();
-		}
+		} 
 	}
 }
 
