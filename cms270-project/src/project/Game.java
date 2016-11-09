@@ -10,11 +10,15 @@ public class Game {
 		Player player = new Player(name);
 		Player computer = new Player("Computer");
 		
+		Board boar = new Board ();
+		boar.displayWithoutShips();
+		
 		
 		
 	}
 
 	public static void main(String[] args) {
-		
+		Game g = new Game();
+		g.playGame();
 	}
 }
