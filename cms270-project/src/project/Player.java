@@ -46,7 +46,7 @@ public class Player {
 			System.out.println("A ship has been sunk!");
 			player.sinkShip();
 		} 
-	}
+	} 
 }
 
 
