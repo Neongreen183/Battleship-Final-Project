@@ -8,14 +8,19 @@ public class Ship {
 	private int locationColumn;
 	private int hits;
 	private boolean afloat;
+	private int shipNum;
 
 	
-	public Ship() {
-		System.out.println("Hello");
+	public Ship(int num) {
+		shipNum = num;
 	}
 	
 	public int getSize (){
 		return size;
+	}
+	
+	public int getShipNum(){
+		return shipNum;
 	}
 	
 	public boolean isVertical() {
