@@ -36,13 +36,22 @@ public class Ship {
 	}
 	
 	public int getHits() { 
+		
+		return hits;
+	}
+	
+	public void hit(){
+		hits++;
 		if (hits == size) {
 			sink();
 		}
-		return hits;
 	}
 	
 	public void sink() { 
 		afloat = false;
+	}
+	
+	public boolean isAfloat(){
+		return afloat;
 	}
 }

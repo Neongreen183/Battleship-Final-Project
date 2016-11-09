@@ -24,8 +24,28 @@ public class Player {
 		return myBoard;
 	}
 	
+	public Ship[] getMyships(){
+		return myShips;
+	}
+	
+	public Ship getShip(int num){
+		return myShips[num];
+	}
+	
+	public void sinkShip(){
+		shipsLeft--;
+	}
+	
 	public void fire (Player player, char row, int column){
 		player.getMyBoard().getSquare(row, column).placeMissle();
+		if(player.getMyBoard().getSquare(row, column).hasShip()){
+			System.out.println("A ship has been struck!");
+			player.getShip(player.getMyBoard().getSquare(row, column).getShipNum()).hit();
+		}
+		if(!(player.getShip(player.getMyBoard().getSquare(row, column).getShipNum()).isAfloat())){
+			System.out.println("A ship has been sunk!");
+			player.sinkShip();
+		}
 	}
 }
 
