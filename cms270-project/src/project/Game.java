@@ -15,6 +15,7 @@ public class Game {
 	}
 
 	public static void main(String[] args) {
-		
+		Board boar = new Board ();
+		boar.displayWithoutShips();
 	}
 }
