@@ -26,7 +26,7 @@ public class Board {
 	public Square getSquare(char row, int column){
 		return board[charToNum(row)][column-1];
 	}
-	
+
 	// returns an array of squares to the specified parameters
 	public Square[] getSquares(char row, int column, Boolean vert, int length){
 		Square[] array = new Square[length];
@@ -35,7 +35,7 @@ public class Board {
 				array[i] = board[charToNum(row)+i][column-1];
 			}
 		}
-		
+
 		else{
 			for(int i = 0; i<length; i++){
 				array[i] = board[charToNum(row)][column+i-1];
@@ -44,9 +44,17 @@ public class Board {
 		return array;
 	}
 
-	// displayes the board for the owner
+	// displays the board for the owner
 	public void displayWithShips(){
+		System.out.println("   A  B  C  D  E  F  G  H  I  J ");
+		int e = 1;
 		for(int i = 0;i<10;i++){
+			if (e<10){
+				System.out.print(" "+e);
+			}else{
+				System.out.print(e);
+			}
+			e++;
 			for(int j = 0;j<10;j++){
 				if(board[i][j].hasMissle() && board[i][j].hasShip()){
 					System.out.print(" X ");
@@ -69,10 +77,18 @@ public class Board {
 		}
 	}
 
-	
-	// displayes board for opponent view
+
+	// displays board for opponent view
 	public void displayWithoutShips(){
+		System.out.println("   A  B  C  D  E  F  G  H  I  J ");
+		int e = 1;
 		for(int i = 0;i<10;i++){
+			if (e<10){
+				System.out.print(" "+e);
+			}else{
+				System.out.print(e);
+			}
+			e++;
 			for(int j = 0;j<10;j++){
 				if(board[i][j].hasMissle() && board[i][j].hasShip()){
 					System.out.print(" X ");
