@@ -12,9 +12,8 @@ public class Game {
 		Player computer = new Player("Computer");
 		
 		Board boar = new Board ();
+		System.out.println("This is your board. Choose where you want to place ships");
 		boar.displayWithoutShips();
-		
-		
 		
 	}
 
