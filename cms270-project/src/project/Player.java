@@ -10,7 +10,6 @@ public class Player {
 	public Player() {
 		playerName = "unknown";
 		shipsLeft = 4;
-		
 	}
 
 	public Player(String name) {
