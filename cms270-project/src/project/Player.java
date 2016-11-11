@@ -15,14 +15,14 @@ public class Player {
 
 	public Player(String name) {
 		this.playerName=name;
-		this.shipsLeft=4;
+		this.shipsLeft=5; 
 		myBoard = new Board();
 		myShips = new Ship[5];
 		myShips[0]=new Ship(0,2);
 		myShips[1]=new Ship(1,3);
 		myShips[2]=new Ship(2,3);
-		myShips[4]=new Ship(3,4);
-		myShips[5]=new Ship(4,5);
+		myShips[3]=new Ship(3,4);
+		myShips[4]=new Ship(4,5);
 	}
 	
 	public String getName(){
@@ -69,11 +69,11 @@ public class Player {
 			for(int i=0; i<ship.getSize();i++ ){
 				if(vert == true){
 					player.getMyBoard().getSquare(row, column).placeShip(ship.getShipNum());
-					column++;
+					row++;
 				}
 				else{
 					player.getMyBoard().getSquare(row, column).placeShip(ship.getShipNum());
-					row++;
+					column++ ;
 				}
 			}
 		}
