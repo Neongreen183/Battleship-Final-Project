@@ -46,7 +46,25 @@ public class Player {
 			System.out.println("A ship has been sunk!");
 			player.sinkShip();
 		} 
-	} 
+	}
+	
+	public void placeShips(Player player, Ship ship, char row, int column, Boolean vert){
+		if(player.getMyBoard().getSquare(row, column).hasShip()==true){
+			System.out.println("There is already a ship there");
+		}
+		else{
+			for(int i=0; i<ship.getSize();i++ ){
+				if(vert == true){
+					player.getMyBoard().getSquare(row, column).placeShip(ship.getShipNum());
+					column++;
+				}
+				else{
+					player.getMyBoard().getSquare(row, column).placeShip(ship.getShipNum());
+					row++;
+				}
+			}
+		}
+	}
 }
 
 
