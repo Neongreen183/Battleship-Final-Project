@@ -6,6 +6,12 @@ public class Player {
 	private Ship[] myShips;
 	private String playerName;
 	private Board myBoard;
+	
+	public Player() {
+		playerName = "unknown";
+		shipsLeft = 4;
+		
+	}
 
 	public Player(String name) {
 		this.playerName=name;
