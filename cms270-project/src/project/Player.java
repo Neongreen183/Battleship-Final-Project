@@ -67,7 +67,7 @@ public class Player {
 				}
 				else{
 					player.getMyBoard().getSquare(row, column).placeShip(ship.getShipNum());
-					column++;
+					column++ ;
 				}
 			}
 		}
