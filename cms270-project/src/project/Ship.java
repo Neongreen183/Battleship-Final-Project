@@ -14,8 +14,9 @@ public class Ship {
 		int [] boats = {2,3,3,4,5};
 	}
 	
-	public Ship(int num) {
+	public Ship(int num, int s) {
 		shipNum = num;
+		size = s;
 	}
 	
 	public int getSize (){
