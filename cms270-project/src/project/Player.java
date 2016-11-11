@@ -9,7 +9,7 @@ public class Player {
 
 	public Player(String name) {
 		this.playerName=name;
-		this.shipsLeft=5;
+		this.shipsLeft=5; 
 		myBoard = new Board();
 		myShips = new Ship[5];
 		myShips[0]=new Ship(0,2);
