@@ -69,7 +69,7 @@ public class Player {
 		return true; 
 	}
 	
-	public void getRowAndColomn(char row, int column){
+	public void getRowAndColumn(char row, int column){
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Please select a row (A-J): " );
 		row = scan.next().toUpperCase().charAt(0);

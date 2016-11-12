@@ -60,9 +60,16 @@ public class Game {
 	}
 	
 	public static boolean battle(Player player1, Player player2){
-		while(player1.getShipsLeft() != 0 && player2.getShipsLeft() != 0)
+		int turnCounter = 0;
+		char row = 'A';
+		int column = 0;
+		while(player1.getShipsLeft() != 0 && player2.getShipsLeft() != 0){
+			if(turnCounter == 0){
+				System.out.println("Its " + player1.getName() + "'s turn!");
+				player1.getRowAndColumn(row, column);
+			}
+		}
 		return true;
-		return false;
 	}
 	
 	public static int charToNum(char c){
