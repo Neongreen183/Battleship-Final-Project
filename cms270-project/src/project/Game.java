@@ -7,11 +7,22 @@ public class Game {
 				+ "Please enter Player 1's name: ");
 		Scanner scan = new Scanner(System.in);
 		String name = scan.nextLine();
-		
+		Boolean winner;
 		Player player = new Player(name);
 		Player computer = new Player("computer");
 		
 		placeShips(player);
+		placeShips(computer);
+		winner = battle(player,computer);
+		System.out.println("Game over!");
+		if(winner == true){
+			System.out.println(player.getName() + " Has won!");
+		}
+		else{
+			System.out.println(computer.getName() + " Has won!");
+			
+		}
+		
 		
 	}
 	
@@ -66,8 +77,24 @@ public class Game {
 		while(player1.getShipsLeft() != 0 && player2.getShipsLeft() != 0){
 			if(turnCounter == 0){
 				System.out.println("Its " + player1.getName() + "'s turn!");
-				player1.getRowAndColumn(row, column);
+				row = player1.getRow();
+				column = player1.getColumn();
+				player1.fire(player2, row, column);
+				turnCounter = 1;
+				player1.getMyBoard().displayWithShips();
 			}
+			else{
+				System.out.println("Its " + player2.getName() + "'s turn!");
+				row = player2.getRow();
+				column = player2.getColumn();
+				player2.fire(player1, row, column);
+				turnCounter = 0;
+				player2.getMyBoard().displayWithoutShips();
+			}
+		}
+		
+		if(player1.getShipsLeft()==0){
+			return false;
 		}
 		return true;
 	}

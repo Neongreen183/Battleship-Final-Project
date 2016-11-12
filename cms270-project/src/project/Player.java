@@ -69,7 +69,9 @@ public class Player {
 		return true; 
 	}
 	
-	public void getRowAndColumn(char row, int column){
+	
+	public char getRow(){
+		char row;
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Please select a row (A-J): " );
 		row = scan.next().toUpperCase().charAt(0);
@@ -78,6 +80,11 @@ public class Player {
 			System.out.println("Please select a row (A-J): " );
 			row = scan.next().toUpperCase().charAt(0);
 		}
+		return row;
+	}
+	public int getColumn(){
+		Scanner scan = new Scanner(System.in);
+		int column;
 		System.out.println("Please select a colomn (1-10)");
 		column = scan.nextInt();
 		while(column>10 || column<1){
@@ -85,7 +92,10 @@ public class Player {
 			System.out.println("Please select a colomn(1-10)");
 			column = scan.nextInt();
 		}
+		return column;
+		
 	}
+	
 	
 	public static int charToNum(char c){
 		String alphabet = "ABCDEFGHIJ";
