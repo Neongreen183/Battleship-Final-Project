@@ -48,19 +48,24 @@ public class Player {
 		shipsLeft--;
 	}
 	
-	public void fire (Player player, char row, int column){
+	public boolean fire (Player player, char row, int column){
 		player.getMyBoard().getSquare(row, column).placeMissle();
 		if(player.getMyBoard().getSquare(row, column).hasShip()){
 			System.out.println("A ship has been struck!");
 			player.getShip(player.getMyBoard().getSquare(row, column).getShipNum()).hit();
+			return true;
 		}
 		if(!(player.getShip(player.getMyBoard().getSquare(row, column).getShipNum()).isAfloat())){
 			System.out.println("A ship has been sunk!");
 			player.sinkShip();
+			return false;
 		} 
+		else {
+			return false;
+		}
 	}
 	
-	public void placeShips(Player player, Ship ship, char row, int column, Boolean vert){
+	public void placeShip(Player player, Ship ship, char row, int column, Boolean vert){
 		if(player.getMyBoard().getSquare(row, column).hasShip()==true){
 			System.out.println("There is already a ship there");
 		}
