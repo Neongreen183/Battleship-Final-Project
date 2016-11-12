@@ -94,7 +94,7 @@ public class Game {
 				turnCounter = 0;
 				player1.getMyBoard().displayWithShips();
 				
-			}
+			} 
 		}
 		
 		if(player1.getShipsLeft()==0){

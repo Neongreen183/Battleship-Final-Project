@@ -126,7 +126,7 @@ public class Player {
 					System.out.println("There is already a ship there");
 					return false;
 				}
-			}
+			} 
 			
 		}
 		
