@@ -77,12 +77,27 @@ public class Player {
 	
 
 	public boolean placeShip(Player player, Ship ship, char row, int column, Boolean vert){
-
-		if(player.getMyBoard().getSquare(row, column).hasShip()==true){
-			System.out.println("There is already a ship there");
-			return false;
+		char test = row;
+		for(int i=0;i<ship.getSize();i++){
+			if(vert){
+				
+				if(player.getMyBoard().getSquare(test, column).hasShip()==true){
+					System.out.println("There is already a ship there");
+					return false;
+				}
+				test++;
+			}
+			else{
+				if(player.getMyBoard().getSquare(row, column+i).hasShip()==true){
+					System.out.println("There is already a ship there");
+					return false;
+				}
+			}
+			
 		}
-		else if(vert==true && charToNum(row)+ship.getSize()>10){
+		
+		
+		if(vert==true && charToNum(row)+ship.getSize()>10){
 			System.out.println("Sorry you cannot place this ship there");
 			return false;
 		}
