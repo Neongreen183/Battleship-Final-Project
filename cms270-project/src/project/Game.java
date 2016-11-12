@@ -59,8 +59,10 @@ public class Game {
 		
 	}
 	
-	public static boolean battle(){
+	public static boolean battle(Player player1, Player player2){
+		while(player1.getShipsLeft() != 0 && player2.getShipsLeft() != 0)
 		return true;
+		return false;
 	}
 	
 	public static int charToNum(char c){

@@ -66,7 +66,7 @@ public class Player {
 			player.sinkShip();
 			
 		} 
-		return true;
+		return true; 
 	}
 	
 	public void getRowAndColomn(char row, int column){
