@@ -46,7 +46,7 @@ public class Board {
 
 	// displays the board for the owner
 	public void displayWithShips(){
-		System.out.println("   1  2  3  4  5  6  7  8  9  10 ");
+		System.out.println("  1  2  3  4  5  6  7  8  9  10 ");
 		String alphabet = "ABCDEfGHIJ";
 		
 		for(int i = 0;i<10;i++){
@@ -77,7 +77,7 @@ public class Board {
 
 	// displays board for opponent view
 	public void displayWithoutShips(){
-		System.out.println("   1  2  3  4  5  6  7  8  9  10 ");
+		System.out.println("  1  2  3  4  5  6  7  8  9  10 ");
 		String alphabet = "ABCDEfGHIJ";
 		
 		for(int i = 0;i<10;i++){
