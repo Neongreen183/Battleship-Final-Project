@@ -11,7 +11,7 @@ public class Game {
 		Player player = new Player(name);
 		Player computer = new Player();
 		
-		player.placeShips(player, player.getShip(1), 'C', 3, true);
+		player.placeShip(player, player.getShip(1), 'C', 3, true);
 		player.getMyBoard().displayWithShips();
 		
 	}
@@ -52,7 +52,7 @@ public class Game {
 				else{
 					vert = false;
 				}
-				success = player.placeShips(player, player.getShip(i), row, column, vert);
+				success = player.placeShip(player, player.getShip(i), row, column, vert);
 			}while(success == false);
 			
 			
