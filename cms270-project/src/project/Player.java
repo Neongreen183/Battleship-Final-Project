@@ -49,20 +49,22 @@ public class Player {
 	}
 	
 	public boolean fire (Player player, char row, int column){
+		if(player.getMyBoard().getSquare(row, column).hasMissle()){
+			System.out.println("There is already a missle there!");
+			return false;
+		}
 		player.getMyBoard().getSquare(row, column).placeMissle();
 		if(player.getMyBoard().getSquare(row, column).hasShip()){
 			System.out.println("A ship has been struck!");
 			player.getShip(player.getMyBoard().getSquare(row, column).getShipNum()).hit();
-			return true;
+			
 		}
 		if(!(player.getShip(player.getMyBoard().getSquare(row, column).getShipNum()).isAfloat())){
 			System.out.println("A ship has been sunk!");
 			player.sinkShip();
-			return false;
+			
 		} 
-		else {
-			return false;
-		}
+		return true;
 	}
 	
 	public static int charToNum(char c){
