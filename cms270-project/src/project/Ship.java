@@ -17,6 +17,8 @@ public class Ship {
 	public Ship(int num, int s) {
 		shipNum = num;
 		size = s;
+		hits = 0;
+		afloat = true;
 	}
 	
 	public int getSize (){
