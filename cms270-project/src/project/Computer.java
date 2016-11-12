@@ -17,13 +17,21 @@ public class Computer extends Player {
 	boolean flag;
 	
 	@Override
-	public void getRowAndColumn(char row, int column){
-		column = rand.nextInt(((end - start) +1)  + start);
+	public char getRow(){
+		char row;
 		randNum = rand.nextInt(((end - start) +1)  + start);
 		char[] options = {'A','B','C','D','E','F','G','H','I','J'};
-		randRow = options[randNum];
-		row = randRow;
+		row = options[randNum];
+		return row;
 	}
+	
+	public int getColumn(){
+		int column;
+		column = rand.nextInt(((end - start) +1)  + start);
+		return column;
+		
+	}
+	
 	
 	
 	
