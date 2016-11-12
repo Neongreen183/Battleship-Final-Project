@@ -89,7 +89,7 @@ public class Game {
 				column = player2.getColumn();
 				player2.fire(player1, row, column);
 				turnCounter = 0;
-				player2.getMyBoard().displayWithoutShips();
+				player2.getMyBoard().displayWithoutShips(); 
 			}
 		}
 		
