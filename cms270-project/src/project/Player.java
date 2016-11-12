@@ -1,5 +1,7 @@
 package project;
 
+import java.util.Scanner;
+
 public class Player {
 	
 	private int shipsLeft;
@@ -65,6 +67,24 @@ public class Player {
 			
 		} 
 		return true;
+	}
+	
+	public void getRowAndColomn(char row, int column){
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Please select a row (A-J): " );
+		row = scan.next().toUpperCase().charAt(0);
+		while(charToNum(row) == -1){
+			System.out.println("Sorry the row must be A-J");
+			System.out.println("Please select a row (A-J): " );
+			row = scan.next().toUpperCase().charAt(0);
+		}
+		System.out.println("Please select a colomn (1-10)");
+		column = scan.nextInt();
+		while(column>10 || column<1){
+			System.out.println("Sorry the row must be 1-10");
+			System.out.println("Please select a colomn(1-10)");
+			column = scan.nextInt();
+		}
 	}
 	
 	public static int charToNum(char c){

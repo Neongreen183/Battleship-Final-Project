@@ -9,7 +9,7 @@ public class Game {
 		String name = scan.nextLine();
 		
 		Player player = new Player(name);
-		Player computer = new Player();
+		Player computer = new Player("computer");
 		
 		placeShips(player);
 		
@@ -57,6 +57,10 @@ public class Game {
 			player.getMyBoard().displayWithShips();
 		}
 		
+	}
+	
+	public static boolean battle(){
+		return true;
 	}
 	
 	public static int charToNum(char c){
