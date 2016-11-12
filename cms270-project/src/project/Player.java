@@ -72,17 +72,19 @@ public class Player {
 			System.out.println("There is already a ship there");
 			return false;
 		}
+		else if(vert==true && row+ship.getSize()>Character.getNumericValue('K')){
+			System.out.println("Sorry you cannot place this ship there");
+			return false;
+		}
+		else if(vert==false && column+ship.getSize()>10){
+			System.out.println("Sorry you cannot place this ship here");
+			return false;
+		}
 		else{
 			for(int i=0; i<ship.getSize();i++ ){
-				if(vert==true && row+ship.getSize()>Character.getNumericValue('K')){
-					System.out.println("Sorry you cannot place this ship there");
-				}
-				else if(vert == true){
+				if(vert == true){
 					player.getMyBoard().getSquare(row, column).placeShip(ship.getShipNum());
 					row++;
-				}
-				else if(vert==false && column+ship.getSize()>10){
-					System.out.println("Sorry you cannot place this ship here");
 				}
 				else{
 					player.getMyBoard().getSquare(row, column).placeShip(ship.getShipNum());
