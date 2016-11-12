@@ -24,7 +24,7 @@ public class Board {
 
 	// returns square associated with that location in board
 	public Square getSquare(char row, int column){
-		return board[column-1][charToNum(row)];
+		return board[charToNum(row)][column-1];
 	}
 
 	// returns an array of squares to the specified parameters

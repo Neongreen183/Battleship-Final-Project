@@ -92,7 +92,7 @@ public class Player {
 		}
 		else{
 			for(int i=0; i<ship.getSize();i++ ){
-				if(vert == false){
+				if(vert == true){
 					player.getMyBoard().getSquare(row, column).placeShip(ship.getShipNum());
 					row++;
 				}
