@@ -116,7 +116,7 @@ public class Game {
 	public static char numToChar(int i){
 		String alphabet = "ABCDEFGHIJ";
 		 
-		return alphabet.charAt(i-1);
+		return alphabet.charAt(i);
 	}
 	
 	
