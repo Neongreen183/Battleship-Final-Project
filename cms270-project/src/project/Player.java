@@ -56,16 +56,18 @@ public class Player {
 			return false;
 		}
 		player.getMyBoard().getSquare(row, column).placeMissle();
+		
 		if(player.getMyBoard().getSquare(row, column).hasShip()){
 			System.out.println("A ship has been struck!");
 			player.getShip(player.getMyBoard().getSquare(row, column).getShipNum()).hit();
+			if(player.getShip(player.getMyBoard().getSquare(row, column).getShipNum()).isAfloat() == false){
+				System.out.println("A ship has been sunk!");
+				player.sinkShip();
+				
+			} 
 			
 		}
-		if(!(player.getShip(player.getMyBoard().getSquare(row, column).getShipNum()).isAfloat())){
-			System.out.println("A ship has been sunk!");
-			player.sinkShip();
-			
-		} 
+		
 		return true; 
 	}
 	

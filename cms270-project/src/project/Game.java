@@ -72,6 +72,7 @@ public class Game {
 	
 	public static boolean battle(Player player1, Player player2){
 		int turnCounter = 0;
+		Random rand = new Random();
 		char row = 'A';
 		int column = 0;
 		while(player1.getShipsLeft() != 0 && player2.getShipsLeft() != 0){
@@ -81,15 +82,18 @@ public class Game {
 				column = player1.getColumn();
 				player1.fire(player2, row, column);
 				turnCounter = 1;
-				player1.getMyBoard().displayWithShips();
+				player2.getMyBoard().displayWithoutShips();
+				//player1.getMyBoard().displayWithShips();
+				
 			}
 			else{
 				System.out.println("Its " + player2.getName() + "'s turn!");
-				row = player2.getRow();
-				column = player2.getColumn();
+				row = numToChar(rand.nextInt(9));
+				column = rand.nextInt(9)+1;
 				player2.fire(player1, row, column);
 				turnCounter = 0;
-				player2.getMyBoard().displayWithoutShips(); 
+				player1.getMyBoard().displayWithShips();
+				
 			}
 		}
 		
@@ -108,6 +112,14 @@ public class Game {
 		}
 		return -1;
 	} 
+	
+	public static char numToChar(int i){
+		String alphabet = "ABCDEFGHIJ";
+		 
+		return alphabet.charAt(i-1);
+	}
+	
+	
 	
 	
 
