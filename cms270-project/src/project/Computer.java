@@ -17,7 +17,7 @@ public class Computer extends Player {
 	boolean flag;
 	
 	@Override
-	public void getRowAndColomn(char row, int column){
+	public void getRowAndColumn(char row, int column){
 		column = rand.nextInt(((end - start) +1)  + start);
 		randNum = rand.nextInt(((end - start) +1)  + start);
 		char[] options = {'A','B','C','D','E','F','G','H','I','J'};
