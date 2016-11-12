@@ -11,8 +11,7 @@ public class Game {
 		Player player = new Player(name);
 		Player computer = new Player();
 		
-		player.placeShip(player, player.getShip(1), 'C', 3, true);
-		player.getMyBoard().displayWithShips();
+		placeShips(player);
 		
 	}
 	
@@ -27,11 +26,11 @@ public class Game {
 			do{
 				System.out.println("Placeing ship number " + i);
 				System.out.println("Please select a row (A-J): " );
-				row = scan.nextLine().toUpperCase().charAt(0);
+				row = scan.next().toUpperCase().charAt(0);
 				while(charToNum(row) == -1){
 					System.out.println("Sorry the row must be A-J");
 					System.out.println("Please select a row (A-J): " );
-					row = scan.nextLine().toUpperCase().charAt(0);
+					row = scan.next().toUpperCase().charAt(0);
 				}
 				System.out.println("Please select a colomn (1-10)");
 				column = scan.nextInt();
@@ -41,10 +40,10 @@ public class Game {
 					column = scan.nextInt();
 				}
 				System.out.println("Should the ship be vertical?(y/n); ");
-				playerAns = scan.nextLine().toLowerCase().charAt(0);
-				while(playerAns != 'y' || playerAns != 'n'){
+				playerAns = scan.next().toLowerCase().charAt(0);
+				while(playerAns != 'y' && playerAns != 'n'){
 					System.out.println("Please enter the letter 'y' or 'n': ");
-					playerAns = scan.nextLine().toLowerCase().charAt(0);
+					playerAns = scan.next().toLowerCase().charAt(0);
 				}
 				if(playerAns == 'y'){
 					vert = true;

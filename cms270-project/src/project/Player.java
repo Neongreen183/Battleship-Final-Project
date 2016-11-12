@@ -65,6 +65,16 @@ public class Player {
 		}
 	}
 	
+	public static int charToNum(char c){
+		String alphabet = "ABCDEFGHIJ";
+		for(int i=0;i<alphabet.length();i++){
+			if (alphabet.charAt(i) == c){
+				return i;
+			}
+		}
+		return -1;
+	} 
+	
 
 	public boolean placeShip(Player player, Ship ship, char row, int column, Boolean vert){
 
@@ -72,7 +82,7 @@ public class Player {
 			System.out.println("There is already a ship there");
 			return false;
 		}
-		else if(vert==true && row+ship.getSize()>Character.getNumericValue('K')){
+		else if(vert==true && charToNum(row)+ship.getSize()>10){
 			System.out.println("Sorry you cannot place this ship there");
 			return false;
 		}
