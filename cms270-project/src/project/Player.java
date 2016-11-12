@@ -60,9 +60,10 @@ public class Player {
 		} 
 	}
 	
-	public void placeShips(Player player, Ship ship, char row, int column, Boolean vert){
+	public boolean placeShips(Player player, Ship ship, char row, int column, Boolean vert){
 		if(player.getMyBoard().getSquare(row, column).hasShip()==true){
 			System.out.println("There is already a ship there");
+			return false;
 		}
 		else{
 			for(int i=0; i<ship.getSize();i++ ){
@@ -81,6 +82,7 @@ public class Player {
 					column++ ;
 				}
 			}
+			return true;
 		}
 	}
 }
