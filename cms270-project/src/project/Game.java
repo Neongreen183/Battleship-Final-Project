@@ -55,7 +55,7 @@ public class Game {
 				success = player.placeShip(player, player.getShip(i), row, column, vert);
 			}while(success == false);
 			
-			
+			player.getMyBoard().displayWithShips();
 		}
 		
 	}
