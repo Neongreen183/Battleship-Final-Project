@@ -46,15 +46,12 @@ public class Board {
 
 	// displays the board for the owner
 	public void displayWithShips(){
-		System.out.println("   A  B  C  D  E  F  G  H  I  J ");
-		int e = 1;
+		System.out.println("   1  2  3  4  5  6  7  8  9  10 ");
+		String alphabet = "ABCDEfGHIJ";
+		
 		for(int i = 0;i<10;i++){
-			if (e<10){
-				System.out.print(" "+e);
-			}else{
-				System.out.print(e);
-			}
-			e++;
+			System.out.print(alphabet.charAt(i));
+			
 			for(int j = 0;j<10;j++){
 				if(board[i][j].hasMissle() && board[i][j].hasShip()){
 					System.out.print(" X ");
@@ -80,15 +77,12 @@ public class Board {
 
 	// displays board for opponent view
 	public void displayWithoutShips(){
-		System.out.println("   A  B  C  D  E  F  G  H  I  J ");
-		int e = 1;
+		System.out.println("   1  2  3  4  5  6  7  8  9  10 ");
+		String alphabet = "ABCDEfGHIJ";
+		
 		for(int i = 0;i<10;i++){
-			if (e<10){
-				System.out.print(" "+e);
-			}else{
-				System.out.print(e);
-			}
-			e++;
+			System.out.print(alphabet.charAt(i));
+			
 			for(int j = 0;j<10;j++){
 				if(board[i][j].hasMissle() && board[i][j].hasShip()){
 					System.out.print(" X ");
