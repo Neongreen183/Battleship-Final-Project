@@ -33,31 +33,33 @@ public class Player {
 		myShips[3]=new Ship(3,4);
 		myShips[4]=new Ship(4,5);
 	}
-
+	//returns the player name
 	public String getName(){
 		return playerName;
 	}
-
+	//returns the number of ships that are still alive
 	public int getShipsLeft(){
 		return shipsLeft;
 	}
-
+	//returns player board
 	public Board getMyBoard(){
 		return myBoard;
 	}
-
+	//returns the players ships in a array
 	public Ship[] getMyships(){
 		return myShips;
 	}
-
+	//returns the ship in the array the the integer index
 	public Ship getShip(int num){
 		return myShips[num];
 	}
-
+	//decrements the number of ships when one is sunk
 	public void sinkShip(){
 		shipsLeft--;
 	}
-
+	//changes the hasMissile value in a square in the board to to true if it is false
+	//and if there is a ship it augments the hits of the ship and if it sinks the ship\
+	//it displays that the ship has a
 	public boolean fire (Player player, char row, int column){
 		if(player.getMyBoard().getSquare(row, column).hasMissle()){
 			System.out.println("There is already a missle there!");
@@ -71,17 +73,12 @@ public class Player {
 			if(player.getShip(player.getMyBoard().getSquare(row, column).getShipNum()).isAfloat() == false){
 				System.out.println("A ship has been sunk!");
 				player.sinkShip();
-
 			} 
-
-		}
-		else{
+		}else{
 			System.out.println("Miss! nothing was hit.");
 		}
-
 		return true; 
 	}
-
 
 	public char getRow(){
 		char row;
@@ -95,21 +92,23 @@ public class Player {
 			System.out.println("Please select a row (A-J): " );
 			row = scan.nextLine().toUpperCase().charAt(0);
 		}
+		//scan.close();
 		return row;
 	}
 	
 	public int getColumn(){
 		Scanner scan = new Scanner(System.in);
 		int column;
-		System.out.println("Please select a colomn (1-10)");
+		System.out.println("Please select a column (1-10)");
 		column = scan.nextInt();
 		scan.nextLine();
 		while(column>10 || column<1){ 
 			System.out.println("Sorry the row must be 1-10");
-			System.out.println("Please select a colomn(1-10)");
+			System.out.println("Please select a column(1-10)");
 			column = scan.nextInt();
 			scan.nextLine();
 		}
+	    //scan.close();
 		return column;
 
 	}
@@ -125,17 +124,12 @@ public class Player {
 		return -1;
 	} 
 
-
 	public boolean placeShip(Player player, Ship ship, char row, int column, Boolean vert){
 		char test = row;
-
-
-
 		if(vert==true && charToNum(row)+ship.getSize()>10){
 			System.out.println("Sorry you cannot place this ship there");
 			return false;
-		} 
-		else if(vert==false && column+ship.getSize()>11){
+		}else if(vert==false && column+ship.getSize()>11){
 			System.out.println("Sorry you cannot place this ship here");
 			return false;
 		}
@@ -148,23 +142,19 @@ public class Player {
 					return false;
 				}
 				test++;
-			}
-			else{
+			}else{
 				if(player.getMyBoard().getSquare(row, column+i).hasShip()==true){
 					System.out.println("There is already a ship there");
 					return false;
 				}
 			} 
-
 		}
-
 
 		for(int i=0; i<ship.getSize();i++ ){
 			if(vert == true){
 				player.getMyBoard().getSquare(row, column).placeShip(ship.getShipNum());
 				row++;
-			}
-			else{
+			}else{
 				player.getMyBoard().getSquare(row, column).placeShip(ship.getShipNum());
 				column++ ;
 			}
@@ -173,5 +163,3 @@ public class Player {
 
 	}
 }
-
-
