@@ -73,8 +73,7 @@ public class Player {
 
 			} 
 
-		}
-		else{
+		}else{
 			System.out.println("Miss! nothing was hit.");
 		}
 
@@ -124,14 +123,10 @@ public class Player {
 
 	public boolean placeShip(Player player, Ship ship, char row, int column, Boolean vert){
 		char test = row;
-
-
-
 		if(vert==true && charToNum(row)+ship.getSize()>10){
 			System.out.println("Sorry you cannot place this ship there");
 			return false;
-		} 
-		else if(vert==false && column+ship.getSize()>11){
+		}else if(vert==false && column+ship.getSize()>11){
 			System.out.println("Sorry you cannot place this ship here");
 			return false;
 		}
@@ -144,8 +139,7 @@ public class Player {
 					return false;
 				}
 				test++;
-			}
-			else{
+			}else{
 				if(player.getMyBoard().getSquare(row, column+i).hasShip()==true){
 					System.out.println("There is already a ship there");
 					return false;
@@ -159,8 +153,7 @@ public class Player {
 			if(vert == true){
 				player.getMyBoard().getSquare(row, column).placeShip(ship.getShipNum());
 				row++;
-			}
-			else{
+			}else{
 				player.getMyBoard().getSquare(row, column).placeShip(ship.getShipNum());
 				column++ ;
 			}
@@ -169,5 +162,3 @@ public class Player {
 
 	}
 }
-
-

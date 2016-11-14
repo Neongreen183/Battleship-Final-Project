@@ -9,16 +9,11 @@ public class Computer extends Player {
 	int randNum;
 	char randRow;
 	boolean flag;
-	
 
 	public Computer() {
 		super();//call to superclass constructor 
-		
-
 	}
-	
-	
-	
+
 	@Override
 	public char getRow(){
 		char row;
@@ -27,29 +22,23 @@ public class Computer extends Player {
 		row = options[randNum];
 		return row;
 	}
-	
+
 	@Override
 	public int getColumn(){
 		int column;
 		column = rand.nextInt(10)+1;
 		return column;
-		
 	}
-	
+
 	public boolean placeShip(Player player, Ship ship, char row, int column, Boolean vert){
 		char test = row;
-
-
-
 		if(vert==true && charToNum(row)+ship.getSize()>10){
 			//System.out.println("Sorry you cannot place this ship there");
 			return false;
-		} 
-		else if(vert==false && column+ship.getSize()>11){
+		}else if(vert==false && column+ship.getSize()>11){
 			//System.out.println("Sorry you cannot place this ship here");
 			return false;
 		}
-
 		for(int i=0;i<ship.getSize();i++){
 			if(vert){
 
@@ -58,34 +47,23 @@ public class Computer extends Player {
 					return false;
 				}
 				test++;
-			}
-			else{
+			}else{
 				if(player.getMyBoard().getSquare(row, column+i).hasShip()==true){
 					//System.out.println("There is already a ship there");
 					return false;
 				}
 			} 
-
 		}
-
-
+		
 		for(int i=0; i<ship.getSize();i++ ){
 			if(vert == true){
 				player.getMyBoard().getSquare(row, column).placeShip(ship.getShipNum());
 				row++;
-			}
-			else{
+			}else{
 				player.getMyBoard().getSquare(row, column).placeShip(ship.getShipNum());
 				column++ ;
 			}
 		}
 		return true;
-
 	}
 }
-	
-	
-	
-	
-	
-
