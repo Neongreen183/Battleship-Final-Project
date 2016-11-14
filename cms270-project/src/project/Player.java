@@ -8,6 +8,7 @@ public class Player {
 	private Ship[] myShips;
 	private String playerName;
 	private Board myBoard;
+	
 
 	public Player() {
 		playerName = "unknown";
@@ -86,23 +87,28 @@ public class Player {
 		char row;
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Please select a row (A-J): " );
-		row = scan.next().toUpperCase().charAt(0);
+		String r = scan.next();
+		scan.nextLine();
+		row = r.toUpperCase().charAt(0);
 		while(charToNum(row) == -1){
 			System.out.println("Sorry the row must be A-J");
 			System.out.println("Please select a row (A-J): " );
-			row = scan.next().toUpperCase().charAt(0);
+			row = scan.nextLine().toUpperCase().charAt(0);
 		}
 		return row;
 	}
+	
 	public int getColumn(){
 		Scanner scan = new Scanner(System.in);
 		int column;
 		System.out.println("Please select a colomn (1-10)");
 		column = scan.nextInt();
+		scan.nextLine();
 		while(column>10 || column<1){ 
 			System.out.println("Sorry the row must be 1-10");
 			System.out.println("Please select a colomn(1-10)");
 			column = scan.nextInt();
+			scan.nextLine();
 		}
 		return column;
 

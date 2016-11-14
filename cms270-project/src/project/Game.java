@@ -1,7 +1,9 @@
 package project;
 import java.util.*;
 public class Game {
-
+	
+	
+	//Play game creates both players, and 
 	public static void playGame(){
 		Boolean winner;
 		Scanner scan = new Scanner(System.in);
@@ -41,10 +43,10 @@ public class Game {
 				row = player.getRow();
 				column = player.getColumn();
 				System.out.println("Should the ship be vertical?(y/n); ");
-				playerAns = scan.next().toLowerCase().charAt(0);
+				playerAns = scan.nextLine().toLowerCase().charAt(0);
 				while(playerAns != 'y' && playerAns != 'n'){
 					System.out.println("Please enter the letter 'y' or 'n': ");
-					playerAns = scan.next().toLowerCase().charAt(0);
+					playerAns = scan.nextLine().toLowerCase().charAt(0);
 				}
 				if(playerAns == 'y'){
 					vert = true;
@@ -69,7 +71,7 @@ public class Game {
 		boolean success;
 		for(int i=0; i<5; i++){
 			do{
-				//System.out.println("Placeing ship number " + (i+1) + " (length " + player.getShip(i).getSize() + ")");
+				
 				row = computer.getRow();
 				column = computer.getColumn();
 				intVert = rand.nextInt(2);
