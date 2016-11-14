@@ -2,19 +2,21 @@ package project;
 import java.util.*;
 
 
-public class Computer extends Player {
-
-	public Computer() {
-		super(); //call to superclass constructor 
-
-	}
-	
+public class Computer extends Player { 
 	Random rand = new Random();
 	int start = 0;
 	int end = 9;
 	int randNum;
 	char randRow;
 	boolean flag;
+	
+
+	public Computer() {
+		super();//call to superclass constructor 
+
+	}
+	
+	
 	
 	@Override
 	public char getRow(){

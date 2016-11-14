@@ -9,7 +9,7 @@ public class Game {
 		String name = scan.nextLine();
 		Boolean winner;
 		Player player = new Player(name);
-		Player computer = new Player("computer");
+		Computer computer = new Computer();
 		
 		placeShips(player);
 		placeShips(computer);
@@ -57,23 +57,51 @@ public class Game {
 		}
 		
 	}
+	public static void placeShips(Computer computer){
+		
+		Random rand = new Random();
+		char row;
+		int  column;
+		int intVert;
+		boolean vert = false;
+		boolean success;
+		for(int i=0; i<5; i++){
+			do{
+				//System.out.println("Placeing ship number " + (i+1) + " (length " + player.getShip(i).getSize() + ")");
+				row = computer.getRow();
+				column = computer.getColumn();
+				intVert = rand.nextInt(1);
+				if(intVert == 0){
+					vert = true;
+				}
+				else{
+					vert = false;
+				}
+				success = computer.placeShip(computer, computer.getShip(i), row, column, vert);
+			}while(success == false);
+		}
+	}
 	
 	public static boolean battle(Player player1, Player player2){
 		int turnCounter = 0;
 		Random rand = new Random();
 		char row = 'A';
 		int column = 0;
+		boolean success;
 		while(player1.getShipsLeft() != 0 && player2.getShipsLeft() != 0){
 			if(turnCounter == 0){
-				System.out.println("Its " + player1.getName() + "'s turn!");
-				row = player1.getRow();
-				column = player1.getColumn();
-				player1.fire(player2, row, column);
-				turnCounter = 1;
-				player2.getMyBoard().displayWithoutShips();
+				do{
+					System.out.println("Its " + player1.getName() + "'s turn!");
+					row = player1.getRow();
+					column = player1.getColumn();
+					success = player1.fire(player2, row, column);
+					turnCounter = 1;
+					player2.getMyBoard().displayWithoutShips();
+					
+				}while(success == false);
 				
 				
-			}
+			} 
 			else{
 				System.out.println("Its " + player2.getName() + "'s turn!");
 				row = numToChar(rand.nextInt(9));
