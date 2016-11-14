@@ -10,9 +10,6 @@ public class Ship {
 	private boolean afloat;
 	private int shipNum;
 
-	public void battalion (int num){
-		int [] boats = {2,3,3,4,5};
-	}
 	
 	public Ship(int num, int s) {
 		shipNum = num;
