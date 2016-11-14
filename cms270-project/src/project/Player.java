@@ -12,6 +12,13 @@ public class Player {
 	public Player() {
 		playerName = "unknown";
 		shipsLeft = 4;
+		myBoard = new Board();
+		myShips = new Ship[5];
+		myShips[0]=new Ship(0,2);
+		myShips[1]=new Ship(1,3);
+		myShips[2]=new Ship(2,3);
+		myShips[3]=new Ship(3,4);
+		myShips[4]=new Ship(4,5);
 	}
 
 	public Player(String name) {
