@@ -72,16 +72,12 @@ public class Player {
 			if(player.getShip(player.getMyBoard().getSquare(row, column).getShipNum()).isAfloat() == false){
 				System.out.println("A ship has been sunk!");
 				player.sinkShip();
-
 			} 
-
 		}else{
 			System.out.println("Miss! nothing was hit.");
 		}
-
 		return true; 
 	}
-
 
 	public char getRow(){
 		char row;
@@ -122,7 +118,6 @@ public class Player {
 		return -1;
 	} 
 
-
 	public boolean placeShip(Player player, Ship ship, char row, int column, Boolean vert){
 		char test = row;
 		if(vert==true && charToNum(row)+ship.getSize()>10){
@@ -147,9 +142,7 @@ public class Player {
 					return false;
 				}
 			} 
-
 		}
-
 
 		for(int i=0; i<ship.getSize();i++ ){
 			if(vert == true){
