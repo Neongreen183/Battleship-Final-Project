@@ -23,8 +23,7 @@ public class Game {
 			System.out.println(computer.getName() + " Has won!");
 			
 		}
-		
-		
+		scan.close();		
 	}
 	
 	public static void placeShips(Player player){
@@ -56,7 +55,7 @@ public class Game {
 			
 			player.getMyBoard().displayWithShips();
 		}
-		
+		scan.close();
 	}
 	public static void placeShips(Computer computer){
 		
