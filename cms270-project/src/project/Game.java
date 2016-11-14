@@ -1,19 +1,20 @@
 package project;
 import java.util.*;
 public class Game {
-	
+
 	public static void playGame(){
+		Boolean winner;
+		Scanner scan = new Scanner(System.in);
 		System.out.print("Welcome to Battleship! "
 				+ "Please enter Player 1's name: ");
-		Scanner scan = new Scanner(System.in);
+
 		String name = scan.nextLine();
-		Boolean winner;
 		Player player = new Player(name);
 		Computer computer = new Computer();
+
 		placeShips(computer);
 		computer.getMyBoard().displayWithShips();
 		placeShips(player);
-		
 		winner = battle(player,computer);
 		System.out.println("Game over!");
 		if(winner == true){
@@ -21,11 +22,10 @@ public class Game {
 		}
 		else{
 			System.out.println(computer.getName() + " Has won!");
-			
 		}
 		scan.close();		
 	}
-	
+
 	public static void placeShips(Player player){
 		Scanner scan = new Scanner(System.in);
 		char row;
@@ -33,9 +33,11 @@ public class Game {
 		char playerAns;
 		boolean vert;
 		boolean success;
+
 		for(int i=0; i<5; i++){
 			do{
-				System.out.println("Placing ship number " + (i+1) + " (length " + player.getShip(i).getSize() + ")");
+				System.out.println("Placing ship number " + (i+1) 
+						+ " (length " + player.getShip(i).getSize() + ")");
 				row = player.getRow();
 				column = player.getColumn();
 				System.out.println("Should the ship be vertical?(y/n); ");
@@ -52,13 +54,13 @@ public class Game {
 				}
 				success = player.placeShip(player, player.getShip(i), row, column, vert);
 			}while(success == false);
-			
 			player.getMyBoard().displayWithShips();
 		}
 		scan.close();
 	}
+	
 	public static void placeShips(Computer computer){
-		
+
 		Random rand = new Random();
 		char row;
 		int  column;
@@ -81,7 +83,7 @@ public class Game {
 			}while(success == false);
 		}
 	}
-	
+
 	public static boolean battle(Player player1, Player player2){
 		int turnCounter = 0;
 		Random rand = new Random();
@@ -97,10 +99,8 @@ public class Game {
 					success = player1.fire(player2, row, column);
 					turnCounter = 1;
 					player2.getMyBoard().displayWithoutShips();
-					
+
 				}while(success == false);
-				
-				
 			} 
 			else{
 				System.out.println("Its " + player2.getName() + "'s turn!");
@@ -110,16 +110,14 @@ public class Game {
 				player2.fire(player1, row, column);
 				turnCounter = 0;
 				player1.getMyBoard().displayWithShips();
-				
 			} 
 		}
-		
 		if(player1.getShipsLeft()==0){
 			return false;
 		}
 		return true;
 	}
-	
+
 	public static int charToNum(char c){
 		String alphabet = "ABCDEFGHIJ";
 		for(int i=0;i<alphabet.length();i++){
@@ -129,16 +127,12 @@ public class Game {
 		}
 		return -1;
 	} 
-	
+
 	public static char numToChar(int i){
 		String alphabet = "ABCDEFGHIJ";
-		 
+
 		return alphabet.charAt(i);
 	}
-	
-	
-	
-	
 
 	public static void main(String[] args) {
 		Game g = new Game();
