@@ -15,8 +15,7 @@ public class Board {
 		} 
 	}
 
-
-	// for this board: 
+	// For this board: 
 	// S = ship
 	// X = hit
 	// O = miss
@@ -34,9 +33,7 @@ public class Board {
 			for(int i = 0; i<length; i++){
 				array[i] = board[charToNum(row)+i][column-1];
 			}
-		}
-
-		else{
+		}else{
 			for(int i = 0; i<length; i++){
 				array[i] = board[charToNum(row)][column+i-1];
 			}
@@ -47,7 +44,7 @@ public class Board {
 	// displays the board for the owner
 	public void displayWithShips(){
 		System.out.println("  1  2  3  4  5  6  7  8  9  10 ");
-		String alphabet = "ABCDEfGHIJ";
+		String alphabet = "ABCDEFGHIJ";
 		
 		for(int i = 0;i<10;i++){
 			System.out.print(alphabet.charAt(i));
@@ -55,22 +52,15 @@ public class Board {
 			for(int j = 0;j<10;j++){
 				if(board[i][j].hasMissle() && board[i][j].hasShip()){
 					System.out.print(" X ");
-				}
-
-				else if(board[i][j].hasMissle()){
+				}else if(board[i][j].hasMissle()){
 					System.out.print(" O ");
-				}
-
-				else if(board[i][j].hasShip()){
+				}else if(board[i][j].hasShip()){
 					System.out.print(" S ");
-				}
-
-				else{
+				}else{
 					System.out.print(" - ");
 				}
 			}
 			System.out.println("");
-
 		}
 	}
 
@@ -78,7 +68,7 @@ public class Board {
 	// displays board for opponent view
 	public void displayWithoutShips(){
 		System.out.println("  1  2  3  4  5  6  7  8  9  10 ");
-		String alphabet = "ABCDEfGHIJ";
+		String alphabet = "ABCDEFGHIJ";
 		
 		for(int i = 0;i<10;i++){
 			System.out.print(alphabet.charAt(i));
@@ -86,18 +76,13 @@ public class Board {
 			for(int j = 0;j<10;j++){
 				if(board[i][j].hasMissle() && board[i][j].hasShip()){
 					System.out.print(" X ");
-				}
-
-				else if(board[i][j].hasMissle()){
+				}else if(board[i][j].hasMissle()){
 					System.out.print(" O ");
-				}
-
-				else{
+				}else{
 					System.out.print(" - ");
 				}
 			}
 			System.out.println("");
-
 		}
 	}
 
