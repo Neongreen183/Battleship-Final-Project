@@ -35,7 +35,7 @@ public class Game {
 		boolean success;
 		for(int i=0; i<5; i++){
 			do{
-				System.out.println("Placeing ship number " + (i+1) + " (length " + player.getShip(i).getSize() + ")");
+				System.out.println("Placing ship number " + (i+1) + " (length " + player.getShip(i).getSize() + ")");
 				row = player.getRow();
 				column = player.getColumn();
 				System.out.println("Should the ship be vertical?(y/n); ");
