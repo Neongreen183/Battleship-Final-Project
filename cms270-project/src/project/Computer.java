@@ -9,16 +9,16 @@ public class Computer extends Player {
 	int randNum;
 	char randRow;
 	boolean flag;
-	
+
 
 	public Computer() {
 		super();//call to superclass constructor 
-		
+
 
 	}
-	
-	
-	
+
+
+
 	@Override
 	public char getRow(){
 		char row;
@@ -27,15 +27,15 @@ public class Computer extends Player {
 		row = options[randNum];
 		return row;
 	}
-	
+
 	@Override
 	public int getColumn(){
 		int column;
 		column = rand.nextInt(10)+1;
 		return column;
-		
+
 	}
-	
+
 	public boolean placeShip(Player player, Ship ship, char row, int column, Boolean vert){
 		char test = row;
 
@@ -83,9 +83,9 @@ public class Computer extends Player {
 
 	}
 }
-	
-	
-	
-	
-	
+
+
+
+
+
 

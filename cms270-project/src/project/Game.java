@@ -58,7 +58,7 @@ public class Game {
 		}
 		scan.close();
 	}
-	
+
 	public static void placeShips(Computer computer){
 
 		Random rand = new Random();
