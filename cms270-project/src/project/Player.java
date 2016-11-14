@@ -97,11 +97,11 @@ public class Player {
 	public int getColumn(){
 		Scanner scan = new Scanner(System.in);
 		int column;
-		System.out.println("Please select a colomn (1-10)");
+		System.out.println("Please select a column (1-10)");
 		column = scan.nextInt();
 		while(column>10 || column<1){ 
 			System.out.println("Sorry the row must be 1-10");
-			System.out.println("Please select a colomn(1-10)");
+			System.out.println("Please select a column(1-10)");
 			column = scan.nextInt();
 		}
 	    //scan.close();
