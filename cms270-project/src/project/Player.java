@@ -32,31 +32,33 @@ public class Player {
 		myShips[3]=new Ship(3,4);
 		myShips[4]=new Ship(4,5);
 	}
-
+	//returns the player name
 	public String getName(){
 		return playerName;
 	}
-
+	//returns the number of ships that are still alive
 	public int getShipsLeft(){
 		return shipsLeft;
 	}
-
+	//returns player board
 	public Board getMyBoard(){
 		return myBoard;
 	}
-
+	//returns the players ships in a array
 	public Ship[] getMyships(){
 		return myShips;
 	}
-
+	//returns the ship in the array the the integer index
 	public Ship getShip(int num){
 		return myShips[num];
 	}
-
+	//decrements the number of ships when one is sunk
 	public void sinkShip(){
 		shipsLeft--;
 	}
-
+	//changes the hasMissile value in a square in the board to to true if it is false
+	//and if there is a ship it augments the hits of the ship and if it sinks the ship\
+	//it displays that the ship has 
 	public boolean fire (Player player, char row, int column){
 		if(player.getMyBoard().getSquare(row, column).hasMissle()){
 			System.out.println("There is already a missle there!");
