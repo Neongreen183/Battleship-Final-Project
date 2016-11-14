@@ -3,18 +3,20 @@ import java.util.*;
 
 
 public class Computer extends Player {
-
-	public Computer() {
-		super(); //call to superclass constructor 
-
-	}
-	
 	Random rand = new Random();
 	int start = 0;
 	int end = 10;
 	int randNum;
 	char randRow;
 	boolean flag;
+	
+
+	public Computer() {
+		super();//call to superclass constructor 
+
+	}
+	
+	
 	
 	@Override
 	public char getRow(){
@@ -25,6 +27,7 @@ public class Computer extends Player {
 		return row;
 	}
 	
+	@Override
 	public int getColumn(){
 		int column;
 		column = rand.nextInt(((end - start) +1)  + start);
