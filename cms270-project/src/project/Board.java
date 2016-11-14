@@ -15,18 +15,19 @@ public class Board {
 		} 
 	}
 
-	// For this board: 
+
+	// for this board: 
 	// S = ship
 	// X = hit
 	// O = miss
 	// - = empty piece
 
-	// Returns square associated with that location in board
+	// returns square associated with that location in board
 	public Square getSquare(char row, int column){
 		return board[charToNum(row)][column-1];
 	}
 
-	// Returns an array of squares to the specified parameters
+	// returns an array of squares to the specified parameters
 	public Square[] getSquares(char row, int column, Boolean vert, int length){
 		Square[] array = new Square[length];
 		if(vert){
@@ -43,14 +44,14 @@ public class Board {
 		return array;
 	}
 
-	// Displays the board for the owner
+	// displays the board for the owner
 	public void displayWithShips(){
 		System.out.println("  1  2  3  4  5  6  7  8  9  10 ");
 		String alphabet = "ABCDEfGHIJ";
-
+		
 		for(int i = 0;i<10;i++){
 			System.out.print(alphabet.charAt(i));
-
+			
 			for(int j = 0;j<10;j++){
 				if(board[i][j].hasMissle() && board[i][j].hasShip()){
 					System.out.print(" X ");
@@ -74,14 +75,14 @@ public class Board {
 	}
 
 
-	// Displays board for opponent view
+	// displays board for opponent view
 	public void displayWithoutShips(){
 		System.out.println("  1  2  3  4  5  6  7  8  9  10 ");
 		String alphabet = "ABCDEfGHIJ";
-
+		
 		for(int i = 0;i<10;i++){
 			System.out.print(alphabet.charAt(i));
-
+			
 			for(int j = 0;j<10;j++){
 				if(board[i][j].hasMissle() && board[i][j].hasShip()){
 					System.out.print(" X ");

@@ -92,7 +92,7 @@ public class Player {
 			System.out.println("Please select a row (A-J): " );
 			row = scan.next().toUpperCase().charAt(0);
 		}
-		scan.close();
+		//scan.close();
 		return row;
 	}
 	public int getColumn(){
@@ -105,7 +105,7 @@ public class Player {
 			System.out.println("Please select a colomn(1-10)");
 			column = scan.nextInt();
 		}
-		scan.close();
+	    //scan.close();
 		return column;
 
 	}
