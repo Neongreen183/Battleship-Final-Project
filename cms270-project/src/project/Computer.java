@@ -2,7 +2,7 @@ package project;
 import java.util.*;
 
 
-public class Computer extends Player {
+public class Computer extends Player { 
 	Random rand = new Random();
 	int start = 0;
 	int end = 10;

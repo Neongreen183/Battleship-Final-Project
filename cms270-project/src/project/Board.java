@@ -12,7 +12,7 @@ public class Board {
 				board[i][j] = square;
 				square = new Square();
 			}
-		}
+		} 
 	}
 
 

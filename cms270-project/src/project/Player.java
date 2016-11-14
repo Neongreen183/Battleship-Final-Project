@@ -121,7 +121,7 @@ public class Player {
 		if(vert==true && charToNum(row)+ship.getSize()>10){
 			System.out.println("Sorry you cannot place this ship there");
 			return false;
-		}
+		} 
 		else if(vert==false && column+ship.getSize()>11){
 			System.out.println("Sorry you cannot place this ship here");
 			return false;

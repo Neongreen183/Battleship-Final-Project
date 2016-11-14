@@ -101,7 +101,7 @@ public class Game {
 				}while(success == false);
 				
 				
-			}
+			} 
 			else{
 				System.out.println("Its " + player2.getName() + "'s turn!");
 				row = numToChar(rand.nextInt(9));
