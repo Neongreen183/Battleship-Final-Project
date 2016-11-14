@@ -35,21 +35,9 @@ public class Game {
 		boolean success;
 		for(int i=0; i<5; i++){
 			do{
-				System.out.println("Placeing ship number " + i);
-				System.out.println("Please select a row (A-J): " );
-				row = scan.next().toUpperCase().charAt(0);
-				while(charToNum(row) == -1){
-					System.out.println("Sorry the row must be A-J");
-					System.out.println("Please select a row (A-J): " );
-					row = scan.next().toUpperCase().charAt(0);
-				}
-				System.out.println("Please select a colomn (1-10)");
-				column = scan.nextInt();
-				while(column>10 || column<1){
-					System.out.println("Sorry the row must be 1-10");
-					System.out.println("Please select a colomn(1-10)");
-					column = scan.nextInt();
-				}
+				System.out.println("Placeing ship number " + (i+1) + " (length " + player.getShip(i).getSize() + ")");
+				row = player.getRow();
+				column = player.getColumn();
 				System.out.println("Should the ship be vertical?(y/n); ");
 				playerAns = scan.next().toLowerCase().charAt(0);
 				while(playerAns != 'y' && playerAns != 'n'){
@@ -83,13 +71,14 @@ public class Game {
 				player1.fire(player2, row, column);
 				turnCounter = 1;
 				player2.getMyBoard().displayWithoutShips();
-				//player1.getMyBoard().displayWithShips();
+				
 				
 			}
 			else{
 				System.out.println("Its " + player2.getName() + "'s turn!");
 				row = numToChar(rand.nextInt(9));
 				column = rand.nextInt(9)+1;
+				System.out.println("The computer fired at " + row + column);
 				player2.fire(player1, row, column);
 				turnCounter = 0;
 				player1.getMyBoard().displayWithShips();

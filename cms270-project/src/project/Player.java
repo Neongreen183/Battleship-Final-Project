@@ -67,6 +67,9 @@ public class Player {
 			} 
 			
 		}
+		else{
+			System.out.println("Miss! nothing was hit.");
+		}
 		
 		return true; 
 	}
