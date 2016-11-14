@@ -11,7 +11,7 @@ public class Computer extends Player {
 	
 	Random rand = new Random();
 	int start = 0;
-	int end = 10;
+	int end = 9;
 	int randNum;
 	char randRow;
 	boolean flag;
@@ -25,15 +25,12 @@ public class Computer extends Player {
 		return row;
 	}
 	
+	@Override
 	public int getColumn(){
 		int column;
 		column = rand.nextInt(((end - start) +1)  + start);
-		return column;
-		
+		return column;	
 	}
-	
-	
-	
 	
 	
 }
