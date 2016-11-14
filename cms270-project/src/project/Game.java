@@ -10,9 +10,10 @@ public class Game {
 		Boolean winner;
 		Player player = new Player(name);
 		Computer computer = new Computer();
-		
-		placeShips(player);
 		placeShips(computer);
+		computer.getMyBoard().displayWithShips();
+		placeShips(player);
+		
 		winner = battle(player,computer);
 		System.out.println("Game over!");
 		if(winner == true){
@@ -70,7 +71,7 @@ public class Game {
 				//System.out.println("Placeing ship number " + (i+1) + " (length " + player.getShip(i).getSize() + ")");
 				row = computer.getRow();
 				column = computer.getColumn();
-				intVert = rand.nextInt(1);
+				intVert = rand.nextInt(2);
 				if(intVert == 0){
 					vert = true;
 				}
