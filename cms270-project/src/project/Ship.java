@@ -1,7 +1,7 @@
 package project;
 
 /**
- * @author Jerry Abril, Rene Borr, Roderick Zack, Felix Ruiz.
+ * @author Jerry Abril, Rene Borr, Roderick Zack, Felix Ruiz
  * @version 1.0.0
  */
 public class Ship {
