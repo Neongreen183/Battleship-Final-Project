@@ -26,7 +26,7 @@ public class Ship {
 		hits = 0;
 		afloat = true;
 	}
-	
+
 	/**
 	 * Returns the size of the ship.
 	 * 
@@ -35,7 +35,7 @@ public class Ship {
 	public int getSize (){
 		return size;
 	}
-	
+
 	/**
 	 * Returns the ship number.
 	 * 
@@ -44,7 +44,7 @@ public class Ship {
 	public int getShipNum(){
 		return shipNum;
 	}
-	
+
 	/**
 	 * Returns whether the ship is vertically placed or not.
 	 * 
@@ -53,7 +53,7 @@ public class Ship {
 	public boolean isVertical() {
 		return vertical;
 	}
-	
+
 	/**
 	 * Returns the row(between A-J) of a ship's location.
 	 * 
@@ -62,7 +62,7 @@ public class Ship {
 	public char getLocationRow() {
 		return locationRow;
 	}
-	
+
 	/**
 	 * Returns the column (between 1-10) of a ship's location.
 	 * 
@@ -71,7 +71,7 @@ public class Ship {
 	public int getLocationColumn() { 
 		return locationColumn;
 	}
-	
+
 	/**
 	 * Returns how many times the ship has been hit.
 	 * 
@@ -80,7 +80,7 @@ public class Ship {
 	public int getHits() { 
 		return hits;
 	}
-	
+
 	/**
 	 * Adds a hit to the ship if it's been hit .
 	 */
@@ -90,14 +90,14 @@ public class Ship {
 			sink();
 		}
 	}
-	
+
 	/**
 	 * Marks the ship as being sunk .
 	 */
 	public void sink() { 
 		afloat = false;
 	}
-	  
+
 	/**
 	 * Returns whether the ship is active or not.
 	 * 
