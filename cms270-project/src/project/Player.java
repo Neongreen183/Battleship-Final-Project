@@ -166,7 +166,9 @@ public class Player {
 		}
 		return -1;
 	} 
-	//places a ship for a player at a certain row and column
+	//places a ship for a player at a certain row and column and whether it is vertical or
+	//horizontal. Also does error checking to make sure ship is successfully placed and to
+	//check that it does not overlap with another ship, or placed out of bounds
 	public boolean placeShip(Player player, Ship ship, char row, int column, Boolean vert){
 		char test = row;
 		if(vert==true && charToNum(row)+ship.getSize()>10){
