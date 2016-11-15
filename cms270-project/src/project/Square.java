@@ -24,7 +24,7 @@ public class Square {
 		return shipNum;
 	} 
 	
-	public void placeShip(int num, Ship newShip){
+	public void placeShip(int num, Ship newShip){ 
 		ship = true;
 		shipNum = num;
 		myShip = newShip;
