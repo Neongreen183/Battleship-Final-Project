@@ -3,7 +3,9 @@ import java.util.*;
 public class Game {
 	
 	
-	//Play game creates both players, and 
+	//Play game creates both players, and goes through and creates the text to play the game
+	//Places the ships for the player and computer and plays out the game until a winner is 
+	//declared
 	public static void playGame(){
 		Boolean winner;
 		Scanner scan = new Scanner(System.in);
@@ -29,7 +31,9 @@ public class Game {
 		}
 				
 	}
-
+	//asks the human player for input for row, column, and vertical, after
+	//the input is saved a ship is placed. This process is then repeated until
+	//all ships are placed. Once all ships are placed the board is then printed.
 	public static void placeShips(Player player, Scanner scan){
 		char row;
 		int  column;
@@ -61,7 +65,8 @@ public class Game {
 			player.getMyBoard().displayWithShips();
 		}
 	}
-	
+	//PlaceShips takes a computer player and calls the placeShip method and places the
+	//ship at a random row, column, and vert.
 	public static void placeShips(Computer computer){
 
 		Random rand = new Random();
@@ -86,7 +91,8 @@ public class Game {
 			}while(success == false);
 		}
 	}
-
+	//It takes two players and and fires missiles based on the rows and columns given
+	//It continues to fire until all ships are sunk, then it displays the winner.
 	public static boolean battle(Player player1, Player player2){
 		int turnCounter = 0;
 		Random rand = new Random();
@@ -120,7 +126,8 @@ public class Game {
 		}
 		return true;
 	}
-
+	//It takes a char and returns int that it corresponds to in the row.
+	//If it doesn't correspond then it returns -1
 	public static int charToNum(char c){
 		String alphabet = "ABCDEFGHIJ";
 		for(int i=0;i<alphabet.length();i++){
@@ -130,7 +137,8 @@ public class Game {
 		}
 		return -1;
 	} 
-
+	//It takes a integer and returns the char in the String that corresponds 
+	//to the letter of the rows
 	public static char numToChar(int i){
 		String alphabet = "ABCDEFGHIJ";
 
