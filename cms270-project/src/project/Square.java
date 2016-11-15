@@ -11,30 +11,32 @@ public class Square {
 		missle = false;
 		shipNum = -1;
 	}
-	//returns whether the Square has a ship
+	//returns the ship boolean for the square
 	public boolean hasShip(){
 		return ship;
 	}
+	//returns the missile boolean for the square
 	public boolean hasMissle(){
 		return missle;
 	}
-	
+	//returns the integer value for shipNum
 	public int getShipNum(){
 		return shipNum;
 	} 
-	
+	//changes the boolean ship to true and sets shipNum to
+	//the parameter value
 	public void placeShip(int num, Ship newShip){ 
 		ship = true;
 		shipNum = num;
 	}
+	//changes the boolean missile value to true
 	public void placeMissle(){
 		missle = true;
 
 	}
-	
+	// returns myShip Ship for the square
 	public Ship getMyShip(){
 		return myShip;
-		//hello
 	}
 	
 	
