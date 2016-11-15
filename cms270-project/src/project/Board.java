@@ -20,6 +20,7 @@ public class Board {
 	public Board() {
 		board = new Square[10][10];
 		Square square;
+		//Initializes the board
 		for(int i=0;i<10;i++){
 			for(int j=0;j<10;j++){
 				square = new Square(numToChar(i),j+1);
@@ -50,6 +51,7 @@ public class Board {
 	 */
 	public Square[] getSquares(char row, int column, Boolean vert, int length){
 		Square[] array = new Square[length];
+		//Returns each square
 		if(vert){
 			for(int i = 0; i<length; i++){
 				array[i] = board[charToNum(row)+i][column-1];
@@ -69,9 +71,9 @@ public class Board {
 		System.out.println("  1  2  3  4  5  6  7  8  9  10 ");
 		String alphabet = "ABCDEFGHIJ";
 
+		//Loops through every square and prints: -,O,X,S, or !, according to what goes there.
 		for(int i = 0;i<10;i++){
 			System.out.print(alphabet.charAt(i));
-
 			for(int j = 0;j<10;j++){
 				if(board[i][j].hasMissle() && board[i][j].hasShip() && board[i][j].getMyShip().isAfloat() == false){
 					System.out.print(" ! ");
@@ -99,9 +101,9 @@ public class Board {
 		System.out.println("  1  2  3  4  5  6  7  8  9  10 ");
 		String alphabet = "ABCDEFGHIJ";
 
+		//Loops through every square and prints: -,O,X,S, or !, according to what goes there.
 		for(int i = 0;i<10;i++){
 			System.out.print(alphabet.charAt(i));
-
 			for(int j = 0;j<10;j++){
 				if(board[i][j].hasMissle() && board[i][j].hasShip() && board[i][j].getMyShip().isAfloat() == false){
 					System.out.print(" ! ");
@@ -142,8 +144,6 @@ public class Board {
 	 */
 	public static char numToChar(int i){
 		String alphabet = "ABCDEFGHIJ";
-
 		return alphabet.charAt(i);
 	}
-
 }
