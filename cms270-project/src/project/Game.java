@@ -1,11 +1,15 @@
 package project;
 import java.util.*;
+
+/**
+ * @author Rene Borr, Roderick Zak, Felix Ruiz, Jerry Abril
+ * @version 1.0.0
+ */
 public class Game {
-	
-	
-	//Play game creates both players, and goes through and creates the text to play the game
-	//Places the ships for the player and computer and plays out the game until a winner is 
-	//declared
+
+	/**
+	 * Creates both players and loops through the game until there is a winner.
+	 */
 	public static void playGame(){
 		Boolean winner;
 		Scanner scan = new Scanner(System.in);
@@ -13,28 +17,32 @@ public class Game {
 				+ "Please enter Player 1's name: ");
 
 		String name = scan.nextLine();
-		
+
 		Player player = new Player(name,scan);
 		Computer computer = new Computer();
-		
-		
+
 		System.out.println(player.getName() + " VS. " + computer.getName());
-		
+
+		//Randomly places the ships across the board for the Computer.
 		placeShips(computer);
+		//Loops until player places all of their ships.
 		placeShips(player, scan);
+		//Checks for a winner.
 		winner = battle(player,computer);
 		System.out.println("Game over!");
 		if(winner == true){
 			System.out.println(player.getName() + " Has won!");
-		}
-		else{
+		}else{
 			System.out.println(computer.getName() + " Has won!");
-		}
-				
+		}		
 	}
-	//asks the human player for input for row, column, and vertical, after
-	//the input is saved a ship is placed. This process is then repeated until
-	//all ships are placed. Once all ships are placed the board is then printed.
+
+	/**
+	 * Loops through until the player has placed each of their ships on the board.
+	 * 
+	 * @param player The individual that is placing the ships on their board.
+	 * @param scan Takes input from the individual for where the ship will go.
+	 */
 	public static void placeShips(Player player, Scanner scan){
 		char row;
 		int  column;
@@ -48,17 +56,16 @@ public class Game {
 						+ " (length " + player.getShip(i).getSize() + ")");
 				row = player.getRow();
 				column = player.getColumn();
-				System.out.print("Should the ship be vertical?(V/H); ");
+				System.out.print("Vertical or Horizontal? Please enter V or H: ");
 				playerAns = scan.nextLine().toLowerCase().charAt(0);
-				
+
 				while(playerAns != 'h' && playerAns != 'v'){
 					System.out.print("Please enter the letter 'V' or 'H': ");
 					playerAns = scan.nextLine().toLowerCase().charAt(0);
 				}
 				if(playerAns == 'v'){
 					vert = true;
-				}
-				else{
+				}else{
 					vert = false;
 				}
 				success = player.placeShip(player, player.getShip(i), row, column, vert);
@@ -66,10 +73,13 @@ public class Game {
 			player.getMyBoard().displayWithShips();
 		}
 	}
-	//PlaceShips takes a computer player and calls the placeShip method and places the
-	//ship at a random row, column, and vert.
-	public static void placeShips(Computer computer){
 
+	/**
+	 * Places the ships randomly for the computer.
+	 * 
+	 * @param computer The opponent that will get their ships on their board randomly placed.
+	 */
+	public static void placeShips(Computer computer){
 		Random rand = new Random();
 		char row;
 		int  column;
@@ -78,22 +88,26 @@ public class Game {
 		boolean success;
 		for(int i=0; i<5; i++){
 			do{
-				
 				row = computer.getRow();
 				column = computer.getColumn();
 				intVert = rand.nextInt(2);
 				if(intVert == 0){
 					vert = true;
-				}
-				else{
+				}else{
 					vert = false;
 				}
 				success = computer.placeShip(computer, computer.getShip(i), row, column, vert);
 			}while(success == false);
 		}
 	}
-	//It takes two players and and fires missiles based on the rows and columns given
-	//It continues to fire until all ships are sunk, then it displays the winner.
+
+	/**
+	 * Plays the game by letting each player fire against each other.
+	 * 
+	 * @param player1 The first player of the game.
+	 * @param player2 The second player of the game.
+	 * @return Value that will determine who the winner is.
+	 */
 	public static boolean battle(Player player1, Player player2){
 		int turnCounter = 0;
 		Random rand = new Random();
@@ -111,8 +125,7 @@ public class Game {
 					player2.getMyBoard().displayWithoutShips();
 
 				}while(success == false);
-			} 
-			else{
+			}else{
 				System.out.println("Its " + player2.getName() + "'s turn!");
 				row = player2.getRow();
 				column = player2.getColumn();
@@ -127,8 +140,13 @@ public class Game {
 		}
 		return true;
 	}
-	//It takes a char and returns int that it corresponds to in the row.
-	//If it doesn't correspond then it returns -1
+
+	/**
+	 * Takes a char and returns an int that is correspondent to the letter of the row.
+	 * 
+	 * @param c The letter of the row.
+	 * @return The int value of the row.
+	 */
 	public static int charToNum(char c){
 		String alphabet = "ABCDEFGHIJ";
 		for(int i=0;i<alphabet.length();i++){
@@ -138,14 +156,24 @@ public class Game {
 		}
 		return -1;
 	} 
-	//It takes a int and returns the char in the String that corresponds 
-	//to the letter of the rows
+
+	/**
+	 * Takes an int and returns a char in the row that it corresponds.
+	 * 
+	 * @param i The number that corresponds to a letter.
+	 * @return The char based on the given int.
+	 */
 	public static char numToChar(int i){
 		String alphabet = "ABCDEFGHIJ";
 
 		return alphabet.charAt(i);
 	}
 
+	/**
+	 * Main method that will play the game.
+	 * 
+	 * @param args Main method of the code.
+	 */
 	public static void main(String[] args) {
 		Game g = new Game();
 		g.playGame();
