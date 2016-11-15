@@ -9,9 +9,11 @@ public class Computer extends Player {
 	int randNum;
 	char randRow;
 	boolean flag;
+	
 
 	public Computer() {
 		super();//call to superclass constructor 
+		flag = false;
 	}
 
 	@Override
@@ -28,6 +30,28 @@ public class Computer extends Player {
 		int column;
 		column = rand.nextInt(10)+1;
 		return column;
+	}
+	
+	@Override
+	public boolean fire (Player player, char row, int column){
+		if(player.getMyBoard().getSquare(row, column).hasMissle()){
+			System.out.println("There is already a missle there!");
+			return false;
+		}
+
+		if(player.getMyBoard().getSquare(row, column).hasShip()){
+			System.out.println("A ship has been struck!");
+			player.getShip(player.getMyBoard().getSquare(row, column).getShipNum()).hit();
+			flag = true;
+			if(player.getShip(player.getMyBoard().getSquare(row, column).getShipNum()).isAfloat() == false){
+				System.out.println("A ship has been sunk!");
+				player.sinkShip();
+				flag = false;
+			} 
+		}else{
+			System.out.println("Miss! nothing was hit.");
+		}
+		return true; 
 	}
 	
 	
@@ -67,6 +91,27 @@ public class Computer extends Player {
 		}
 		return true;
 	}
+	
+	public void randomizer(Player computer, char row, int column) {
+		List<Square> random = new ArrayList<Square>();
+		ArrayList<ArrayList<Integer>> rand = new ArrayList<ArrayList<Integer>>();
+		//rand.add(ArrayList<row,column>);
+		random.add(computer.getMyBoard().getSquare(row, column +1));
+		random.add(computer.getMyBoard().getSquare(row, column-1));
+		random.add(computer.getMyBoard().getSquare((char)(row+1), column));
+		random.add(computer.getMyBoard().getSquare((char)(row-1),column));
+		
+		for (int i=0; i<4;i++) {
+			computer.fire(computer, random.get(i).getRow(), random.get(i).getColumn());
+			}
+		
+		
+	}
+	
+	public void uptadeGuesses(char row, int column){
+		
+	}
+	
 
 }
 

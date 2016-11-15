@@ -15,6 +15,7 @@ public class Game {
 		Player player = new Player(name,scan);
 		Computer computer = new Computer();
 		
+		
 		System.out.println(player.getName() + " VS. " + computer.getName());
 		
 		placeShips(computer);
