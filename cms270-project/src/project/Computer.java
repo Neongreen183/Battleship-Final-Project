@@ -1,7 +1,6 @@
 package project;
 import java.util.*;
 
-
 public class Computer extends Player { 
 	Random rand = new Random();
 	int start = 0;
@@ -15,10 +14,12 @@ public class Computer extends Player {
 	public Computer() {
 		super();//call to superclass constructor 
 		flag = false;
+		turn = 0;
 	}
 
 	@Override
 	public char getRow(){
+		//updateRowAndColumn();
 		char row;
 		if(turn>0){
 			return CRow;
@@ -30,6 +31,7 @@ public class Computer extends Player {
 
 	@Override
 	public int getColumn(){
+		//updateRowAndColumn();
 		if (turn>0) {
 			return CColumn;
 		}
@@ -52,10 +54,14 @@ public class Computer extends Player {
 		player.getMyBoard().getSquare(row, column).placeMissle();
 
 		if(player.getMyBoard().getSquare(row, column).hasShip()){
+			if(turn>0){
+				updateRowAndColumn();
+			}
 			System.out.println("A ship has been struck!");
 			if(turn == 0)
 			{
 				updateGuesses(row,column);
+				updateRowAndColumn();
 			}
 			
 			player.getShip(player.getMyBoard().getSquare(row, column).getShipNum()).hit();
@@ -82,6 +88,7 @@ public class Computer extends Player {
 		}else if(vert==false && column+ship.getSize()>11){
 			//System.out.println("Sorry you cannot place this ship here");
 			return false;
+			
 		}
 		for(int i=0;i<ship.getSize();i++){
 			if(vert){
@@ -144,6 +151,9 @@ public class Computer extends Player {
 		
 	}
 	public void updateRowAndColumn(){
+		if(turn == 4){
+			turn = 0;
+		}
 		turn++;
 		CRow = random.get(turn).getRow();
 		CColumn = random.get(turn).getColumn();
