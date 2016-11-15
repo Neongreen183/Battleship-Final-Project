@@ -71,6 +71,7 @@ public class Player {
 			System.out.println("There is already a missle there!");
 			return false;
 		}
+		
 		player.getMyBoard().getSquare(row, column).placeMissle();
 
 		if(player.getMyBoard().getSquare(row, column).hasShip()){
@@ -96,7 +97,7 @@ public class Player {
 		
 		while(charToNum(row) == -1){
 			System.out.println("Sorry the row must be A-J");
-			System.out.println("Please select a row (A-J): " );
+			System.out.print("Please select a row (A-J): " );
 			row = scan.nextLine().toUpperCase().charAt(0);
 		}
 		return row;
@@ -107,7 +108,7 @@ public class Player {
 		String stringColumn;
 		int column;
 		boolean flag = true;
-		System.out.println("Please select a column (1-10)");
+		System.out.print("Please select a column (1-10): ");
 		stringColumn = scan.nextLine();
 		Character c = stringColumn.charAt(0);
 		
@@ -128,6 +129,7 @@ public class Player {
 		while(flag == false){
 			flag = true;
 			System.out.println("Sorry, the column must be a number 1-10");
+			System.out.print("Please select a column (1-10): " );
 			stringColumn = scan.nextLine();
 			c = stringColumn.charAt(0);
 			if(c.isDigit(c) == false){

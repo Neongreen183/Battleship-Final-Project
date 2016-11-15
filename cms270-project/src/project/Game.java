@@ -15,8 +15,9 @@ public class Game {
 		Player player = new Player(name,scan);
 		Computer computer = new Computer();
 		
+		System.out.println(player.getName() + " VS. " + computer.getName());
+		
 		placeShips(computer);
-		computer.getMyBoard().displayWithShips();
 		placeShips(player, scan);
 		winner = battle(player,computer);
 		System.out.println("Game over!");
@@ -42,11 +43,11 @@ public class Game {
 						+ " (length " + player.getShip(i).getSize() + ")");
 				row = player.getRow();
 				column = player.getColumn();
-				System.out.println("Should the ship be vertical?(y/n); ");
+				System.out.print("Should the ship be vertical?(y/n); ");
 				playerAns = scan.nextLine().toLowerCase().charAt(0);
 				
 				while(playerAns != 'y' && playerAns != 'n'){
-					System.out.println("Please enter the letter 'y' or 'n': ");
+					System.out.print("Please enter the letter 'y' or 'n': ");
 					playerAns = scan.nextLine().toLowerCase().charAt(0);
 				}
 				if(playerAns == 'y'){
