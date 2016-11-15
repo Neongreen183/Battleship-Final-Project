@@ -12,7 +12,7 @@ public class Player {
 	
 
 	public Player() {
-		playerName = "unknown";
+		playerName = "Computer";
 		shipsLeft = 4;
 		myBoard = new Board();
 		myShips = new Ship[5];
