@@ -68,7 +68,7 @@ public class Computer extends Player {
 	}
 	
 	public void randomizer(Player computer, char row, int column) {
-		List<Square> random = new ArrayList<Square>(4);
+		List<Square> random = new ArrayList<Square>();
 		
 		random.add(computer.getMyBoard().getSquare(row, column +1));
 		random.add(computer.getMyBoard().getSquare(row, column-1));
