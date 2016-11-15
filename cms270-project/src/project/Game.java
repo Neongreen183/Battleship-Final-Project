@@ -138,7 +138,7 @@ public class Game {
 		}
 		return -1;
 	} 
-	//It takes a integer and returns the char in the String that corresponds 
+	//It takes a int and returns the char in the String that corresponds 
 	//to the letter of the rows
 	public static char numToChar(int i){
 		String alphabet = "ABCDEFGHIJ";
