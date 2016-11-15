@@ -88,7 +88,6 @@ public class Computer extends Player {
 		}else if(vert==false && column+ship.getSize()>11){
 			//System.out.println("Sorry you cannot place this ship here");
 			return false;
-			
 		}
 		for(int i=0;i<ship.getSize();i++){
 			if(vert){
