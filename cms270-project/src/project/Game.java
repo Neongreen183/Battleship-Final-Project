@@ -43,14 +43,14 @@ public class Game {
 						+ " (length " + player.getShip(i).getSize() + ")");
 				row = player.getRow();
 				column = player.getColumn();
-				System.out.print("Should the ship be vertical?(y/n); ");
+				System.out.print("Should the ship be vertical?(V/H); ");
 				playerAns = scan.nextLine().toLowerCase().charAt(0);
 				
-				while(playerAns != 'y' && playerAns != 'n'){
-					System.out.print("Please enter the letter 'y' or 'n': ");
+				while(playerAns != 'h' && playerAns != 'v'){
+					System.out.print("Please enter the letter 'V' or 'H': ");
 					playerAns = scan.nextLine().toLowerCase().charAt(0);
 				}
-				if(playerAns == 'y'){
+				if(playerAns == 'v'){
 					vert = true;
 				}
 				else{
