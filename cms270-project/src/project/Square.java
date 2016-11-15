@@ -29,6 +29,12 @@ public class Square {
 	}
 	public void placeMissle(){
 		missle = true;
+
+	}
+	
+	public Ship getMyShip(){
+		return myShip;
+		//hello
 	}
 	
 	
