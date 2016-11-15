@@ -11,12 +11,13 @@ public class Game {
 				+ "Please enter Player 1's name: ");
 
 		String name = scan.nextLine();
-		Player player = new Player(name);
+		
+		Player player = new Player(name,scan);
 		Computer computer = new Computer();
-
+		
 		placeShips(computer);
 		computer.getMyBoard().displayWithShips();
-		placeShips(player);
+		placeShips(player, scan);
 		winner = battle(player,computer);
 		System.out.println("Game over!");
 		if(winner == true){
@@ -25,11 +26,10 @@ public class Game {
 		else{
 			System.out.println(computer.getName() + " Has won!");
 		}
-		scan.close();		
+				
 	}
 
-	public static void placeShips(Player player){
-		Scanner scan = new Scanner(System.in);
+	public static void placeShips(Player player, Scanner scan){
 		char row;
 		int  column;
 		char playerAns;
@@ -44,6 +44,7 @@ public class Game {
 				column = player.getColumn();
 				System.out.println("Should the ship be vertical?(y/n); ");
 				playerAns = scan.nextLine().toLowerCase().charAt(0);
+				
 				while(playerAns != 'y' && playerAns != 'n'){
 					System.out.println("Please enter the letter 'y' or 'n': ");
 					playerAns = scan.nextLine().toLowerCase().charAt(0);
@@ -58,7 +59,6 @@ public class Game {
 			}while(success == false);
 			player.getMyBoard().displayWithShips();
 		}
-		scan.close();
 	}
 	
 	public static void placeShips(Computer computer){
