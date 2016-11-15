@@ -102,17 +102,53 @@ public class Player {
 	}
 	
 	public int getColumn(){
+		String stringColumn;
 		int column;
+		boolean flag = true;
 		System.out.println("Please select a column (1-10)");
-		column = scan.nextInt();
-		scan.nextLine();
-		while(column>10 || column<1){ 
-			System.out.println("Sorry the row must be 1-10");
-			System.out.println("Please select a column(1-10)");
-			column = scan.nextInt();
-			scan.nextLine();
+		stringColumn = scan.nextLine();
+		Character c = stringColumn.charAt(0);
+		
+		if(c.isDigit(c) == false){
+			flag = false;
+			column = -1;
 		}
-	    //scan.close();
+		else{
+			
+			column = Integer.parseInt(stringColumn.substring(0, 1));
+			if(stringColumn.length()>1){
+				column = Integer.parseInt(stringColumn.substring(0,2));
+			}
+			if(column>10 || column <1){
+				flag = false;
+			}
+		}
+		while(flag == false){
+			flag = true;
+			System.out.println("Sorry, the column must be a number 1-10");
+			stringColumn = scan.nextLine();
+			c = stringColumn.charAt(0);
+			if(c.isDigit(c) == false){
+				flag = false;
+				column = -1;
+			}
+			else{
+				column = Integer.parseInt(stringColumn.substring(0, 1));
+				if(stringColumn.length()>1){
+					c = stringColumn.charAt(1);
+					if(c.isDigit(c)){
+						column = Integer.parseInt(stringColumn.substring(0,2));
+					}
+				}
+				if(column>10 || column <1){
+					flag = false;
+				}
+			}
+		}
+		
+		
+		
+	    
 		return column;
 
 	}
