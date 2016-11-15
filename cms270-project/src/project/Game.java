@@ -108,8 +108,8 @@ public class Game {
 			} 
 			else{
 				System.out.println("Its " + player2.getName() + "'s turn!");
-				row = numToChar(rand.nextInt(9));
-				column = rand.nextInt(9)+1;
+				row = player2.getRow();
+				column = player2.getColumn();
 				System.out.println("The computer fired at " + row + column);
 				player2.fire(player1, row, column);
 				turnCounter = 0;

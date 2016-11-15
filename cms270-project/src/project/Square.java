@@ -15,6 +15,7 @@ public class Square {
 		shipNum = -1;
 		row = r;
 		column = c;
+		myShip = new Ship(-1,1);
 	}
 	//returns the ship boolean for the square
 	public boolean hasShip(){
