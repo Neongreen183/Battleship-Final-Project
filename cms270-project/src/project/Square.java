@@ -6,10 +6,15 @@ public class Square {
 	private boolean missle;
 	private int shipNum; 
 	private Ship myShip;
-	public Square(){
+	private char row;
+	private int column;
+	
+	public Square(char r, int c){
 		ship = false;
 		missle = false;
 		shipNum = -1;
+		row = r;
+		column = c;
 	}
 	//returns the ship boolean for the square
 	public boolean hasShip(){
@@ -37,6 +42,13 @@ public class Square {
 	// returns myShip Ship for the square
 	public Ship getMyShip(){
 		return myShip;
+	}
+	public int getColumn(){
+		return column;
+	}
+	
+	public char getRow(){
+		return row;
 	}
 	
 	

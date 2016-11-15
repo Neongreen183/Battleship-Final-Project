@@ -12,11 +12,12 @@ public class Board {
 
 	public Board() {
 		board = new Square[10][10];
-		Square square = new Square();
+		Square square;
 		for(int i=0;i<10;i++){
 			for(int j=0;j<10;j++){
+				square = new Square(numToChar(i),j+1);
 				board[i][j] = square;
-				square = new Square();
+				
 			}
 		} 
 	}
@@ -102,6 +103,12 @@ public class Board {
 			}
 		}
 		return -1;
-	} 
+	}
+	
+	public static char numToChar(int i){
+		String alphabet = "ABCDEFGHIJ";
+
+		return alphabet.charAt(i);
+	}
 
 }
