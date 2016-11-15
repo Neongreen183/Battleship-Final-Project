@@ -204,7 +204,7 @@ public class Player {
 				column++ ;
 			}
 		}
-		return true;
+		return true; 
 
 	}
 }
