@@ -11,7 +11,7 @@ public class Board {
 	// X = hit
 	// O = miss
 	// - = Empty place
-	
+
 	private Square[][] board;
 
 	/**
@@ -68,16 +68,16 @@ public class Board {
 	public void displayWithShips(){
 		System.out.println("  1  2  3  4  5  6  7  8  9  10 ");
 		String alphabet = "ABCDEFGHIJ";
-		
+
 		for(int i = 0;i<10;i++){
 			System.out.print(alphabet.charAt(i));
-			
+
 			for(int j = 0;j<10;j++){
 				if(board[i][j].hasMissle() && board[i][j].hasShip() && board[i][j].getMyShip().isAfloat() == false){
 					System.out.print(" ! ");
 				}
 				else if (board[i][j].hasMissle() && board[i][j].hasShip()){
-					
+
 					System.out.print(" X ");
 				}
 				else if(board[i][j].hasMissle()){
@@ -98,10 +98,10 @@ public class Board {
 	public void displayWithoutShips(){
 		System.out.println("  1  2  3  4  5  6  7  8  9  10 ");
 		String alphabet = "ABCDEFGHIJ";
-		
+
 		for(int i = 0;i<10;i++){
 			System.out.print(alphabet.charAt(i));
-			
+
 			for(int j = 0;j<10;j++){
 				if(board[i][j].hasMissle() && board[i][j].hasShip() && board[i][j].getMyShip().isAfloat() == false){
 					System.out.print(" ! ");
@@ -133,7 +133,7 @@ public class Board {
 		}
 		return -1;
 	}
-	
+
 	/**
 	 * Returns the original char that was used for a coordinate.
 	 * 
