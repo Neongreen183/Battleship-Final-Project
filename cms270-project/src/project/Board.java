@@ -50,9 +50,14 @@ public class Board {
 			System.out.print(alphabet.charAt(i));
 			
 			for(int j = 0;j<10;j++){
-				if(board[i][j].hasMissle() && board[i][j].hasShip()){
+				if(board[i][j].hasMissle() && board[i][j].hasShip() && board[i][j].getMyShip().isAfloat() == false){
+					System.out.print(" ! ");
+				}
+				else if (board[i][j].hasMissle() && board[i][j].hasShip()){
+					
 					System.out.print(" X ");
-				}else if(board[i][j].hasMissle()){
+				}
+				else if(board[i][j].hasMissle()){
 					System.out.print(" O ");
 				}else if(board[i][j].hasShip()){
 					System.out.print(" S ");
@@ -74,7 +79,10 @@ public class Board {
 			System.out.print(alphabet.charAt(i));
 			
 			for(int j = 0;j<10;j++){
-				if(board[i][j].hasMissle() && board[i][j].hasShip()){
+				if(board[i][j].hasMissle() && board[i][j].hasShip() && board[i][j].getMyShip().isAfloat() == false){
+					System.out.print(" ! ");
+				}
+				else if(board[i][j].hasMissle() && board[i][j].hasShip()){
 					System.out.print(" X ");
 				}else if(board[i][j].hasMissle()){
 					System.out.print(" O ");

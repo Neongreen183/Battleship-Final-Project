@@ -192,10 +192,10 @@ public class Player {
 
 		for(int i=0; i<ship.getSize();i++ ){
 			if(vert == true){
-				player.getMyBoard().getSquare(row, column).placeShip(ship.getShipNum());
+				player.getMyBoard().getSquare(row, column).placeShip(ship.getShipNum(),ship);
 				row++;
 			}else{
-				player.getMyBoard().getSquare(row, column).placeShip(ship.getShipNum());
+				player.getMyBoard().getSquare(row, column).placeShip(ship.getShipNum(),ship);
 				column++ ;
 			}
 		}
