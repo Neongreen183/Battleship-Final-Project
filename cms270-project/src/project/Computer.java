@@ -1,6 +1,10 @@
 package project;
 import java.util.*;
 
+/**
+ * @author Felix Ruiz, and Rene Borr
+ * @version 1.0.0
+ */
 public class Computer extends Player { 
 	Random rand = new Random();
 	int start = 0;
