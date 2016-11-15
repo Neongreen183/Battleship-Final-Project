@@ -85,7 +85,8 @@ public class Player {
 		}
 		return true; 
 	}
-	//
+	//asks user for char input for row and checks to make sure 
+	//user enters a char
 	public char getRow(){
 		String line;
 		char row;
@@ -100,7 +101,8 @@ public class Player {
 		}
 		return row;
 	}
-	
+	//asks user for integer input and stores the value
+	//also does error checking for user input
 	public int getColumn(){
 		String stringColumn;
 		int column;
@@ -153,7 +155,8 @@ public class Player {
 
 	}
 
-
+	//takes a char and makes sure that it is one of
+	//the chars that corresponds to a real row
 	public static int charToNum(char c){
 		String alphabet = "ABCDEFGHIJ";
 		for(int i=0;i<alphabet.length();i++){
@@ -163,7 +166,9 @@ public class Player {
 		}
 		return -1;
 	} 
-
+	//places a ship for a player at a certain row and column and whether it is vertical or
+	//horizontal. Also does error checking to make sure ship is successfully placed and to
+	//check that it does not overlap with another ship, or placed out of bounds
 	public boolean placeShip(Player player, Ship ship, char row, int column, Boolean vert){
 		char test = row;
 		if(vert==true && charToNum(row)+ship.getSize()>10){
