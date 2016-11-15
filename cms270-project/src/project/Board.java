@@ -2,6 +2,12 @@ package project;
 
 public class Board {
 
+	// For this board: 
+	// S = ship
+	// X = hit
+	// O = miss
+	// - = Empty place
+	
 	private Square[][] board;
 
 	public Board() {
@@ -14,12 +20,6 @@ public class Board {
 			}
 		} 
 	}
-
-	// For this board: 
-	// S = ship
-	// X = hit
-	// O = miss
-	// - = empty piece
 
 	// returns square associated with that location in board
 	public Square getSquare(char row, int column){
