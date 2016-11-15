@@ -96,8 +96,9 @@ public class Game {
 			if(turnCounter == 0){
 				do{
 					System.out.println("Its " + player1.getName() + "'s turn!");
-					row = player1.getRow();
 					column = player1.getColumn();
+					row = player1.getRow();
+					
 					success = player1.fire(player2, row, column);
 					turnCounter = 1;
 					player2.getMyBoard().displayWithoutShips();
