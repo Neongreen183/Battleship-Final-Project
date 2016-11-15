@@ -66,6 +66,20 @@ public class Computer extends Player {
 		}
 		return true;
 	}
+	
+	public void randomizer(Player computer, char row, int column) {
+		List<Square> random = new ArrayList<Square>(4);
+		
+		random.add(computer.getMyBoard().getSquare(row, column +1));
+		random.add(computer.getMyBoard().getSquare(row, column-1));
+		random.add(computer.getMyBoard().getSquare((char)(row+1), column));
+		random.add(computer.getMyBoard().getSquare((char)(row-1),column));
+		
+			
+		
+		
+	}
+	
 
 }
 
