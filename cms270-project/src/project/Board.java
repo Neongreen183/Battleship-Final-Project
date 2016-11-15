@@ -1,5 +1,9 @@
 package project;
 
+/**
+ * @author Jerry Abril, Rene Borr, Roderick Zak, Felix Ruiz
+ * @version 1.0.0
+ */
 public class Board {
 
 	// For this board: 
@@ -10,6 +14,9 @@ public class Board {
 	
 	private Square[][] board;
 
+	/**
+	 * Initializes the board.
+	 */
 	public Board() {
 		board = new Square[10][10];
 		Square square;
@@ -17,17 +24,30 @@ public class Board {
 			for(int j=0;j<10;j++){
 				square = new Square(numToChar(i),j+1);
 				board[i][j] = square;
-				
 			}
 		} 
 	}
 
-	// returns square associated with that location in board
+	/**
+	 * Returns square based on its location on the board.
+	 * 
+	 * @param row The row of a specific square.
+	 * @param column The column of a specific square.
+	 * @return Square value at a specific location.
+	 */
 	public Square getSquare(char row, int column){
 		return board[charToNum(row)][column-1];
 	}
 
-	// returns an array of squares to the specified parameters
+	/**
+	 * Returns an array of squares to the specified parameter
+	 * 
+	 * @param row The row of a specified square
+	 * @param column The column of a specified square
+	 * @param vert Whether the ship on it is vertical or not
+	 * @param length The length of the ship
+	 * @return Array of squares
+	 */
 	public Square[] getSquares(char row, int column, Boolean vert, int length){
 		Square[] array = new Square[length];
 		if(vert){
@@ -42,7 +62,9 @@ public class Board {
 		return array;
 	}
 
-	// displays the board for the owner
+	/**
+	 * Displays the board for the owner.
+	 */
 	public void displayWithShips(){
 		System.out.println("  1  2  3  4  5  6  7  8  9  10 ");
 		String alphabet = "ABCDEFGHIJ";
@@ -70,8 +92,9 @@ public class Board {
 		}
 	}
 
-
-	// displays board for opponent view
+	/**
+	 * Displays the board for opponent view.
+	 */
 	public void displayWithoutShips(){
 		System.out.println("  1  2  3  4  5  6  7  8  9  10 ");
 		String alphabet = "ABCDEFGHIJ";
@@ -95,6 +118,12 @@ public class Board {
 		}
 	}
 
+	/**
+	 * Changes the char (between A-J) to a number.
+	 * 
+	 * @param c The letter that is being input (between A-J).
+	 * @return Number between 1-10 for the location of the row.
+	 */
 	public static int charToNum(char c){
 		String alphabet = "ABCDEFGHIJ";
 		for(int i=0;i<alphabet.length();i++){
@@ -105,6 +134,12 @@ public class Board {
 		return -1;
 	}
 	
+	/**
+	 * Returns the original char that was used for a coordinate.
+	 * 
+	 * @param i The number that represents a letter.
+	 * @return The letter at the location of the int.
+	 */
 	public static char numToChar(int i){
 		String alphabet = "ABCDEFGHIJ";
 
