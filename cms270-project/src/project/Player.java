@@ -65,7 +65,7 @@ public class Player {
 	}
 	//changes the hasMissile value in a square in the board to to true if it is false
 	//and if there is a ship it augments the hits of the ship and if it sinks the ship\
-	//it displays that the ship has a
+	//it displays that the ship has been sunk
 	public boolean fire (Player player, char row, int column){
 		if(player.getMyBoard().getSquare(row, column).hasMissle()){
 			System.out.println("There is already a missle there!");
@@ -85,7 +85,7 @@ public class Player {
 		}
 		return true; 
 	}
-
+	//
 	public char getRow(){
 		String line;
 		char row;
