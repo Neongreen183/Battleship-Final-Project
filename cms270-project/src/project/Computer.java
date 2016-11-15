@@ -100,7 +100,9 @@ public class Computer extends Player {
 		random.add(computer.getMyBoard().getSquare((char)(row+1), column));
 		random.add(computer.getMyBoard().getSquare((char)(row-1),column));
 		
-			
+		for (int i=0; i<4;i++) {
+			computer.fire(computer, random.get(i).getRow(), random.get(i).getColumn());
+			}
 		
 		
 	}
