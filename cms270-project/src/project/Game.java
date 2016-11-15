@@ -90,7 +90,7 @@ public class Game {
 		int turnCounter = 0;
 		Random rand = new Random();
 		char row = 'A';
-		int column = 0;
+		int column = rand.nextInt(1);
 		boolean success;
 		while(player1.getShipsLeft() != 0 && player2.getShipsLeft() != 0){
 			if(turnCounter == 0){
