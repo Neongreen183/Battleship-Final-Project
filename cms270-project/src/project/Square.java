@@ -35,6 +35,7 @@ public class Square {
 	
 	public Ship getMyShip(){
 		return myShip;
+		//hello
 	}
 	
 	
