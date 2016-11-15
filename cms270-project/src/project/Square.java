@@ -4,7 +4,7 @@ public class Square {
 	
 	private boolean ship;
 	private boolean missle;
-	private int shipNum;
+	private int shipNum; 
 	private Ship myShip;
 	
 	public Square(){
