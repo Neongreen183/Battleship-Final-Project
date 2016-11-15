@@ -1,7 +1,6 @@
 package project;
 import java.util.*;
 
-
 public class Computer extends Player { 
 	Random rand = new Random();
 	int start = 0;
