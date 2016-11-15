@@ -50,6 +50,7 @@ public class Game {
 		boolean vert;
 		boolean success;
 
+		//Loops through five times for each ship so that the player can place them where they wish
 		for(int i=0; i<5; i++){
 			do{
 				System.out.println("Placing ship number " + (i+1) 
@@ -58,7 +59,7 @@ public class Game {
 				column = player.getColumn();
 				System.out.print("Vertical or Horizontal? Please enter V or H: ");
 				playerAns = scan.nextLine().toLowerCase().charAt(0);
-
+				//Checks to make sure that the player doesn't put wrong input.
 				while(playerAns != 'h' && playerAns != 'v'){
 					System.out.print("Please enter the letter 'V' or 'H': ");
 					playerAns = scan.nextLine().toLowerCase().charAt(0);
@@ -86,6 +87,7 @@ public class Game {
 		int intVert;
 		boolean vert = false;
 		boolean success;
+		//Loops through five times to place all the ships for the computer randomly
 		for(int i=0; i<5; i++){
 			do{
 				row = computer.getRow();
@@ -114,6 +116,10 @@ public class Game {
 		char row = 'A';
 		int column = rand.nextInt(1);
 		boolean success;
+		
+		/*Loops through the entire game letting each player fire against each other
+		 * until there is a winner.
+		 */
 		while(player1.getShipsLeft() != 0 && player2.getShipsLeft() != 0){
 			if(turnCounter == 0){
 				do{
