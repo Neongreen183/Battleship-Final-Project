@@ -29,7 +29,8 @@ public class Computer extends Player {
 		column = rand.nextInt(10)+1;
 		return column;
 	}
-
+	
+	
 	public boolean placeShip(Player player, Ship ship, char row, int column, Boolean vert){
 		char test = row;
 		if(vert==true && charToNum(row)+ship.getSize()>10){
