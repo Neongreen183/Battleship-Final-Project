@@ -108,7 +108,7 @@ public class Player {
 	public void sinkShip(){
 		shipsLeft--;
 	}
-	
+
 	/**
 	 * Utilized by the player to fire shots to the opponent and play the game.
 	 * 
@@ -147,8 +147,10 @@ public class Player {
 	public char getRow(){
 		String line;
 		char row;
-		System.out.print("Please select a row (A-J): " );
-		line = scan.nextLine();
+		do{
+			System.out.print("Please select a row (A-J): " );
+			line = scan.nextLine();
+		}while (line.isEmpty());
 		row = line.toUpperCase().charAt(0);
 
 		while(getMyBoard().charToNum(row) == -1){
@@ -168,8 +170,10 @@ public class Player {
 		String stringColumn;
 		int column;
 		boolean flag = true;
-		System.out.print("Please select a column (1-10): ");
-		stringColumn = scan.nextLine();
+		do{
+			System.out.print("Please select a column (1-10): ");
+			stringColumn = scan.nextLine();
+		}while(stringColumn.isEmpty());
 		Character c = stringColumn.charAt(0);
 
 		if(c.isDigit(c) == false){
