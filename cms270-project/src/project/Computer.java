@@ -32,7 +32,7 @@ public class Computer extends Player {
 
 	@Override
 	public int getColumn(){
-		//updateRowAndColumn();
+		
 		if (turn>0) {
 			return CColumn;
 		}
@@ -59,7 +59,7 @@ public class Computer extends Player {
 		if(player.getMyBoard().getSquare(row, column).hasShip()){
 			System.out.println("A ship has been struck!");
 			if(turn == 0){
-				//random = new ArrayList<Square>();
+				
 				updateGuesses(row,column);
 				updateRowAndColumn();
 			}

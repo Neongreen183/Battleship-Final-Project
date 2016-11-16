@@ -64,6 +64,7 @@ public class Square {
 	public void placeShip(int num, Ship newShip){ 
 		ship = true;
 		shipNum = num;
+		myShip = newShip;
 	}
 	/**
 	 * Lets the square know that a missile fell in that location

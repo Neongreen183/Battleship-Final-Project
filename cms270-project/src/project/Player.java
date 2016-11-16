@@ -154,7 +154,7 @@ public class Player {
 		line = scan.nextLine();
 		row = line.toUpperCase().charAt(0);
 
-		while(charToNum(row) == -1){
+		while(getMyBoard().charToNum(row) == -1){
 			System.out.println("Sorry the row must be A-J");
 			System.out.print("Please select a row (A-J): " );
 			row = scan.nextLine().toUpperCase().charAt(0);
@@ -221,15 +221,7 @@ public class Player {
 	 * @param c The letter of the row.
 	 * @return The int value of the row.
 	 */
-	public static int charToNum(char c){
-		String alphabet = "ABCDEFGHIJ";
-		for(int i=0;i<alphabet.length();i++){
-			if (alphabet.charAt(i) == c){
-				return i;
-			}
-		}
-		return -1;
-	} 
+
 
 	/**
 	 * Places a ship for a player where they desire it.
@@ -244,7 +236,7 @@ public class Player {
 	public boolean placeShip(Player player, Ship ship, char row, int column, Boolean vert){
 		char test = row;
 		//Checks to see if it's out of bounds
-		if(vert==true && charToNum(row)+ship.getSize()>10){
+		if(vert==true && getMyBoard().charToNum(row)+ship.getSize()>10){
 			System.out.println("Sorry you cannot place this ship there");
 			return false;
 		}else if(vert==false && column+ship.getSize()>11){
