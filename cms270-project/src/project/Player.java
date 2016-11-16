@@ -18,7 +18,7 @@ public class Player {
 	 */
 	public Player() {
 		playerName = "Computer";
-		shipsLeft = 4;
+		shipsLeft = 5;
 		myBoard = new Board();
 		myShips = new Ship[5];
 		myShips[0]=new Ship(0,2);
