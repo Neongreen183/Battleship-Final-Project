@@ -145,8 +145,9 @@ public class Game {
 					System.out.println("The computer fired at " + row + column);
 					success = player2.fire(player1, row, column);
 					turnCounter = 0;
-					player1.getMyBoard().displayWithShips();
+					
 				}while(success == false);
+				player1.getMyBoard().displayWithShips();
 			} 
 		}
 		if(player1.getShipsLeft()==0){
