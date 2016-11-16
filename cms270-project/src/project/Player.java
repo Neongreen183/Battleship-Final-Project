@@ -152,12 +152,15 @@ public class Player {
 		char row;
 		System.out.print("Please select a row (A-J): " );
 		line = scan.nextLine();
+		
 		row = line.toUpperCase().charAt(0);
 
 		while(getMyBoard().charToNum(row) == -1){
 			System.out.println("Sorry the row must be A-J");
 			System.out.print("Please select a row (A-J): " );
-			row = scan.nextLine().toUpperCase().charAt(0);
+			line = scan.nextLine();
+			row = line.toUpperCase().charAt(0);
+			
 		}
 		return row;
 	}

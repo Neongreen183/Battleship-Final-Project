@@ -26,7 +26,6 @@ public class Game {
 
 		//Randomly places the ships across the board for the Computer.
 		placeShips(computer);
-		computer.getMyBoard().displayWithShips();
 		//Loops until player places all of their ships.
 		placeShips(player, scan);
 		//Checks for a winner.
