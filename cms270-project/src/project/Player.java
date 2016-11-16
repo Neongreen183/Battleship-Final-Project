@@ -1,7 +1,10 @@
 package project;
-
 import java.util.Scanner;
 
+/**
+ * @author Rene Borr, Roderick Zack, Jerry Abril, Felix Ruiz
+ * @version 1.0.0
+ */
 public class Player {
 
 	private int shipsLeft;
@@ -9,8 +12,10 @@ public class Player {
 	private String playerName;
 	private Board myBoard;
 	private Scanner scan;
-	
 
+	/**
+	 * Creates a default player named computer and generates their ships.
+	 */
 	public Player() {
 		playerName = "Computer";
 		shipsLeft = 4;
@@ -22,12 +27,23 @@ public class Player {
 		myShips[3]=new Ship(3,4);
 		myShips[4]=new Ship(4,5);
 	}
-	
+
+	/**
+	 * Creates a player with a given name and scanner to take input.
+	 * 
+	 * @param name The player's name.
+	 * @param s Takes input throughout the code.
+	 */
 	public Player(String name, Scanner s) {
 		this(name);
 		scan = s;
 	}
 
+	/**
+	 * Creates a player and generates the ships that they will utilize.
+	 * 
+	 * @param name The name for the player.
+	 */
 	public Player(String name) {
 		this.playerName=name;
 		this.shipsLeft=5; 
@@ -39,41 +55,80 @@ public class Player {
 		myShips[3]=new Ship(3,4);
 		myShips[4]=new Ship(4,5);
 	}
-	//returns the player name
+
+	/**
+	 * Returns the player's name.
+	 * 
+	 * @return The name of the player.
+	 */
 	public String getName(){
 		return playerName;
 	}
-	//returns the number of ships that are still alive
+
+	/**
+	 * Returns how many ships the player has left.
+	 * 
+	 * @return The number of ships the player has left.
+	 */
 	public int getShipsLeft(){
 		return shipsLeft;
 	}
-	//returns player board
+
+	/**
+	 * Returns the board
+	 * 
+	 * @return The board with all the ships, and fired shots.
+	 */
 	public Board getMyBoard(){
 		return myBoard;
 	}
-	//returns the players ships in a array
+
+	/**
+	 * Returns the ships that the player has
+	 * 
+	 * @return Ships the player has.
+	 */
 	public Ship[] getMyships(){
 		return myShips;
 	}
-	//returns the ship in the array the the integer index
+
+
+	/**
+	 * Returns a specific ship
+	 * 
+	 * @param num The number of the ship
+	 * @return The specified ship
+	 */ 
 	public Ship getShip(int num){
 		return myShips[num];
 	}
-	//decrements the number of ships when one is sunk
+
+	/**
+	 * Decrements the number of ships after one is sunk.
+	 */
 	public void sinkShip(){
 		shipsLeft--;
 	}
 	//changes the hasMissile value in a square in the board to to true if it is false
 	//and if there is a ship it augments the hits of the ship and if it sinks the ship\
 	//it displays that the ship has been sunk
+	/**
+	 * Utilized by the player to fire shots to the opponent and play the game.
+	 * 
+	 * @param player Which player is firing the missile
+	 * @param row Which row (A-J) to fire at 
+	 * @param column Which column (1-10) to fire at
+	 * @return Whether the shot was successful or not
+	 */
 	public boolean fire (Player player, char row, int column){
 		if(player.getMyBoard().getSquare(row, column).hasMissle()){
 			System.out.println("There is already a missle there!");
 			return false;
 		}
-		
+
 		player.getMyBoard().getSquare(row, column).placeMissle();
 
+		//Updates the board if a ship was actually hit.
 		if(player.getMyBoard().getSquare(row, column).hasShip()){
 			System.out.println("A ship has been struck!");
 			player.getShip(player.getMyBoard().getSquare(row, column).getShipNum()).hit();
@@ -86,15 +141,19 @@ public class Player {
 		}
 		return true; 
 	}
-	//asks user for char input for row and checks to make sure 
-	//user enters a char
+
+	/**
+	 * Row in which the player will place their ship
+	 * 
+	 * @return The row in which the player placed their ship. Between A-J.
+	 */
 	public char getRow(){
 		String line;
 		char row;
 		System.out.print("Please select a row (A-J): " );
 		line = scan.nextLine();
 		row = line.toUpperCase().charAt(0);
-		
+
 		while(charToNum(row) == -1){
 			System.out.println("Sorry the row must be A-J");
 			System.out.print("Please select a row (A-J): " );
@@ -102,8 +161,12 @@ public class Player {
 		}
 		return row;
 	}
-	//asks user for integer input and stores the value
-	//also does error checking for user input
+
+	/**
+	 * Column in which the player will place their ship
+	 * 
+	 * @return The column in which the player placed their ship. Between 1-10.
+	 */
 	public int getColumn(){
 		String stringColumn;
 		int column;
@@ -111,13 +174,13 @@ public class Player {
 		System.out.print("Please select a column (1-10): ");
 		stringColumn = scan.nextLine();
 		Character c = stringColumn.charAt(0);
-		
+
 		if(c.isDigit(c) == false){
 			flag = false;
 			column = -1;
 		}
 		else{
-			
+
 			column = Integer.parseInt(stringColumn.substring(0, 1));
 			if(stringColumn.length()>1){
 				column = Integer.parseInt(stringColumn.substring(0,2));
@@ -149,16 +212,15 @@ public class Player {
 				}
 			}
 		}
-		
-		
-		
-	    
 		return column;
-
 	}
 
-	//takes a char and makes sure that it is one of
-	//the chars that corresponds to a real row
+	/**
+	 * Takes a char and returns an int that is correspondent to the letter of the row.
+	 * 
+	 * @param c The letter of the row.
+	 * @return The int value of the row.
+	 */
 	public static int charToNum(char c){
 		String alphabet = "ABCDEFGHIJ";
 		for(int i=0;i<alphabet.length();i++){
@@ -168,11 +230,20 @@ public class Player {
 		}
 		return -1;
 	} 
-	//places a ship for a player at a certain row and column and whether it is vertical or
-	//horizontal. Also does error checking to make sure ship is successfully placed and to
-	//check that it does not overlap with another ship, or placed out of bounds
+
+	/**
+	 * Places a ship for a player where they desire it.
+	 * 
+	 * @param player The player that is placing the ship
+	 * @param ship Ship number being placed
+	 * @param row The row where it's being placed. Between A-J.
+	 * @param column The column where it's being placed. Between 1-10.
+	 * @param vert Whether the ship is vertical or horizontal.
+	 * @return Whether it was successful or not to place the ship.
+	 */
 	public boolean placeShip(Player player, Ship ship, char row, int column, Boolean vert){
 		char test = row;
+		//Checks to see if it's out of bounds
 		if(vert==true && charToNum(row)+ship.getSize()>10){
 			System.out.println("Sorry you cannot place this ship there");
 			return false;
@@ -180,7 +251,7 @@ public class Player {
 			System.out.println("Sorry you cannot place this ship here");
 			return false;
 		}
-
+		//Checks to see if there is a ship already there.
 		for(int i=0;i<ship.getSize();i++){
 			if(vert){
 
@@ -196,7 +267,7 @@ public class Player {
 				}
 			} 
 		}
-
+		//Places the ship where the player specified.
 		for(int i=0; i<ship.getSize();i++ ){
 			if(vert == true){
 				player.getMyBoard().getSquare(row, column).placeShip(ship.getShipNum(),ship);
@@ -207,6 +278,5 @@ public class Player {
 			}
 		}
 		return true; 
-
 	}
 }
