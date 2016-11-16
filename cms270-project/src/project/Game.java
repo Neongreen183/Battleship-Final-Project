@@ -152,22 +152,6 @@ public class Game {
 	}
 
 	/**
-	 * Takes a char and returns an int that is correspondent to the letter of the row.
-	 * 
-	 * @param c The letter of the row.
-	 * @return The int value of the row.
-	 */
-
-
-	/**
-	 * Takes an int and returns a char in the row that it corresponds.
-	 * 
-	 * @param i The number that corresponds to a letter.
-	 * @return The char based on the given int.
-	 */
-	
-
-	/**
 	 * Main method that will play the game.
 	 * 
 	 * @param args Main method of the code.

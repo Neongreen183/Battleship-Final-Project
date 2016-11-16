@@ -92,7 +92,6 @@ public class Player {
 		return myShips;
 	}
 
-
 	/**
 	 * Returns a specific ship
 	 * 
@@ -109,9 +108,7 @@ public class Player {
 	public void sinkShip(){
 		shipsLeft--;
 	}
-	//changes the hasMissile value in a square in the board to to true if it is false
-	//and if there is a ship it augments the hits of the ship and if it sinks the ship\
-	//it displays that the ship has been sunk
+	
 	/**
 	 * Utilized by the player to fire shots to the opponent and play the game.
 	 * 
@@ -214,14 +211,6 @@ public class Player {
 		}
 		return column;
 	}
-
-	/**
-	 * Takes a char and returns an int that is correspondent to the letter of the row.
-	 * 
-	 * @param c The letter of the row.
-	 * @return The int value of the row.
-	 */
-
 
 	/**
 	 * Places a ship for a player where they desire it.
