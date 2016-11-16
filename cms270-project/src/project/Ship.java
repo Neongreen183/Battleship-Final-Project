@@ -8,8 +8,6 @@ public class Ship {
 
 	private int size;
 	private boolean vertical;
-	private char locationRow;
-	private int locationColumn;
 	private int hits;
 	private boolean afloat;
 	private int shipNum;
@@ -54,23 +52,6 @@ public class Ship {
 		return vertical;
 	}
 
-	/**
-	 * Returns the row(between A-J) of a ship's location.
-	 * 
-	 * @return The row in which a ship is placed.
-	 */
-	public char getLocationRow() {
-		return locationRow;
-	}
-
-	/**
-	 * Returns the column (between 1-10) of a ship's location.
-	 * 
-	 * @return The column in which a ship is placed.
-	 */
-	public int getLocationColumn() { 
-		return locationColumn;
-	}
 
 	/**
 	 * Returns how many times the ship has been hit.

@@ -147,10 +147,8 @@ public class Player {
 	public char getRow(){
 		String line;
 		char row;
-		do{
-			System.out.print("Please select a row (A-J): " );
-			line = scan.nextLine();
-		}while (line.isEmpty());
+		System.out.print("Please select a row (A-J): " );
+		line = scan.nextLine();
 		row = line.toUpperCase().charAt(0);
 
 		while(getMyBoard().charToNum(row) == -1){
@@ -170,11 +168,10 @@ public class Player {
 		String stringColumn;
 		int column;
 		boolean flag = true;
-		do{
-			System.out.print("Please select a column (1-10): ");
-			stringColumn = scan.nextLine();
-		}while (stringColumn.isEmpty());
+		System.out.print("Please select a column (1-10): ");
+		stringColumn = scan.nextLine();
 		Character c = stringColumn.charAt(0);
+
 		if(c.isDigit(c) == false){
 			flag = false;
 			column = -1;
