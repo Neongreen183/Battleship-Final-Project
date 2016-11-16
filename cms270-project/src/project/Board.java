@@ -126,7 +126,7 @@ public class Board {
 	 * @param c The letter that is being input (between A-J).
 	 * @return Number between 1-10 for the location of the row.
 	 */
-	public static int charToNum(char c){
+	public int charToNum(char c){
 		String alphabet = "ABCDEFGHIJ";
 		for(int i=0;i<alphabet.length();i++){
 			if (alphabet.charAt(i) == c){

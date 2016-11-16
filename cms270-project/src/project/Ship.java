@@ -96,6 +96,7 @@ public class Ship {
 	 */
 	public void sink() { 
 		afloat = false;
+		
 	}
 
 	/**

@@ -59,7 +59,7 @@ public class Computer extends Player {
 		if(player.getMyBoard().getSquare(row, column).hasShip()){
 			System.out.println("A ship has been struck!");
 			if(turn == 0){
-				random = new ArrayList<Square>();
+				//random = new ArrayList<Square>();
 				updateGuesses(row,column);
 				updateRowAndColumn();
 			}
@@ -85,7 +85,7 @@ public class Computer extends Player {
 	
 	public boolean placeShip(Player player, Ship ship, char row, int column, Boolean vert){
 		char test = row;
-		if(vert==true && charToNum(row)+ship.getSize()>10){
+		if(vert==true && getMyBoard().charToNum(row)+ship.getSize()>10){
 			
 			return false;
 		}else if(vert==false && column+ship.getSize()>11){
@@ -122,7 +122,7 @@ public class Computer extends Player {
 	}
 	
 	public void updateGuesses( char row, int column) {
-		
+		random = new ArrayList<Square>();
 		if(column == 10){
 			random.add(getMyBoard().getSquare(row, column - 1));
 			random.add(getMyBoard().getSquare(row, column - 2));
@@ -161,23 +161,7 @@ public class Computer extends Player {
 		turn++;
 		if(turn == 4){
 			turn = 0;
-		}
-		
-		
-		
-		
+		}	
 	}
-	
-	public static int charToNum(char c){
-		String alphabet = "ABCDEFGHIJ";
-		for(int i=0;i<alphabet.length();i++){
-			if (alphabet.charAt(i) == c){
-				return i;
-			}
-		}
-		return -1;
-	} 
-	
-
 }
 

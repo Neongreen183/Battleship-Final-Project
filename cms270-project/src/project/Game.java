@@ -20,11 +20,13 @@ public class Game {
 
 		Player player = new Player(name,scan);
 		Computer computer = new Computer();
+		computer.getMyBoard().displayWithShips();
 
 		System.out.println(player.getName() + " VS. " + computer.getName());
 
 		//Randomly places the ships across the board for the Computer.
 		placeShips(computer);
+		computer.getMyBoard().displayWithShips();
 		//Loops until player places all of their ships.
 		placeShips(player, scan);
 		//Checks for a winner.
@@ -111,10 +113,10 @@ public class Game {
 	 * @return Value that will determine who the winner is.
 	 */
 	public static boolean battle(Player player1, Player player2){
-		int turnCounter = 0;
 		Random rand = new Random();
+		int turnCounter = rand.nextInt(1);
 		char row = 'A';
-		int column = rand.nextInt(1);
+		int column = 1;
 		boolean success;
 		
 		/*Loops through the entire game letting each player fire against each other
@@ -132,13 +134,15 @@ public class Game {
 
 				}while(success == false);
 			}else{
-				System.out.println("Its " + player2.getName() + "'s turn!");
-				row = player2.getRow();
-				column = player2.getColumn();
-				System.out.println("The computer fired at " + row + column);
-				player2.fire(player1, row, column);
-				turnCounter = 0;
-				player1.getMyBoard().displayWithShips();
+				do{
+					System.out.println("Its " + player2.getName() + "'s turn!");
+					row = player2.getRow();
+					column = player2.getColumn();
+					System.out.println("The computer fired at " + row + column);
+					success = player2.fire(player1, row, column);
+					turnCounter = 0;
+					player1.getMyBoard().displayWithShips();
+				}while(success == false);
 			} 
 		}
 		if(player1.getShipsLeft()==0){
@@ -153,15 +157,7 @@ public class Game {
 	 * @param c The letter of the row.
 	 * @return The int value of the row.
 	 */
-	public static int charToNum(char c){
-		String alphabet = "ABCDEFGHIJ";
-		for(int i=0;i<alphabet.length();i++){
-			if (alphabet.charAt(i) == c){
-				return i;
-			}
-		}
-		return -1;
-	} 
+
 
 	/**
 	 * Takes an int and returns a char in the row that it corresponds.
@@ -169,11 +165,7 @@ public class Game {
 	 * @param i The number that corresponds to a letter.
 	 * @return The char based on the given int.
 	 */
-	public static char numToChar(int i){
-		String alphabet = "ABCDEFGHIJ";
-
-		return alphabet.charAt(i);
-	}
+	
 
 	/**
 	 * Main method that will play the game.
