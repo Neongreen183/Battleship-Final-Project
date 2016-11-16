@@ -52,7 +52,6 @@ public class Ship {
 		return vertical;
 	}
 
-
 	/**
 	 * Returns how many times the ship has been hit.
 	 * 
@@ -77,7 +76,6 @@ public class Ship {
 	 */
 	public void sink() { 
 		afloat = false;
-		
 	}
 
 	/**

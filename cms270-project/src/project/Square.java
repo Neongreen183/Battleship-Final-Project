@@ -66,7 +66,7 @@ public class Square {
 		shipNum = num;
 		myShip = newShip;
 	}
-	
+
 	/**
 	 * Lets the square know that a missile fell in that location
 	 */

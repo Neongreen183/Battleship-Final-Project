@@ -122,7 +122,7 @@ public class Game {
 		char row = 'A';
 		int column = 1;
 		boolean success;
-		
+
 		/*Loops through the entire game letting each player fire against each other
 		 * until there is a winner.
 		 */
@@ -145,7 +145,7 @@ public class Game {
 					System.out.println("The computer fired at " + row + column);
 					success = player2.fire(player1, row, column);
 					turnCounter = 0;
-					
+
 				}while(success == false);
 				player1.getMyBoard().displayWithShips();
 			} 
