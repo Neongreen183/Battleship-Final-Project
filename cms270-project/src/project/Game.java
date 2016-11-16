@@ -10,7 +10,7 @@ public class Game {
 	/**
 	 * Creates both players and loops through the game until there is a winner.
 	 */
-	public static void playGame(){
+	public void playGame(){
 		Boolean winner;
 		Scanner scan = new Scanner(System.in);
 		System.out.print("Welcome to Battleship! "
