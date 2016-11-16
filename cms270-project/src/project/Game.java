@@ -20,10 +20,15 @@ public class Game {
 
 		Player player = new Player(name,scan);
 		Computer computer = new Computer();
-		computer.getMyBoard().displayWithShips();
+		System.out.println(player.getName() + " VS. " + computer.getName() + ". Prepare to battle!");
+		System.out.println("This is what your board looks like:");
+		player.getMyBoard().displayWithShips();
 
-		System.out.println(player.getName() + " VS. " + computer.getName());
-
+		System.out.println ("For this board:  S = ship");
+		System.out.println ("\t\t X = hit");
+		System.out.println ("\t\t O = Miss");
+		System.out.println ("\t\t - = Empty");
+		System.out.println("Specify the row (A-J) and column (1-10) for each of your five ships.");
 		//Randomly places the ships across the board for the Computer.
 		placeShips(computer);
 		//Loops until player places all of their ships.
@@ -149,22 +154,6 @@ public class Game {
 		}
 		return true;
 	}
-
-	/**
-	 * Takes a char and returns an int that is correspondent to the letter of the row.
-	 * 
-	 * @param c The letter of the row.
-	 * @return The int value of the row.
-	 */
-
-
-	/**
-	 * Takes an int and returns a char in the row that it corresponds.
-	 * 
-	 * @param i The number that corresponds to a letter.
-	 * @return The char based on the given int.
-	 */
-	
 
 	/**
 	 * Main method that will play the game.
