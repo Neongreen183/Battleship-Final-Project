@@ -20,13 +20,17 @@ public class Game {
 
 		Player player = new Player(name,scan);
 		Computer computer = new Computer();
-		computer.getMyBoard().displayWithShips();
+		System.out.println(player.getName() + " VS. " + computer.getName() + ". Prepare to battle!");
+		System.out.println("This is what your board looks like:");
+		player.getMyBoard().displayWithShips();
 
-		System.out.println(player.getName() + " VS. " + computer.getName());
-
+		System.out.println ("For this board:  S = ship");
+		System.out.println ("\t\t X = hit");
+		System.out.println ("\t\t O = Miss");
+		System.out.println ("\t\t - = Empty");
+		System.out.println("Specify the row (A-J) and column (1-10) for each of your five ships.");
 		//Randomly places the ships across the board for the Computer.
 		placeShips(computer);
-		computer.getMyBoard().displayWithShips();
 		//Loops until player places all of their ships.
 		placeShips(player, scan);
 		//Checks for a winner.
