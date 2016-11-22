@@ -57,23 +57,6 @@ public class Board {
 			for(int j = 0;j<10;j++){
 				
 				System.out.print(" " + board[i][j].getChar() + " ");
-				
-				/*
-				if(board[i][j].hasMissle() && board[i][j].hasShip() && board[i][j].getMyShip().isAfloat() == false){
-					System.out.print(" ! ");
-				}
-				else if (board[i][j].hasMissle() && board[i][j].hasShip()){
-
-					System.out.print(" X ");
-				}
-				else if(board[i][j].hasMissle()){
-					System.out.print(" O ");
-				}else if(board[i][j].hasShip()){
-					System.out.print(" S ");
-				}else{
-					System.out.print(" - ");
-				}
-				*/
 			}
 			System.out.println();
 		}
@@ -96,18 +79,7 @@ public class Board {
 				else{
 					System.out.print(" " + board[i][j].getChar() + " ");
 				}
-				/*
-				if(board[i][j].hasMissle() && board[i][j].hasShip() && board[i][j].getMyShip().isAfloat() == false){
-					System.out.print(" ! ");
-				}
-				else if(board[i][j].hasMissle() && board[i][j].hasShip()){
-					System.out.print(" X ");
-				}else if(board[i][j].hasMissle()){
-					System.out.print(" O ");
-				}else{
-					System.out.print(" - ");
-				}
-				*/
+
 			}
 			System.out.println("");
 		}
