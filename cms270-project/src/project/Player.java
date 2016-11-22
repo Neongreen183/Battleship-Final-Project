@@ -117,26 +117,10 @@ public class Player {
 	 * @param column Which column (1-10) to fire at
 	 * @return Whether the shot was successful or not
 	 */
-	public boolean fire (Player player, char row, int column){
-		if(player.getMyBoard().getSquare(row, column).hasMissle()){
-			System.out.println("There is already a missle there!");
-			return false;
-		}
-
-		player.getMyBoard().getSquare(row, column).placeMissle();
-
-		//Updates the board if a ship was actually hit.
-		if(player.getMyBoard().getSquare(row, column).hasShip()){
-			System.out.println("A ship has been struck!");
-			player.getShip(player.getMyBoard().getSquare(row, column).getShipNum()).hit();
-			if(player.getShip(player.getMyBoard().getSquare(row, column).getShipNum()).isAfloat() == false){
-				System.out.println("A ship has been sunk!");
-				player.sinkShip();
-			} 
-		}else{
-			System.out.println("Miss! nothing was hit.");
-		}
-		return true; 
+	public boolean fire (char row, int column){
+		boolean success;
+		success = myBoard.placeMissle(row, column);
+		return success;
 	}
 
 	/**
@@ -253,6 +237,9 @@ public class Player {
 		boolean vert = getVert();
 		boolean success;
 		success = myBoard.placeShip(row, column, vert, size);
+		if(success == true){
+			myBoard.displayWithShips();
+		}
 		return success;
 	}
 }

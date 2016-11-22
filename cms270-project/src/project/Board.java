@@ -152,7 +152,7 @@ public class Board {
 	}
 	
 	public boolean placeShip(char row, int column, boolean vert, int size){
-		if(isValid(row,column,vert,size) == false){
+		if(isValidShip(row,column,vert,size) == false){
 			return false;
 		}
 		Ship ship = new Ship(1,size);
@@ -166,11 +166,21 @@ public class Board {
 				column++ ;
 			}
 		}
+		
 		return true;
 		
 	}
 	
-	private boolean isValid(char row, int column, boolean vert, int size){
+	public boolean placeMissle(char row, int column){
+		if(isValidMissle(row,column) == false){
+			return false;
+		}
+		
+		getSquare(row,column).placeMissle();
+		return true;
+	}
+	
+	private boolean isValidShip(char row, int column, boolean vert, int size){
 		char test = row;
 		for(int i=0;i<size;i++){
 			if(vert){
@@ -188,5 +198,16 @@ public class Board {
 			} 
 		}
 		return true;
+	}
+	
+	private boolean isValidMissle(char row, int column){
+		if(charToNum(row) == -1){
+			return false;
+		}
+		else if(column>10 || column<1){
+			return false;
+		}
+		return true;
+		
 	}
 }
