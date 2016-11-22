@@ -104,4 +104,22 @@ public class Square {
 	public char getRow(){
 		return row;
 	}
+	
+	public char getChar(){
+		if(ship&& missle && myShip.isAfloat() == false){
+			return '!';
+		}
+		else if(ship && missle){
+			return 'X';
+		}
+		else if(missle){
+			return 'O';
+		}
+		else if(ship){
+			return 'S';
+		}
+		else {
+			return '-';
+		}
+	}
 }
