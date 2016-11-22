@@ -7,10 +7,9 @@ import java.util.Scanner;
  */
 public class Player {
 
-	private int shipsLeft;
-	private Ship[] myShips;
+	//private Ship[] myShips;
 	private String playerName;
-	private Board myBoard;
+	protected Board myBoard;
 	private Scanner scan;
 
 	/**
@@ -18,14 +17,7 @@ public class Player {
 	 */
 	public Player() {
 		playerName = "Computer";
-		shipsLeft = 5;
 		myBoard = new Board();
-		myShips = new Ship[5];
-		myShips[0]=new Ship(0,2);
-		myShips[1]=new Ship(1,3);
-		myShips[2]=new Ship(2,3);
-		myShips[3]=new Ship(3,4);
-		myShips[4]=new Ship(4,5);
 	}
 
 	/**
@@ -46,14 +38,9 @@ public class Player {
 	 */
 	public Player(String name) {
 		this.playerName=name;
-		this.shipsLeft=5; 
+		
 		myBoard = new Board();
-		myShips = new Ship[5];
-		myShips[0]=new Ship(0,2);
-		myShips[1]=new Ship(1,3);
-		myShips[2]=new Ship(2,3);
-		myShips[3]=new Ship(3,4);
-		myShips[4]=new Ship(4,5);
+
 	}
 
 	/**
@@ -71,8 +58,9 @@ public class Player {
 	 * @return The number of ships the player has left.
 	 */
 	public int getShipsLeft(){
-		return shipsLeft;
+		return myBoard.getShipsLeft();
 	}
+	
 
 	/**
 	 * Returns the board
@@ -83,31 +71,10 @@ public class Player {
 		return myBoard;
 	}
 
-	/**
-	 * Returns the ships that the player has
-	 * 
-	 * @return Ships the player has.
-	 */
-	public Ship[] getMyships(){
-		return myShips;
-	}
-
-	/**
-	 * Returns a specific ship
-	 * 
-	 * @param num The number of the ship
-	 * @return The specified ship
-	 */ 
-	public Ship getShip(int num){
-		return myShips[num];
-	}
 
 	/**
 	 * Decrements the number of ships after one is sunk.
 	 */
-	public void sinkShip(){
-		shipsLeft--;
-	}
 
 	/**
 	 * Utilized by the player to fire shots to the opponent and play the game.

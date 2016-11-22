@@ -17,6 +17,7 @@ public class Board {
 
 	private Square[][] board;
 	private ArrayList<Ship> ships = new ArrayList<Ship>();
+	int shipsLeft = 5;
 
 	/**
 	 * Initializes the board.
@@ -42,30 +43,6 @@ public class Board {
 	 */
 	public Square getSquare(char row, int column){
 		return board[charToNum(row)][column-1];
-	}
-
-	/**
-	 * Returns an array of squares to the specified parameter
-	 * 
-	 * @param row The row of a specified square
-	 * @param column The column of a specified square
-	 * @param vert Whether the ship on it is vertical or not
-	 * @param length The length of the ship
-	 * @return Array of squares
-	 */
-	public Square[] getSquares(char row, int column, Boolean vert, int length){
-		Square[] array = new Square[length];
-		//Returns each square
-		if(vert){
-			for(int i = 0; i<length; i++){
-				array[i] = board[charToNum(row)+i][column-1];
-			}
-		}else{
-			for(int i = 0; i<length; i++){
-				array[i] = board[charToNum(row)][column+i-1];
-			}
-		} 
-		return array;
 	}
 
 	/**
@@ -176,12 +153,25 @@ public class Board {
 			return false;
 		}
 		
+		if(getSquare(row,column).getMyShip().isAfloat() == false){
+			shipsLeft--;
+		}
 		getSquare(row,column).placeMissle();
 		return true;
 	}
 	
 	private boolean isValidShip(char row, int column, boolean vert, int size){
 		char test = row;
+		if(vert){
+			if(charToNum(row)+size>10){
+				return false;
+			}
+		}
+		else{
+			if(column+size>10){
+				return false;
+			}
+		}
 		for(int i=0;i<size;i++){
 			if(vert){
 
@@ -201,13 +191,19 @@ public class Board {
 	}
 	
 	private boolean isValidMissle(char row, int column){
-		if(charToNum(row) == -1){
-			return false;
-		}
-		else if(column>10 || column<1){
+		if (getSquare(row,column).hasMissle()){
 			return false;
 		}
 		return true;
 		
 	}
+	
+	public ArrayList<Ship> getShips(){
+		return ships;
+	}
+	
+	public int getShipsLeft(){
+		return shipsLeft;
+	}
+	
 }

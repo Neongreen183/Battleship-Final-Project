@@ -44,6 +44,7 @@ public class Square {
 	 */
 	public boolean hasMissle(){
 		return missle;
+		
 	}
 
 	/**
@@ -72,6 +73,9 @@ public class Square {
 	 */
 	public void placeMissle(){
 		missle = true;
+		if(ship == true){
+			myShip.hit();
+		}
 	}
 
 	/**

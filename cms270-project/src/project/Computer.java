@@ -35,6 +35,11 @@ public class Computer extends Player {
 		row = options[rand.nextInt(9)];
 		return row;
 	}
+	
+	public boolean getVert(){
+		boolean i = rand.nextBoolean();
+		return i;
+	}
 
 	/**
 	 * Generates random column selection (between 1-10) for the Computer's ships.
@@ -60,20 +65,17 @@ public class Computer extends Player {
 	 * @return Whether the a ship was hit or not.
 	 */
 	@Override
-	public boolean fire (Player player, char row, int column){
+	public boolean fire (char row, int column){
+		boolean success;
 		//Checks for out of bounds
 		if(turn > 0){
 			updateRowAndColumn();
 		}
-		if(player.getMyBoard().getSquare(row, column).hasMissle()){
-			return false;
-		}
-		if(charToNum(row) == -1 || column<1 || column>10){
-
-			return false;
-		}
+		success = getMyBoard().placeMissle(row, column);
+		
+		
 		//Intelligence for the computer to know where to fire to next
-		player.getMyBoard().getSquare(row, column).placeMissle();
+		/*
 		if(player.getMyBoard().getSquare(row, column).hasShip()){
 			System.out.println("A ship has been struck!");
 			if(turn == 0){
@@ -91,7 +93,9 @@ public class Computer extends Player {
 		}else{
 			System.out.println("Miss! nothing was hit.");
 		}
-		return true; 
+		return true;
+		*/
+		return success;
 	}
 
 	/**
@@ -104,36 +108,14 @@ public class Computer extends Player {
 	 * @param vert Whether the board is vertical or not
 	 * @return Whether the placing of the ship was successful.
 	 */
-	public boolean placeShip(Player player, Ship ship, char row, int column, Boolean vert){
-		char test = row;
-		//Checks for out of bounds exceptions.
-		if(vert==true && getMyBoard().charToNum(row)+ship.getSize()>10){
-			return false;
-		}else if(vert==false && column+ship.getSize()>11){
-			return false;
-		}
-		for(int i=0;i<ship.getSize();i++){
-			if(vert){
-				if(player.getMyBoard().getSquare(test, column).hasShip()==true){
-					return false;
-				}
-				test++;
-			}else{
-				if(player.getMyBoard().getSquare(row, column+i).hasShip()==true){
-					return false;
-				}
-			} 
-		}
-		for(int i=0; i<ship.getSize();i++ ){
-			if(vert == true){
-				player.getMyBoard().getSquare(row, column).placeShip(ship.getShipNum(), ship);
-				row++;
-			}else{
-				player.getMyBoard().getSquare(row, column).placeShip(ship.getShipNum(), ship);
-				column++ ;
-			}
-		}
-		return true;
+	public boolean placeShip(int size){
+		char row = getRow();
+		int column = getColumn();
+		boolean vert = getVert();
+		boolean success;
+		success = myBoard.placeShip(row, column, vert, size);
+		return success;
+	
 	}
 
 	/**

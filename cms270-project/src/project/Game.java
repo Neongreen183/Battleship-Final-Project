@@ -20,7 +20,7 @@ public class Game {
 
 		String name = scan.nextLine();
 		player =  new Player(name,scan);
-		computer = new Player("Computer", scan);
+		computer = new Computer();
 
 		
 		System.out.println(player.getName() + " VS. " + computer.getName() + ". Prepare to battle!");
@@ -33,9 +33,10 @@ public class Game {
 		System.out.println ("\t\t - = Empty");
 		System.out.println("Specify the row (A-J) and column (1-10) for each of your five ships.");
 		//Randomly places the ships across the board for the Computer.
-		placeShips(computer, scan);
+		placeShips(computer, false);
+		//computer.getMyBoard().displayWithShips();
 		//Loops until player places all of their ships.
-		placeShips(player, scan);
+		placeShips(player,true);
 		//Checks for a winner.
 		winner = battle(player,computer);
 		System.out.println("Game over!");
@@ -52,69 +53,61 @@ public class Game {
 	 * @param player The individual that is placing the ships on their board.
 	 * @param scan Takes input from the individual for where the ship will go.
 	 */
-	public static void placeShips(Player player, Scanner scan){
+	public static void placeShips(Player player, Boolean errors){
 		boolean success;
-		System.out.println("Placing ship 1");
+		if(errors){
+			System.out.println("Placing ship 1");
+		}
 		success = player.placeShip(2);
 		while(success == false){
+			if(errors){
 			System.out.println("You cannot place a ship there");
+			}
 			success = player.placeShip(2);
 		}
 		
-		System.out.println("Placing ship 2");
+		if(errors){
+			System.out.println("Placing ship 1");
+		}
 		success = player.placeShip(3);
 		while(success == false){
-			System.out.println("You cannot place a ship there");
+			if(errors){
+				System.out.println("You cannot place a ship there");
+			}
 			success = player.placeShip(3);
 		}
 		
-		System.out.println("Placing ship 3");
+		if(errors){
+			System.out.println("Placing ship 1");
+		}
 		success = player.placeShip(3);
 		while(success == false){
-			System.out.println("You cannot place a ship there");
+			if(errors){
+				System.out.println("You cannot place a ship there");
+			}
 			success = player.placeShip(3);
 		}
 		
-		System.out.println("Placing ship 4");
+		if(errors){
+			System.out.println("Placing ship 1");
+		}
 		success = player.placeShip(4);
 		while(success == false){
-			System.out.println("You cannot place a ship there");
+			if(errors){
+				System.out.println("You cannot place a ship there");
+			}
 			success = player.placeShip(4);
 		}
 		
-		System.out.println("Placing ship 5");
+		if(errors){
+			System.out.println("Placing ship 1");
+		}
 		success = player.placeShip(5);
 		while(success == false){
-			System.out.println("You cannot place a ship there");
+			if(errors){
+				System.out.println("You cannot place a ship there");
+			}
 			success = player.placeShip(5);
-		}
-	}
-
-	/**
-	 * Places the ships randomly for the computer.
-	 * 
-	 * @param computer The opponent that will get their ships on their board randomly placed.
-	 */
-	public static void placeShips(Computer computer){
-		Random rand = new Random();
-		char row;
-		int  column;
-		int intVert;
-		boolean vert = false;
-		boolean success;
-		//Loops through five times to place all the ships for the computer randomly
-		for(int i=0; i<5; i++){
-			do{
-				row = computer.getRow();
-				column = computer.getColumn();
-				intVert = rand.nextInt(2);
-				if(intVert == 0){
-					vert = true;
-				}else{
-					vert = false;
-				}
-				success = computer.placeShip(computer, computer.getShip(i), row, column, vert);
-			}while(success == false);
 		}
 	}
 
@@ -144,18 +137,20 @@ public class Game {
 					success = player2.fire(row, column);
 					turnCounter = 1;
 					player2.getMyBoard().displayWithoutShips();
+					if(success == false){
+						System.out.println("You cant place a missle there");
+					}
 
 				}while(success == false);
 			}else{
 				do{
-					System.out.println("Its " + player2.getName() + "'s turn!");
 					row = player2.getRow();
 					column = player2.getColumn();
-					System.out.println("The computer fired at " + row + column);
 					success = player1.fire(row, column);
 					turnCounter = 0;
-
 				}while(success == false);
+				System.out.println("Its " + player2.getName() + "'s turn!");
+				System.out.println("The computer fired at " + row + column);
 				player1.getMyBoard().displayWithShips();
 			} 
 		}

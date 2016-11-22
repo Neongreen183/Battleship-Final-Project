@@ -65,6 +65,7 @@ public class Ship {
 	 * Adds a hit to the ship if it's been hit .
 	 */
 	public void hit(){
+		System.out.println("A ship has been hit!");
 		hits++;
 		if (hits == size) {
 			sink();
@@ -75,6 +76,7 @@ public class Ship {
 	 * Marks the ship as being sunk .
 	 */
 	public void sink() { 
+		System.out.println("A ships has Been sunk!");
 		afloat = false;
 	}
 
