@@ -6,6 +6,8 @@ import java.util.*;
  * @version 1.0.0
  */
 public class Game {
+	Player player;
+	Computer computer = new Computer();
 
 	/**
 	 * Creates both players and loops through the game until there is a winner.
@@ -17,9 +19,9 @@ public class Game {
 				+ "Please enter Player 1's name: ");
 
 		String name = scan.nextLine();
+		player =  new Player(name,scan);
 
-		Player player = new Player(name,scan);
-		Computer computer = new Computer();
+		
 		System.out.println(player.getName() + " VS. " + computer.getName() + ". Prepare to battle!");
 		System.out.println("This is what your board looks like:");
 		player.getMyBoard().displayWithShips();
@@ -50,34 +52,35 @@ public class Game {
 	 * @param scan Takes input from the individual for where the ship will go.
 	 */
 	public static void placeShips(Player player, Scanner scan){
-		char row;
-		int  column;
-		char playerAns;
-		boolean vert;
 		boolean success;
-
-		//Loops through five times for each ship so that the player can place them where they wish
-		for(int i=0; i<5; i++){
-			do{
-				System.out.println("Placing ship number " + (i+1) 
-						+ " (length " + player.getShip(i).getSize() + ")");
-				row = player.getRow();
-				column = player.getColumn();
-				System.out.print("Vertical or Horizontal? Please enter V or H: ");
-				playerAns = scan.nextLine().toLowerCase().charAt(0);
-				//Checks to make sure that the player doesn't put wrong input.
-				while(playerAns != 'h' && playerAns != 'v'){
-					System.out.print("Please enter the letter 'V' or 'H': ");
-					playerAns = scan.nextLine().toLowerCase().charAt(0);
-				}
-				if(playerAns == 'v'){
-					vert = true;
-				}else{
-					vert = false;
-				}
-				success = player.placeShip(player, player.getShip(i), row, column, vert);
-			}while(success == false);
-			player.getMyBoard().displayWithShips();
+		success = player.placeShip(2);
+		while(success == false){
+			System.out.println("You cannot place a ship there");
+			success = player.placeShip(2);
+		}
+		
+		success = player.placeShip(3);
+		while(success == false){
+			System.out.println("You cannot place a ship there");
+			success = player.placeShip(3);
+		}
+		
+		success = player.placeShip(3);
+		while(success == false){
+			System.out.println("You cannot place a ship there");
+			success = player.placeShip(3);
+		}
+		
+		success = player.placeShip(4);
+		while(success == false){
+			System.out.println("You cannot place a ship there");
+			success = player.placeShip(4);
+		}
+		
+		success = player.placeShip(5);
+		while(success == false){
+			System.out.println("You cannot place a ship there");
+			success = player.placeShip(5);
 		}
 	}
 

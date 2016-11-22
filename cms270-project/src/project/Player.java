@@ -18,7 +18,7 @@ public class Player {
 	 */
 	public Player() {
 		playerName = "Computer";
-		shipsLeft = 4;
+		shipsLeft = 5;
 		myBoard = new Board();
 		myShips = new Ship[5];
 		myShips[0]=new Ship(0,2);
@@ -215,6 +215,27 @@ public class Player {
 		}
 		return column;
 	}
+	
+	public boolean getVert(){
+		boolean vert;
+		System.out.print("Vertical or Horizontal? Please enter V or H: ");
+		char playerAns = scan.nextLine().toLowerCase().charAt(0);
+		//Checks to make sure that the player doesn't put wrong input.
+		while(playerAns != 'h' && playerAns != 'v'){
+			System.out.print("Please enter the letter 'V' or 'H': ");
+			playerAns = scan.nextLine().toLowerCase().charAt(0);
+		}
+		if(playerAns == 'v'){
+			vert = true;
+		}else{
+			vert = false;
+		}
+		return vert;
+	}
+	
+	
+
+	
 
 	/**
 	 * Places a ship for a player where they desire it.
@@ -226,42 +247,12 @@ public class Player {
 	 * @param vert Whether the ship is vertical or horizontal.
 	 * @return Whether it was successful or not to place the ship.
 	 */
-	public boolean placeShip(Player player, Ship ship, char row, int column, Boolean vert){
-		char test = row;
-		//Checks to see if it's out of bounds
-		if(vert==true && getMyBoard().charToNum(row)+ship.getSize()>10){
-			System.out.println("Sorry you cannot place this ship there");
-			return false;
-		}else if(vert==false && column+ship.getSize()>11){
-			System.out.println("Sorry you cannot place this ship here");
-			return false;
-		}
-		//Checks to see if there is a ship already there.
-		for(int i=0;i<ship.getSize();i++){
-			if(vert){
-
-				if(player.getMyBoard().getSquare(test, column).hasShip()==true){
-					System.out.println("There is already a ship there");
-					return false;
-				}
-				test++;
-			}else{
-				if(player.getMyBoard().getSquare(row, column+i).hasShip()==true){
-					System.out.println("There is already a ship there");
-					return false;
-				}
-			} 
-		}
-		//Places the ship where the player specified.
-		for(int i=0; i<ship.getSize();i++ ){
-			if(vert == true){
-				player.getMyBoard().getSquare(row, column).placeShip(ship.getShipNum(),ship);
-				row++;
-			}else{
-				player.getMyBoard().getSquare(row, column).placeShip(ship.getShipNum(),ship);
-				column++ ;
-			}
-		}
-		return true; 
+	public boolean placeShip(int size){
+		char row = getRow();
+		int column = getColumn();
+		boolean vert = getVert();
+		boolean success;
+		success = myBoard.placeShip(row, column, vert, size);
+		return success;
 	}
 }

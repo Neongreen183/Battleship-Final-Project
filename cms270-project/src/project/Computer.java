@@ -6,11 +6,11 @@ import java.util.*;
  * @version 1.0.0
  */
 public class Computer extends Player { 
-	Random rand = new Random();
-	int CColumn;
-	char CRow;
-	int turn;
-	List<Square> random = new ArrayList<Square>();
+	private Random rand = new Random();
+	private int CColumn;
+	private char CRow;
+	private int turn;
+	private List<Square> random = new ArrayList<Square>();
 
 	/**
 	 * Initializes the computer class by calling the superclass: Player

@@ -1,5 +1,8 @@
 package project;
 
+import java.awt.List;
+import java.util.ArrayList;
+
 /**
  * @author Jerry Abril, Rene Borr, Roderick Zak, Felix Ruiz
  * @version 1.0.0
@@ -13,6 +16,7 @@ public class Board {
 	// - = Empty place
 
 	private Square[][] board;
+	private ArrayList<Ship> ships = new ArrayList<Ship>();
 
 	/**
 	 * Initializes the board.
@@ -145,5 +149,44 @@ public class Board {
 	public static char numToChar(int i){
 		String alphabet = "ABCDEFGHIJ";
 		return alphabet.charAt(i);
+	}
+	
+	public boolean placeShip(char row, int column, boolean vert, int size){
+		if(isValid(row,column,vert,size) == false){
+			return false;
+		}
+		Ship ship = new Ship(1,size);
+		ships.add(ship);
+		for(int i=0; i<ship.getSize();i++ ){
+			if(vert == true){
+				getSquare(row, column).placeShip(ship.getShipNum(),ship);
+				row++;
+			}else{
+				getSquare(row, column).placeShip(ship.getShipNum(),ship);
+				column++ ;
+			}
+		}
+		return true;
+		
+	}
+	
+	private boolean isValid(char row, int column, boolean vert, int size){
+		char test = row;
+		for(int i=0;i<size;i++){
+			if(vert){
+
+				if(getSquare(test, column).hasShip()==true){
+					//System.out.println("There is already a ship there");
+					return false;
+				}
+				test++;
+			}else{
+				if(getSquare(row, column+i).hasShip()==true){
+					//System.out.println("There is already a ship there");
+					return false;
+				}
+			} 
+		}
+		return true;
 	}
 }
