@@ -35,15 +35,6 @@ public class Ship {
 
 
 	/**
-	 * Returns whether the ship is vertically placed or not.
-	 * 
-	 * @return whether the ship is vertical or not.
-	 */
-	public boolean isVertical() {
-		return vertical;
-	}
-
-	/**
 	 * Returns how many times the ship has been hit.
 	 * 
 	 * @return The amount of hits a ship has taken.
@@ -66,7 +57,7 @@ public class Ship {
 	/**
 	 * Marks the ship as being sunk .
 	 */
-	public void sink() { 
+	private void sink() { 
 		System.out.println("A ships has Been sunk!");
 		afloat = false;
 	}

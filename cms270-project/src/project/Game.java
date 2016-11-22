@@ -150,7 +150,7 @@ public class Game {
 					success = player1.fire(row, column);
 					turnCounter = 0;
 				}while(success == false);
-				System.out.println("The computer fired at " + row + column);
+				
 				player1.getMyBoard().displayWithShips();
 			} 
 		}

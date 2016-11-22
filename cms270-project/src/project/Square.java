@@ -6,9 +6,7 @@ package project;
  */
 public class Square {
 
-	private boolean ship;
 	private boolean missle;
-	private int shipNum; 
 	private Ship myShip;
 	private char row;
 	private int column;
@@ -20,21 +18,11 @@ public class Square {
 	 * @param c Column for the square. Between 1-10.
 	 */
 	public Square(char r, int c){
-		ship = false;
+		
 		missle = false;
-		shipNum = -1;
 		row = r;
 		column = c;
-		myShip = new Ship(-1,1);
-	}
-
-	/**
-	 * Tells the user whether there is a ship on that square.
-	 * 
-	 * @return Whether there is a ship on the square or not.
-	 */
-	public boolean hasShip(){
-		return ship;
+		myShip = null;
 	}
 
 	/**
@@ -46,16 +34,6 @@ public class Square {
 		return missle;
 		
 	}
-
-	/**
-	 * Returns the ship number
-	 * 
-	 * @return The ship being used in that current square.
-	 */
-	public int getShipNum(){
-		return shipNum;
-	} 
-
 	/**
 	 * Lets the square know that a ship has been placed there
 	 * 
@@ -63,7 +41,6 @@ public class Square {
 	 * @param newShip The ship that is being placed there.
 	 */
 	public void placeShip(Ship newShip){ 
-		ship = true;
 
 		myShip = newShip;
 	}
@@ -73,7 +50,7 @@ public class Square {
 	 */
 	public void placeMissle(){
 		missle = true;
-		if(ship == true){
+		if(myShip != null){
 			myShip.hit();
 		}
 	}
@@ -106,16 +83,16 @@ public class Square {
 	}
 	
 	public char getChar(){
-		if(ship&& missle && myShip.isAfloat() == false){
+		if(myShip != null && missle && myShip.isAfloat() == false){
 			return '!';
 		}
-		else if(ship && missle){
+		else if(myShip != null && missle){
 			return 'X';
 		}
 		else if(missle){
 			return 'O';
 		}
-		else if(ship){
+		else if(myShip != null){
 			return 'S';
 		}
 		else {

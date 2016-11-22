@@ -125,7 +125,7 @@ public class Computer extends Player {
 	 * @param row The row in which a ship was struck.
 	 * @param column The column in which a ship was struck.
 	 */
-	public void updateGuesses(char row, int column) {
+	private void updateGuesses(char row, int column) {
 		random = new ArrayList<Square>();
 
 		if(column == 10){
@@ -156,7 +156,7 @@ public class Computer extends Player {
 	/**
 	 * Updates which row and column is being fired to.
 	 */
-	public void updateRowAndColumn(){
+	private void updateRowAndColumn(){
 
 		CRow = random.get(turn).getRow();
 		CColumn = random.get(turn).getColumn();
@@ -174,13 +174,5 @@ public class Computer extends Player {
 	 * @param c The letter that is being input (between A-J).
 	 * @return Number between 1-10 for the location of the row.
 	 */
-	public static int charToNum(char c){
-		String alphabet = "ABCDEFGHIJ";
-		for(int i=0;i<alphabet.length();i++){
-			if (alphabet.charAt(i) == c){
-				return i;
-			}
-		}
-		return -1;
-	} 
+	
 }

@@ -156,13 +156,13 @@ public class Board {
 		for(int i=0;i<size;i++){
 			if(vert){
 
-				if(getSquare(test, column).hasShip()==true){
+				if(getSquare(test, column).getMyShip() != null){
 					//System.out.println("There is already a ship there");
 					return false;
 				}
 				test++;
 			}else{
-				if(getSquare(row, column+i).hasShip()==true){
+				if(getSquare(row, column+i).getMyShip() !=null ){
 					//System.out.println("There is already a ship there");
 					return false;
 				}
