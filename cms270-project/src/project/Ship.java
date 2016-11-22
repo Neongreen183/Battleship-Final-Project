@@ -7,7 +7,6 @@ package project;
 public class Ship {
 
 	private int size;
-	private boolean vertical;
 	private int hits;
 	private boolean afloat;
 
