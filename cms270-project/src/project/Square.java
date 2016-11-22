@@ -62,9 +62,9 @@ public class Square {
 	 * @param num The number of the ship that goes in that square
 	 * @param newShip The ship that is being placed there.
 	 */
-	public void placeShip(int num, Ship newShip){ 
+	public void placeShip(Ship newShip){ 
 		ship = true;
-		shipNum = num;
+
 		myShip = newShip;
 	}
 

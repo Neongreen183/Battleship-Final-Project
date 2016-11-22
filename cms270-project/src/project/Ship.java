@@ -10,7 +10,6 @@ public class Ship {
 	private boolean vertical;
 	private int hits;
 	private boolean afloat;
-	private int shipNum;
 
 	/**
 	 * Initializes a ship to be placed on the board.
@@ -19,7 +18,7 @@ public class Ship {
 	 * @param s How big the ship is.
 	 */
 	public Ship(int num, int s) {
-		shipNum = num;
+
 		size = s;
 		hits = 0;
 		afloat = true;
@@ -34,14 +33,6 @@ public class Ship {
 		return size;
 	}
 
-	/**
-	 * Returns the ship number.
-	 * 
-	 * @return Number of the ship.
-	 */
-	public int getShipNum(){
-		return shipNum;
-	}
 
 	/**
 	 * Returns whether the ship is vertically placed or not.

@@ -136,10 +136,10 @@ public class Board {
 		ships.add(ship);
 		for(int i=0; i<ship.getSize();i++ ){
 			if(vert == true){
-				getSquare(row, column).placeShip(ship.getShipNum(),ship);
+				getSquare(row, column).placeShip(ship);
 				row++;
 			}else{
-				getSquare(row, column).placeShip(ship.getShipNum(),ship);
+				getSquare(row, column).placeShip(ship);
 				column++ ;
 			}
 		}

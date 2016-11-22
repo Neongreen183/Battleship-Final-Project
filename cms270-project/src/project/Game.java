@@ -143,13 +143,13 @@ public class Game {
 
 				}while(success == false);
 			}else{
+				System.out.println("Its " + player2.getName() + "'s turn!");
 				do{
 					row = player2.getRow();
 					column = player2.getColumn();
 					success = player1.fire(row, column);
 					turnCounter = 0;
 				}while(success == false);
-				System.out.println("Its " + player2.getName() + "'s turn!");
 				System.out.println("The computer fired at " + row + column);
 				player1.getMyBoard().displayWithShips();
 			} 
