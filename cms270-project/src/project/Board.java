@@ -17,7 +17,6 @@ public class Board {
 
 	private Square[][] board;
 	private ArrayList<Ship> ships = new ArrayList<Ship>();
-	int shipsLeft = 5;
 
 	/**
 	 * Initializes the board.
@@ -166,9 +165,6 @@ public class Board {
 			return false;
 		}
 		
-		if(getSquare(row,column).getMyShip().isAfloat() == false){
-			shipsLeft--;
-		}
 		getSquare(row,column).placeMissle();
 		return true;
 	}
@@ -216,6 +212,12 @@ public class Board {
 	}
 	
 	public int getShipsLeft(){
+		int shipsLeft = 0;
+		for(int i=0;i<ships.size();i++){
+			if(ships.get(i).isAfloat() == true){
+				shipsLeft++;
+			}
+		}
 		return shipsLeft;
 	}
 	
