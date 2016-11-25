@@ -9,17 +9,22 @@ public class Game {
 	Player player;
 	Player computer;
 
+	
 	/**
 	 * Creates both players and loops through the game until there is a winner.
 	 */
+	public void setHumanPlayer(String name) {
+		player = new Player(name);
+	}
+	
 	public void playGame(){
 		Boolean winner;
-		Scanner scan = new Scanner(System.in);
-		System.out.print("Welcome to Battleship! "
-				+ "Please enter Player 1's name: ");
+		//Scanner scan = new Scanner(System.in);
+		//System.out.print("Welcome to Battleship! "
+		//		+ "Please enter Player 1's name: ");
 
-		String name = scan.nextLine();
-		player =  new Player(name,scan);
+		//String name = scan.nextLine();
+		 //player =  new Player(name);
 		computer = new Computer();
 
 		
@@ -165,8 +170,8 @@ public class Game {
 	 * 
 	 * @param args Main method of the code.
 	 */
-	public static void main(String[] args) {
-		Game g = new Game();
-		g.playGame();
-	}
+//	public static void main(String[] args) {
+//		Game g = new Game();
+//		g.playGame();
+//	}
 }
