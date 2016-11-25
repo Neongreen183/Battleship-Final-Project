@@ -1,5 +1,6 @@
 package project;
 
+
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -92,8 +93,60 @@ public class BattleshipView extends Application {
 			g.playGame();
 		}
 		
-		public static void main(String[] args) {
-			launch(args);
-		}
 
+
+
+	public void launchConfirmDialog() {
+		//confirmation dialog
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Confirmation Dialog");
+		alert.setHeaderText("Play!");
+		alert.setContentText("Are you ready to start the game?");
+
+		Optional<ButtonType> result = alert.showAndWait();
+		if (result.get() == ButtonType.OK){
+			rootLabel.setText("User is ready to play!");
+		} else {
+			rootLabel.setText("User DOESN'T want to start the game.");
+		}
+	}
+	
+	public String launchTextDialog() {
+		//Text Input from a single field
+		TextInputDialog dialog = new TextInputDialog();
+		dialog.setTitle("Text Input Dialog Demo");
+		dialog.setHeaderText(" Name");
+		dialog.setContentText("Please enter Player's name:");
+
+		//add some validation for our window if the OK button is clicked
+//		final Button okButton = (Button) dialog.getDialogPane().lookupButton(ButtonType.OK);
+//		okButton.addEventFilter(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
+//			public void handle(ActionEvent e) {
+//				if(!validateName( dialog.getEditor() ) ) {
+//					launchErrorDialog("name");
+//					System.out.println("Test1");
+//					e.consume();
+//				}
+//			}
+//		});
+
+
+		Optional<String> result = dialog.showAndWait();
+
+		//because of the button's event handler, we know a non-empty String
+		//has been entered.
+		if ( result.isPresent() ) {
+			System.out.println(result.get());
+			return result.get();
+		} else {
+			return "Bob";  //default value
+		}
+	}
+
+		
+
+	public static void main(String[] args) {
+		launch(args);
+
+	}
 }
