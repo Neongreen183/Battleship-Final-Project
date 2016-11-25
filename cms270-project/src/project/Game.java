@@ -18,8 +18,6 @@ public class Game {
 		System.out.print("Welcome to Battleship! "
 				+ "Please enter Player 1's name: ");
 
-		String name = scan.nextLine();
-		player =  new Player(name,scan);
 		computer = new Computer();
 
 		
@@ -159,6 +157,13 @@ public class Game {
 		}
 		return true;
 	}
+	
+	public void makeHumanPlayer(String name){
+		Scanner scan = new Scanner(System.in);
+		player = new Player(name,scan);
+	}
+		
+	
 
 	/**
 	 * Main method that will play the game.

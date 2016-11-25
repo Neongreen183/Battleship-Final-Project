@@ -191,5 +191,8 @@ public class Board {
 		}
 		return shipsLeft;
 	}
+	public Square[][] getBoard(){
+		return board;
+	}
 	
 }
