@@ -124,7 +124,7 @@ public class PlaceShipView extends VBox {
 		//view.updateBoard(g.getPlayerBoard());
 		g.getPlayerBoard().displayWithShips();
 		
-	}
+	} 
 }
 
 
