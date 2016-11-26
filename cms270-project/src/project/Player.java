@@ -209,4 +209,11 @@ public class Player {
 		}
 		return success;
 	}
+	
+	public boolean placeShip(int size, char row, int column, boolean vert){
+		boolean success;
+		success = myBoard.placeShip(row, column, vert, size);
+		return success;
+	}
+	
 }

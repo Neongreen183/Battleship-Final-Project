@@ -85,11 +85,15 @@ public class BattleshipView extends Application {
 			
 		}
 		
-		public void placeShips(Board board, Stage stage){
-			PlaceShipView view1 = new PlaceShipView(board);
+		public void placeShips(Board board, Stage stage, Game g){
+			PlaceShipView view1 = new PlaceShipView(g);
 			Scene scene = new Scene (view1, 500, 500);
 			stage.setTitle("Place Ships");
 			stage.setScene(scene);
+			stage.show();
+			//g.getHumanPlayer().placeShip(3, view1.getCurrentRow(), view1.getCurrentRow(), view1.getVert());
+			//view1.updateBoard(g.getPlayerBoard());
+			
 			
 		
 		}
@@ -105,11 +109,13 @@ public class BattleshipView extends Application {
 			String name = getName(scene);
 			g.makeHumanPlayer(name);
 			
-			PlaceShipView view1 = new PlaceShipView(g.getPlayerBoard());
-			Scene scene2 = new Scene (view1, 500, 500);
-			stage.setTitle("Place Ships");
-			stage.setScene(scene2);
-			stage.show();
+			placeShips(g.getPlayerBoard(), stage, g);
+			
+			//PlaceShipView view1 = new PlaceShipView(g.getPlayerBoard(), g);
+			//Scene scene2 = new Scene (view1, 500, 500);
+			//stage.setTitle("Place Ships");
+			//stage.setScene(scene2);
+			//stage.show();
 		}
 		
 

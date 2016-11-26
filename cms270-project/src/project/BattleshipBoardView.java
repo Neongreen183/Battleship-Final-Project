@@ -12,8 +12,8 @@ public class BattleshipBoardView extends GridPane {
 	//private BoardGame game;
 	private Button[][] squares;
 	private Label currentChoice;
-	char currentRow;
-	int currentColumn;
+	char currentRow = 'A';
+	int currentColumn = 1;
 
 	public BattleshipBoardView(Board board) {
 		super();

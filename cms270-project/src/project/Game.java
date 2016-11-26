@@ -21,6 +21,10 @@ public class Game {
 		return player.getMyBoard();
 	}
 	
+	public Player getHumanPlayer(){
+		return player;
+	}
+	
 	public void playGame(){
 		Boolean winner;
 		//Scanner scan = new Scanner(System.in);
@@ -118,6 +122,10 @@ public class Game {
 			}
 			success = player.placeShip(5);
 		}
+	}
+	
+	public void placeShip(Player player, int size, char row, int column, boolean vert){
+		player.placeShip(size, row, column, vert);
 	}
 
 	/**
