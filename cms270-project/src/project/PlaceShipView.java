@@ -3,24 +3,29 @@ package project;
 //import guis.SimpleMath;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.VBox;
 
 public class PlaceShipView extends VBox {
 	
 	private Label prompt;
 	private Label currentChoice;
+	private Label currentShip;
 	//private TextField input;
 	private Button vertical;
 	private Button place;
+	private Button playGame;
 	private BattleshipBoardView view;
 	private int currentSize;
 	private boolean vert;
 	private char row;
 	private int column;
 	private Game g;
+	private int turn;
 	
 	public PlaceShipView(Game game) {
 		g = game;
@@ -32,6 +37,7 @@ public class PlaceShipView extends VBox {
 		row = view.getCurrentRow();
 		column = view.getCurrentColumn();
 		prompt = new Label("Select a square.");
+		currentShip = new Label("Placing ship 1 (size 2)");
 		
 		currentChoice = view.getLabel();
 		///input = new TextField();
@@ -59,10 +65,17 @@ public class PlaceShipView extends VBox {
 		    }
 		});
 		
+		playGame = new Button("Play Game");
+		playGame.setOnAction(new EventHandler<ActionEvent> () {
+			@Override public void handle(ActionEvent e) {
+	
+		    }
+		});
+		
 		
 
 		
-		getChildren().addAll(prompt,currentChoice, view, vertical, place);
+		getChildren().addAll(prompt,currentChoice,currentShip, view, vertical, place);
 	}
 	
 	protected void setVertical(ActionEvent event) {
@@ -82,9 +95,32 @@ public class PlaceShipView extends VBox {
 		return currentSize;
 	}
 	
+	private void updateCurrentShip(int num, int size){
+		currentShip.setText("Placing ship " + num + " (size " + size + ")");
+	}
+	
+	public void launchErrorDialog(String error) {
+		Alert alert = new Alert(AlertType.ERROR);
+		alert.setTitle("Error Dialog");
+		alert.setHeaderText(error);
+		alert.setContentText(error);
+
+		alert.showAndWait();
+	}
+	
 	
 	public void placeShip(Game g ){
-		g.placeShip(g.getHumanPlayer(),currentSize, row, column, vert);
+		int [] shipSize = {2,3,3,4,5};
+		boolean success;
+		success = g.placeShip(g.getHumanPlayer(),shipSize[turn], row, column, vert);
+		if(success == true){
+			turn++;
+			updateCurrentShip(turn+1,shipSize[turn]);
+		}
+		else{
+			launchErrorDialog("You Cannot place a ship there");
+		}
+
 		//view.updateBoard(g.getPlayerBoard());
 		g.getPlayerBoard().displayWithShips();
 		

@@ -124,8 +124,8 @@ public class Game {
 		}
 	}
 	
-	public void placeShip(Player player, int size, char row, int column, boolean vert){
-		player.placeShip(size, row, column, vert);
+	public boolean placeShip(Player player, int size, char row, int column, boolean vert){
+		return player.placeShip(size, row, column, vert);
 	}
 
 	/**
