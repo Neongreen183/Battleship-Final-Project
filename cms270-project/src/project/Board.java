@@ -42,6 +42,10 @@ public class Board {
 	public Square getSquare(char row, int column){
 		return board[charToNum(row)][column-1];
 	}
+	
+	public Square getSquare(int row, int column){
+		return board[row][column];
+	}
 
 	/**
 	 * Displays the board for the owner.

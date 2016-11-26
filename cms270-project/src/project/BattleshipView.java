@@ -12,6 +12,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
@@ -47,10 +48,14 @@ public class BattleshipView extends Application {
 		//because of the button's event handler, we know a non-empty String
 		//has been entered.
 		if ( result.isPresent() ) {
+			dialog.close();
 			return result.get();
 		} else {
+			dialog.close();
 			return "Player1";  //default value
+			
 		}
+		
 	}
 	
 		
@@ -79,6 +84,15 @@ public class BattleshipView extends Application {
 			
 			
 		}
+		
+		public void placeShips(Board board, Stage stage){
+			PlaceShipView view1 = new PlaceShipView(board);
+			Scene scene = new Scene (view1, 500, 500);
+			stage.setTitle("Place Ships");
+			stage.setScene(scene);
+			
+		
+		}
 
 
 		@Override
@@ -90,7 +104,12 @@ public class BattleshipView extends Application {
 			Game g = new Game();
 			String name = getName(scene);
 			g.makeHumanPlayer(name);
-			g.playGame();
+			
+			PlaceShipView view1 = new PlaceShipView(g.getPlayerBoard());
+			Scene scene2 = new Scene (view1, 500, 500);
+			stage.setTitle("Place Ships");
+			stage.setScene(scene2);
+			stage.show();
 		}
 		
 

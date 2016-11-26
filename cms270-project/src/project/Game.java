@@ -17,6 +17,10 @@ public class Game {
 		player = new Player(name);
 	}
 	
+	public Board getPlayerBoard(){
+		return player.getMyBoard();
+	}
+	
 	public void playGame(){
 		Boolean winner;
 		//Scanner scan = new Scanner(System.in);
