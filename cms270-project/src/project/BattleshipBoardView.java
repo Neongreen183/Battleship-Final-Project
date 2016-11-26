@@ -12,12 +12,16 @@ public class BattleshipBoardView extends GridPane {
 	//private BoardGame game;
 	private Button[][] squares;
 	private Label currentChoice;
-	char currentRow = 'A';
-	int currentColumn = 1;
+	private char currentRow = 'A';
+	private int currentColumn = 1;
+	private Board board;
 
-	public BattleshipBoardView(Board board) {
+	public BattleshipBoardView(Board b) {
 		super();
+		board = b;
 		//game = bg;
+		currentRow = 'A';
+		currentColumn = 1;
 		
 		currentChoice = new Label();
 		currentChoice.setText("Current Choice: A1");
@@ -55,7 +59,8 @@ public class BattleshipBoardView extends GridPane {
 	}
 	
 	
-	public void updateBoard(Board board){
+	public void updateBoard(Board b){
+		board = b;
 		for(int i = 0; i < 10; i++) {
 			for(int j = 0; j < 10; j++) {
 				squares[i][j].setText(" " + board.getSquare(i, j).getChar());
@@ -77,6 +82,11 @@ public class BattleshipBoardView extends GridPane {
 		return currentRow;
 	}
 	
+	public void updateRowAndColumn(char j, int i){
+		currentColumn = i;
+		currentRow = j;
+	}
+	
 	
 	
 	private class ButtonHandler implements EventHandler<ActionEvent> {
@@ -85,8 +95,7 @@ public class BattleshipBoardView extends GridPane {
 				for(int j = 0; j < squares[i].length; j++) {
 					if (event.getSource() == squares[i][j]) {
 						//squares[i][j].setText(game.getSquareText(i,j));
-						currentColumn = i+1;
-						currentRow = numToChar(j);
+						updateRowAndColumn(numToChar(i),j+1);
 						currentChoice.setText("Current Choice: " + currentRow + currentColumn);
 						return;
 					}

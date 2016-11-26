@@ -15,16 +15,22 @@ public class PlaceShipView extends VBox {
 	//private TextField input;
 	private Button vertical;
 	private Button place;
-	BattleshipBoardView view;
+	private BattleshipBoardView view;
 	private int currentSize;
 	private boolean vert;
+	private char row;
+	private int column;
+	private Game g;
 	
-	public PlaceShipView(Game g) {
+	public PlaceShipView(Game game) {
+		g = game;
 		
 		currentSize = 3;
-		vert = true;
+		vert = false;
 		BattleshipBoardView view = new BattleshipBoardView(g.getPlayerBoard());
 		
+		row = view.getCurrentRow();
+		column = view.getCurrentColumn();
 		prompt = new Label("Select a square.");
 		
 		currentChoice = view.getLabel();
@@ -46,7 +52,10 @@ public class PlaceShipView extends VBox {
 		place = new Button("Place");
 		place.setOnAction(new EventHandler<ActionEvent> () {
 			@Override public void handle(ActionEvent e) {
+				row = view.getCurrentRow();
+				column = view.getCurrentColumn();
 				placeShip(g);
+				view.updateBoard(g.getPlayerBoard());
 		    }
 		});
 		
@@ -65,18 +74,6 @@ public class PlaceShipView extends VBox {
 		}
 	}
 	
-	protected void updateBoard(Board board){
-		view.updateBoard(board);
-	}
-	
-	public char getCurrentRow(){
-		return view.getCurrentRow();
-	}
-	
-	public int getCurrentColumn(){
-		return view.getCurrentColumn();
-	}
-	
 	public Boolean getVert(){
 		return vert;
 	}
@@ -86,9 +83,10 @@ public class PlaceShipView extends VBox {
 	}
 	
 	
-	protected void placeShip(Game g ){
-		g.placeShip(g.player, getCurrentSize(), getCurrentRow(), getCurrentColumn(), getVert());
-		updateBoard(g.getPlayerBoard());
+	public void placeShip(Game g ){
+		g.placeShip(g.getHumanPlayer(),currentSize, row, column, vert);
+		//view.updateBoard(g.getPlayerBoard());
+		g.getPlayerBoard().displayWithShips();
 		
 	}
 }
