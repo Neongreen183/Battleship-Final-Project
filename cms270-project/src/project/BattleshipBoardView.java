@@ -85,8 +85,8 @@ public class BattleshipBoardView extends GridPane {
 				for(int j = 0; j < squares[i].length; j++) {
 					if (event.getSource() == squares[i][j]) {
 						//squares[i][j].setText(game.getSquareText(i,j));
-						currentColumn = j+1;
-						currentRow = numToChar(i);
+						currentColumn = i+1;
+						currentRow = numToChar(j);
 						currentChoice.setText("Current Choice: " + currentRow + currentColumn);
 						return;
 					}

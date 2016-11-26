@@ -14,6 +14,7 @@ public class PlaceShipView extends VBox {
 	private Label currentChoice;
 	//private TextField input;
 	private Button vertical;
+	private Button place;
 	Board board = new Board();
 	BattleshipBoardView view;
 	
@@ -27,6 +28,7 @@ public class PlaceShipView extends VBox {
 		BattleshipBoardView view = new BattleshipBoardView( board );
 		
 		prompt = new Label("Select a square.");
+		
 		currentChoice = view.getLabel();
 		///input = new TextField();
 		vertical = new Button("Horizonal");
@@ -44,10 +46,12 @@ public class PlaceShipView extends VBox {
 		    }
 		});
 		
+		place = new Button("Place");
+		
 		
 
 		
-		getChildren().addAll(prompt,currentChoice, view, vertical);
+		getChildren().addAll(prompt,currentChoice, view, vertical, place);
 	}
 	
 	protected void setVertical(ActionEvent event) {
