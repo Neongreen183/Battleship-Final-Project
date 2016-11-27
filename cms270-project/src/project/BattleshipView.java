@@ -85,31 +85,45 @@ public class BattleshipView extends Application {
 			
 		}
 		
-		public void placeShips(Board board, Stage stage, Game g){
-			PlaceShipView view1 = new PlaceShipView(g);
+		public void placeShips(Board board, Game g){
+			Stage stage1 = new Stage();
+			PlaceShipView view1 = new PlaceShipView(stage1,g);
+			
 			Scene scene = new Scene (view1, 500, 500);
-			stage.setTitle("Place Ships");
-			stage.setScene(scene);
-			stage.show();
+			stage1.setTitle("Place Ships");
+			stage1.setScene(scene);
+			stage1.showAndWait();
+			
 			//g.getHumanPlayer().placeShip(3, view1.getCurrentRow(), view1.getCurrentRow(), view1.getVert());
 			//view1.updateBoard(g.getPlayerBoard());
-			
-			
+		}
 		
+		public void battle(Stage stage, Game g){
+			BattleView view2 = new BattleView(stage, g);
+			Scene scene = new Scene(view2, 500, 1000);
+			stage.setScene(scene);
+			stage.show();
+			
+				
+			
 		}
 
 
 		@Override
 		public void start(Stage stage) throws Exception {
 			VBox root = new VBox();
+			
 			Scene scene = new Scene (root, 500, 500);
-			stage.setTitle("Some simple dialogs");
-			stage.setScene(scene);
+			Stage stage1 = new Stage();
+			stage1.setTitle("Some simple dialogs");
+			stage1.setScene(scene);
 			Game g = new Game();
 			String name = getName(scene);
 			g.makeHumanPlayer(name);
+			placeShips(g.getPlayerBoard(), g);
+			battle(stage1,g);
 			
-			placeShips(g.getPlayerBoard(), stage, g);
+			
 			
 			//PlaceShipView view1 = new PlaceShipView(g.getPlayerBoard(), g);
 			//Scene scene2 = new Scene (view1, 500, 500);

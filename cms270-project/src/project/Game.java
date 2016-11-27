@@ -7,7 +7,10 @@ import java.util.*;
  */
 public class Game {
 	Player player;
-	Player computer;
+	Player computer = new Computer();
+	
+	
+	
 
 	
 	/**
@@ -23,6 +26,13 @@ public class Game {
 	
 	public Player getHumanPlayer(){
 		return player;
+	}
+	public Player getComputerPlayer(){
+		return computer;
+	}
+	
+	public Board getComputerBoard(){
+		return computer.getMyBoard();
 	}
 	
 	public void playGame(){

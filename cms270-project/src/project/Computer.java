@@ -167,6 +167,10 @@ public class Computer extends Player {
 
 		}
 	}
+	
+	public Board getMyBoard(){
+		return myBoard;
+	}
 
 	/**
 	 * Changes the char (between A-J) to a number.

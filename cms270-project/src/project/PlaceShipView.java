@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 public class PlaceShipView extends VBox {
 	
@@ -25,10 +26,13 @@ public class PlaceShipView extends VBox {
 	private char row;
 	private int column;
 	private Game g;
-	private int turn;
+	private int turn = 0;
+	private Button continueOn;
+	Stage stage;
 	
-	public PlaceShipView(Game game) {
+	public PlaceShipView(Stage s, Game game) {
 		g = game;
+		stage = s;
 		
 		currentSize = 3;
 		vert = false;
@@ -65,12 +69,18 @@ public class PlaceShipView extends VBox {
 		    }
 		});
 		
-		playGame = new Button("Play Game");
-		playGame.setOnAction(new EventHandler<ActionEvent> () {
-			@Override public void handle(ActionEvent e) {
-	
-		    }
-		});
+		
+		continueOn = new Button("Play game");
+		continueOn.setOnAction(new EventHandler<ActionEvent> () {
+		@Override public void handle(ActionEvent e) {
+			if(turn != 5){
+				launchErrorDialog("You must place all your ships before continueing");
+			}
+			else{
+				return;
+			}
+	    }
+	});
 		
 		
 
@@ -115,16 +125,28 @@ public class PlaceShipView extends VBox {
 		success = g.placeShip(g.getHumanPlayer(),shipSize[turn], row, column, vert);
 		if(success == true){
 			turn++;
-			updateCurrentShip(turn+1,shipSize[turn]);
+			//updateCurrentShip(turn+1,shipSize[turn]);
 		}
 		else{
 			launchErrorDialog("You Cannot place a ship there");
 		}
+		if(turn != 5){
+			updateCurrentShip(turn+1,shipSize[turn]);
+		}
+		else{
+			
+			stage.close();
+		}
+		
 
 		//view.updateBoard(g.getPlayerBoard());
 		g.getPlayerBoard().displayWithShips();
 		
 	} 
+	public int getTurn(){
+		return turn;
+		
+	}
 }
 
 

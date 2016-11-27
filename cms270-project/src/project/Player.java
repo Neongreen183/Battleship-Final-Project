@@ -29,6 +29,7 @@ public class Player {
 	public Player(String name, Scanner s) {
 		this(name);
 		scan = s;
+		myBoard = new Board();
 	}
 
 	/**
