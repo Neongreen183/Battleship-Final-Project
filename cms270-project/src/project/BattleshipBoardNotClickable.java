@@ -1,16 +1,12 @@
 package project;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
-//import project.BattleshipBoardView.ButtonHandler;
 
 public class BattleshipBoardNotClickable extends GridPane {
-	//private BoardGame game;
 	private Button[][] squares;
 	private Label currentChoice;
 	private char currentRow = 'A';
@@ -20,7 +16,6 @@ public class BattleshipBoardNotClickable extends GridPane {
 	public BattleshipBoardNotClickable(Board b) {
 		super();
 		board = b;
-		//game = bg;
 		currentRow = 'A';
 		currentColumn = 1;
 		
@@ -39,18 +34,18 @@ public class BattleshipBoardNotClickable extends GridPane {
 		for(int i = 0; i < rows; i++) {
 			getRowConstraints().add(row);
 		}
+		
 		for(int i = 0; i < cols; i++) {
 			getColumnConstraints().add(col);
 		}
+		
 		squares = new Button[rows][cols];
 		for(int i = 0; i < rows; i++) {
 			for(int j = 0; j < cols; j++) {
 				squares[i][j] = new Button();
-				//squares[i][j].setStyle("-fx-background-color:" + game.getSquareColor(i,j));
 				squares[i][j].setText(" " + board.getSquare(i, j).getChar() + " ");
 				squares[i][j].setStyle("-fx-background-color:" + board.getSquare(i, j).getSquareColor());
 				add(squares[i][j], j, i);
-
 				squares[i][j].setMaxWidth(Double.MAX_VALUE);
 				squares[i][j].setMaxHeight(Double.MAX_VALUE);
 
@@ -63,12 +58,8 @@ public class BattleshipBoardNotClickable extends GridPane {
 		board = b;
 		for(int i = 0; i < 10; i++) {
 			for(int j = 0; j < 10; j++) {
-				
 				squares[i][j].setText(board.getSquare(i, j).getChar() + " ");
 				squares[i][j].setStyle("-fx-background-color:" + board.getSquare(i, j).getSquareColor());
-				
-				
-				
 			}
 		}
 	}

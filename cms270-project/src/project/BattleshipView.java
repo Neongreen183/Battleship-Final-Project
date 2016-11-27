@@ -119,7 +119,8 @@ public class BattleshipView extends Application {
 			stage1.setScene(scene);
 			Game g = new Game();
 			String name = getName(scene);
-			g.makeHumanPlayer(name);
+			g.setHumanPlayer(name);
+			g.setComputerPlayer();
 			placeShips(g.getPlayerBoard(), g);
 			battle(stage1,g);
 			

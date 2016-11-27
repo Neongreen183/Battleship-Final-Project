@@ -1,13 +1,14 @@
 package project;
 
-//import guis.SimpleMath;
+import java.util.Optional;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -21,7 +22,6 @@ public class BattleView extends VBox {
 	private char row;
 	private int column;
 	private Game g;
-	private int turn = 0;
 	private Stage stage;
 	private BattleshipBoardClickable oppBoard;
 	private BattleshipBoardNotClickable myBoard;
@@ -31,7 +31,6 @@ public class BattleView extends VBox {
 	public BattleView(Stage s, Game game) {
 		g = game;
 		stage = s;
-		g.placeShips(g.getComputerPlayer(), false);
 		g.getComputerBoard().displayWithShips();
 		
 
@@ -56,7 +55,6 @@ public class BattleView extends VBox {
 				fire();
 				oppBoard.updateBoard(g.getComputerBoard());
 				myBoard.updateBoard(g.getPlayerBoard());
-				//myBoard.updateBoard(g.getPlayerBoard());
 		    }
 		});
 		
@@ -84,13 +82,39 @@ public class BattleView extends VBox {
 
 		alert.showAndWait();
 	}
+	
+	public void launchConfirmDialog(String winner) {
+		//confirmation dialog
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("GameOver");
+		alert.setHeaderText("Play!");
+		alert.setContentText(winner + " has won the game.");
+		alert.show();
+		
+
+	}
 	public void fire(){
+		boolean success;
 		char cRow = g.getComputerPlayer().getRow();
 		int ccolumn = g.getComputerPlayer().getColumn();
-		g.getComputerPlayer().fire(row, column);
+		success = g.getComputerPlayer().fire(row, column);
 		updateHumanLabel();
-		g.getHumanPlayer().fire(cRow, ccolumn);
-		updateComputerLabel(cRow,ccolumn);
+		
+		if(success == true){
+			updateHumanLabel();
+			g.getHumanPlayer().fire(cRow, ccolumn);
+			updateComputerLabel(cRow,ccolumn);
+		}
+		else{
+			launchErrorDialog("You cannot fire there!");
+		}
+		
+		if(g.getComputerPlayer().getShipsLeft() == 0){
+			endGame(g.getHumanPlayer().getName());
+		}
+		else if(g.getHumanPlayer().getShipsLeft() == 0){
+			endGame("Computer");
+		}
 		
 	}
 	
@@ -116,6 +140,11 @@ public class BattleView extends VBox {
 		else if(g.getPlayerBoard().getSquare(row, column).getChar() == '!'){
 			computerLabel.setText("The computer Fired at " + row + column + "	Hit! A ship has been sunk.");
 		}
+		
+	}
+	
+	public void endGame(String winner){
+		launchConfirmDialog(winner);
 		
 	}
 

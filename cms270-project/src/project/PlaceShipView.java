@@ -138,9 +138,6 @@ public class PlaceShipView extends VBox {
 			stage.close();
 		}
 		
-
-		//view.updateBoard(g.getPlayerBoard());
-		g.getPlayerBoard().displayWithShips();
 		
 	} 
 	public int getTurn(){

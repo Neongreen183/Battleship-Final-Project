@@ -8,16 +8,15 @@ import java.util.*;
 public class Game {
 	Player player;
 	Player computer = new Computer();
-	
-	
-	
 
-	
 	/**
 	 * Creates both players and loops through the game until there is a winner.
 	 */
 	public void setHumanPlayer(String name) {
 		player = new Player(name);
+	}
+	public void setComputerPlayer(){
+		placeShips(computer,false);
 	}
 	
 	public Board getPlayerBoard(){
@@ -37,13 +36,6 @@ public class Game {
 	
 	public void playGame(){
 		Boolean winner;
-		//Scanner scan = new Scanner(System.in);
-		//System.out.print("Welcome to Battleship! "
-		//		+ "Please enter Player 1's name: ");
-		//String name = scan.nextLine();
-		 //player =  new Player(name);
-
-		computer = new Computer();
 
 		
 		System.out.println(player.getName() + " VS. " + computer.getName() + ". Prepare to battle!");
@@ -76,7 +68,7 @@ public class Game {
 	 * @param player The individual that is placing the ships on their board.
 	 * @param scan Takes input from the individual for where the ship will go.
 	 */
-	public static void placeShips(Player player, Boolean errors){
+	public void placeShips(Player player, Boolean errors){
 		boolean success;
 		if(errors){
 			System.out.println("Placing ship 1");
@@ -191,16 +183,5 @@ public class Game {
 		Scanner scan = new Scanner(System.in);
 		player = new Player(name,scan);
 	}
-		
-	
 
-	/**
-	 * Main method that will play the game.
-	 * 
-	 * @param args Main method of the code.
-	 */
-//	public static void main(String[] args) {
-//		Game g = new Game();
-//		g.playGame();
-//	}
 }
