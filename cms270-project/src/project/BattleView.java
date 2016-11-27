@@ -17,14 +17,7 @@ public class BattleView extends VBox {
 	
 	private Label prompt;
 	private Label currentChoice;
-	//private Label currentShip;
-	//private TextField input;
-	//private Button vertical;
 	private Button fire;
-	//private Button playGame;
-	//private BattleshipBoardView view;
-	//private int currentSize;
-	//private boolean vert;
 	private char row;
 	private int column;
 	private Game g;
@@ -95,13 +88,13 @@ public class BattleView extends VBox {
 		char cRow = g.getComputerPlayer().getRow();
 		int ccolumn = g.getComputerPlayer().getColumn();
 		g.getComputerPlayer().fire(row, column);
-		updateHumanLabel(row, column);
+		updateHumanLabel();
 		g.getHumanPlayer().fire(cRow, ccolumn);
 		updateComputerLabel(cRow,ccolumn);
 		
 	}
 	
-	public void updateHumanLabel(char row, int column){
+	public void updateHumanLabel(){
 		if(g.getComputerBoard().getSquare(row, column).getChar() == 'O'){
 			humanLabel.setText("Miss! Nothing was Hit.");
 		}

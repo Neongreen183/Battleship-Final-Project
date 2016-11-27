@@ -11,7 +11,7 @@ import javafx.scene.layout.RowConstraints;
 
 public class BattleshipBoardNotClickable extends GridPane {
 	//private BoardGame game;
-	private Label[][] squares;
+	private Button[][] squares;
 	private Label currentChoice;
 	private char currentRow = 'A';
 	private int currentColumn = 1;
@@ -42,12 +42,13 @@ public class BattleshipBoardNotClickable extends GridPane {
 		for(int i = 0; i < cols; i++) {
 			getColumnConstraints().add(col);
 		}
-		squares = new Label[rows][cols];
+		squares = new Button[rows][cols];
 		for(int i = 0; i < rows; i++) {
 			for(int j = 0; j < cols; j++) {
-				squares[i][j] = new Label();
+				squares[i][j] = new Button();
 				//squares[i][j].setStyle("-fx-background-color:" + game.getSquareColor(i,j));
-				squares[i][j].setText(" " + board.getSquare(i, j).getChar());
+				squares[i][j].setText(" " + board.getSquare(i, j).getChar() + " ");
+				squares[i][j].setStyle("-fx-background-color:" + board.getSquare(i, j).getSquareColor());
 				add(squares[i][j], j, i);
 
 				squares[i][j].setMaxWidth(Double.MAX_VALUE);
@@ -63,7 +64,10 @@ public class BattleshipBoardNotClickable extends GridPane {
 		for(int i = 0; i < 10; i++) {
 			for(int j = 0; j < 10; j++) {
 				
-				squares[i][j].setText(" " + board.getSquare(i, j).getChar());
+				squares[i][j].setText(board.getSquare(i, j).getChar() + " ");
+				squares[i][j].setStyle("-fx-background-color:" + board.getSquare(i, j).getSquareColor());
+				
+				
 				
 			}
 		}

@@ -1,5 +1,7 @@
 package project;
 
+import javafx.scene.paint.Color;
+
 /**
  * @author Jerry Abril, Felix Ruiz, Roderick Zak, Rene Borr
  * @version 1.0.0
@@ -99,4 +101,27 @@ public class Square {
 			return '-';
 		}
 	}
+	
+	public String getSquareColor() {
+		
+		if(myShip != null && missle && myShip.isAfloat() == false){
+			return "#696969";
+		}
+		else if(myShip != null && missle){
+			return "#ff6347";
+		}
+		else if(missle){
+			return "#fff5ee";
+		}
+		else if(myShip != null){
+			return "#c0c0c0";
+		}
+		else {
+			return "#00ffff";
+		}
+		
+		
+	}
+	
+	
 }

@@ -48,6 +48,7 @@ public class BattleshipBoardView extends GridPane {
 				squares[i][j] = new Button();
 				//squares[i][j].setStyle("-fx-background-color:" + game.getSquareColor(i,j));
 				squares[i][j].setText(" " + board.getSquare(i, j).getChar());
+				squares[i][j].setStyle("-fx-background-color:" + board.getSquare(i, j).getSquareColor());
 				add(squares[i][j], j, i);
 
 				squares[i][j].setMaxWidth(Double.MAX_VALUE);
@@ -64,6 +65,7 @@ public class BattleshipBoardView extends GridPane {
 		for(int i = 0; i < 10; i++) {
 			for(int j = 0; j < 10; j++) {
 				squares[i][j].setText(" " + board.getSquare(i, j).getChar());
+				squares[i][j].setStyle("-fx-background-color:" + board.getSquare(i, j).getSquareColor());
 			}
 		}
 	}
