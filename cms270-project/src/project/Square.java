@@ -117,7 +117,7 @@ public class Square {
 			return "#c0c0c0";
 		}
 		else {
-			return "#00ffff";
+			return "#2B65EC";
 		}
 		
 		
