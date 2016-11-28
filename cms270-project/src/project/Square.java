@@ -98,7 +98,7 @@ public class Square {
 			return 'S';
 		}
 		else {
-			return '-';
+			return '—';
 		}
 	}
 	
