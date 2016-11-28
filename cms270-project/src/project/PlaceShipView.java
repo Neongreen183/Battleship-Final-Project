@@ -16,6 +16,7 @@ public class PlaceShipView extends VBox {
 	private Label prompt;
 	private Label currentChoice;
 	private Label currentShip;
+	private Label prompt2;
 	//private TextField input;
 	private Button vertical;
 	private Button place;
@@ -43,8 +44,12 @@ public class PlaceShipView extends VBox {
 		prompt = new Label("Select a square.");
 		currentShip = new Label("Placing ship 1 (size 2)");
 		
+
 		currentChoice = view.getLabel();
 		///input = new TextField();
+		
+		prompt2 = new Label ("Your ship will be placed the way the Button says. If you wish to change it\n"
+				+ "click on the button.");
 		vertical = new Button("Horizonal");
 		vertical.setOnAction(new EventHandler<ActionEvent> () {
 			@Override public void handle(ActionEvent e) {
@@ -85,7 +90,7 @@ public class PlaceShipView extends VBox {
 		
 
 		
-		getChildren().addAll(prompt,currentChoice,currentShip, view, vertical, place);
+		getChildren().addAll(prompt,currentChoice,currentShip, view, prompt2, vertical, place);
 	}
 	
 	protected void setVertical(ActionEvent event) {

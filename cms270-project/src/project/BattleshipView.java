@@ -179,7 +179,7 @@ public class BattleshipView extends Application {
 			System.out.println(result.get());
 			return result.get();
 		} else {
-			return "Bob";  //default value
+			return "Player";  //default value
 		}
 	}
 
