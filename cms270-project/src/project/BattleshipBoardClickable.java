@@ -50,7 +50,7 @@ public class BattleshipBoardClickable extends GridPane {
 				squares[i][j] = new Button();
 				//squares[i][j].setStyle("-fx-background-color:" + game.getSquareColor(i,j));
 				if(board.getSquare(i, j).getChar() == 'S'){
-					squares[i][j].setText(" — ");
+					squares[i][j].setText(" - ");
 					squares[i][j].setStyle("-fx-background-color:" + "#2B65EC");
 				}
 				else{
@@ -73,7 +73,7 @@ public class BattleshipBoardClickable extends GridPane {
 		for(int i = 0; i < 10; i++) {
 			for(int j = 0; j < 10; j++) {
 				if(board.getSquare(i, j).getChar() == 'S'){
-					squares[i][j].setText(" — ");
+					squares[i][j].setText(" - ");
 				}
 				else{
 					squares[i][j].setText(" " + board.getSquare(i, j).getChar());

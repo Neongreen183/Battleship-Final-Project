@@ -38,7 +38,6 @@ public class PlaceShipView extends VBox {
 		currentSize = 3;
 		vert = false;
 		BattleshipBoardView view = new BattleshipBoardView(g.getPlayerBoard());
-		
 		row = view.getCurrentRow();
 		column = view.getCurrentColumn();
 		prompt = new Label("Select a square.");
