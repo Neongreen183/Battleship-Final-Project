@@ -152,7 +152,7 @@ public class Board {
 			}
 		}
 		else{
-			if(column+size>10){
+			if(column+size>11){
 				return false;
 			}
 		}
