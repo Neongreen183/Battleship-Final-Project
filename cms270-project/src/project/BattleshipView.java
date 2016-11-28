@@ -31,6 +31,7 @@ public class BattleshipView extends Application {
 		dialog.setTitle("battleship");
 		dialog.setHeaderText(title);
 		dialog.setContentText(message);
+		
 
 		//add some validation for our window if the OK button is clicked
 		final Button okButton = (Button) dialog.getDialogPane().lookupButton(ButtonType.OK);

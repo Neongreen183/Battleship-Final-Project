@@ -49,7 +49,7 @@ public class PlaceShipView extends VBox {
 		///input = new TextField();
 		
 		prompt2 = new Label ("Your ship will be placed the way the Button says. If you wish to change it\n"
-				+ "click on the button.");
+				+ "click on the button. ");
 		vertical = new Button("Horizonal");
 		vertical.setOnAction(new EventHandler<ActionEvent> () {
 			@Override public void handle(ActionEvent e) {
