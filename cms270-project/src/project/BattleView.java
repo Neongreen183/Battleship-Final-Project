@@ -119,25 +119,25 @@ public class BattleView extends VBox {
 	}
 	
 	public void updateHumanLabel(){
-		if(g.getComputerBoard().getSquare(row, column).getChar() == 'O'){
+		if(g.getComputerBoard().getSquare(row, column).getChar().equalsIgnoreCase("O")){
 			humanLabel.setText("Miss! Nothing was Hit.");
 		}
-		else if(g.getComputerBoard().getSquare(row, column).getChar() == 'X'){
+		else if(g.getComputerBoard().getSquare(row, column).getChar().equalsIgnoreCase("S")){
 			humanLabel.setText("Hit! A ship has been struck.");
 		}
-		else if(g.getComputerBoard().getSquare(row, column).getChar() == '!'){
+		else if(g.getComputerBoard().getSquare(row, column).getChar().equalsIgnoreCase("!")){
 			humanLabel.setText("Hit! A ship has been sunk.");
 		}
 	}
 	
 	public void updateComputerLabel(char row, int column){
-		if(g.getPlayerBoard().getSquare(row, column).getChar() == 'O'){
+		if(g.getPlayerBoard().getSquare(row, column).getChar().equalsIgnoreCase("O")){
 			computerLabel.setText("The computer Fired at " + row + column + "	Miss! Nothing was Hit.");
 		}
-		else if(g.getPlayerBoard().getSquare(row, column).getChar() == 'X'){
+		else if(g.getPlayerBoard().getSquare(row, column).getChar().equalsIgnoreCase("X")){
 			computerLabel.setText("The computer Fired at " + row + column + "	Hit! A ship has been struck.");
 		}
-		else if(g.getPlayerBoard().getSquare(row, column).getChar() == '!'){
+		else if(g.getPlayerBoard().getSquare(row, column).getChar().equalsIgnoreCase("!")){
 			computerLabel.setText("The computer Fired at " + row + column + "	Hit! A ship has been sunk.");
 		}
 		

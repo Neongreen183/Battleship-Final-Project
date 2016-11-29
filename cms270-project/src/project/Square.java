@@ -84,21 +84,22 @@ public class Square {
 		return row;
 	}
 	
-	public char getChar(){
+	public String getChar(){
 		if(myShip != null && missle && myShip.isAfloat() == false){
-			return '!';
+			return "!";
 		}
 		else if(myShip != null && missle){
-			return 'X';
+			return "X";
 		}
 		else if(missle){
-			return 'O';
+			return "O";
 		}
 		else if(myShip != null){
-			return 'S';
+			return "S";
 		}
 		else {
-			return '—';
+			String s = "-";
+			return s;
 		}
 	}
 	

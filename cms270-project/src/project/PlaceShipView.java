@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -42,6 +43,7 @@ public class PlaceShipView extends VBox {
 		column = view.getCurrentColumn();
 		prompt = new Label("Select a square.");
 		currentShip = new Label("Placing ship 1 (size 2)");
+		
 		
 
 		currentChoice = view.getLabel();
@@ -88,8 +90,45 @@ public class PlaceShipView extends VBox {
 		
 		
 
+		VBox numbers = new VBox();
+		Button label = new Button();
+		label.setText(" ");
+		//numbers.getChildren().addAll(label);
+		for (int i=1;i<11;i++){
+			label = new Button();
+			label.setText("" + i);
+			label.setMaxWidth(view.getSize());
+			label.setMaxHeight(view.getSize());
+			label.setMinWidth(view.getSize());
+			label.setMinHeight(view.getSize());
+			numbers.getChildren().addAll(label);
+		}
 		
-		getChildren().addAll(prompt,currentChoice,currentShip, view, prompt2, vertical, place);
+		HBox letters = new HBox();
+		label = new Button();
+		label.setText(" ");
+		label.setMaxWidth(view.getSize());
+		label.setMaxHeight(view.getSize());
+		label.setMinWidth(view.getSize());
+		label.setMinHeight(view.getSize());
+		letters.getChildren().addAll(label);
+		for (int i=0;i<10;i++){
+			String alphabet = "ABCDEFGHIJ";
+			label = new Button();
+			label.setText(alphabet.charAt(i) + "");
+			label.setMaxWidth(view.getSize());
+			label.setMaxHeight(view.getSize());
+			label.setMinWidth(view.getSize());
+			label.setMinHeight(view.getSize());
+			letters.getChildren().addAll(label);
+		}
+		
+		
+		HBox board = new HBox();
+		board.getChildren().addAll(numbers,view);
+		
+		
+		getChildren().addAll(prompt,currentChoice,currentShip, letters, board, prompt2, vertical, place);
 	}
 	
 	protected void setVertical(ActionEvent event) {
@@ -147,6 +186,14 @@ public class PlaceShipView extends VBox {
 	public int getTurn(){
 		return turn;
 		
+	}
+
+	public BattleshipBoardView getView() {
+		return view;
+	}
+
+	public void setView(BattleshipBoardView view) {
+		this.view = view;
 	}
 }
 

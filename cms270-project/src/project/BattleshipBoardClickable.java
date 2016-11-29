@@ -40,16 +40,18 @@ public class BattleshipBoardClickable extends GridPane {
 		for(int i = 0; i < rows; i++) {
 			getRowConstraints().add(row);
 		}
+		
 		for(int i = 0; i < cols; i++) {
 			getColumnConstraints().add(col);
 		}
+		
 		squares = new Button[rows][cols];
 		ButtonHandler bh = new ButtonHandler();
 		for(int i = 0; i < rows; i++) {
 			for(int j = 0; j < cols; j++) {
 				squares[i][j] = new Button();
 				//squares[i][j].setStyle("-fx-background-color:" + game.getSquareColor(i,j));
-				if(board.getSquare(i, j).getChar() == 'S'){
+				if(board.getSquare(i, j).getChar().equalsIgnoreCase("S")){
 					squares[i][j].setText(" - ");
 					squares[i][j].setStyle("-fx-background-color:" + "#2B65EC");
 				}
@@ -72,7 +74,7 @@ public class BattleshipBoardClickable extends GridPane {
 		board = b;
 		for(int i = 0; i < 10; i++) {
 			for(int j = 0; j < 10; j++) {
-				if(board.getSquare(i, j).getChar() == 'S'){
+				if(board.getSquare(i, j).getChar().equalsIgnoreCase("S")){
 					squares[i][j].setText(" - ");
 				}
 				else{

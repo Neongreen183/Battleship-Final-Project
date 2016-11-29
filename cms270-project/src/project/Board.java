@@ -76,7 +76,7 @@ public class Board {
 		for(int i = 0;i<10;i++){
 			System.out.print(alphabet.charAt(i));
 			for(int j = 0;j<10;j++){
-				if(board[i][j].getChar() == 'S'){
+				if(board[i][j].getChar().equalsIgnoreCase("s")){
 					System.out.print(" - ");
 				}
 				else{

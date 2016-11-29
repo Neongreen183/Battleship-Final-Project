@@ -15,6 +15,7 @@ public class BattleshipBoardView extends GridPane {
 	private char currentRow = 'A';
 	private int currentColumn = 1;
 	private Board board;
+	int size;
 
 	public BattleshipBoardView(Board b) {
 		super();
@@ -22,6 +23,8 @@ public class BattleshipBoardView extends GridPane {
 		//game = bg;
 		currentRow = 'A';
 		currentColumn = 1;
+		size = 30;
+		
 		
 		currentChoice = new Label();
 		currentChoice.setText("Current Choice: A1");
@@ -43,6 +46,7 @@ public class BattleshipBoardView extends GridPane {
 		}
 		squares = new Button[rows][cols];
 		ButtonHandler bh = new ButtonHandler();
+		
 		for(int i = 0; i < rows; i++) {
 			for(int j = 0; j < cols; j++) {
 				squares[i][j] = new Button();
@@ -51,12 +55,17 @@ public class BattleshipBoardView extends GridPane {
 				squares[i][j].setStyle("-fx-background-color:" + board.getSquare(i, j).getSquareColor());
 				add(squares[i][j], j, i);
 
-				squares[i][j].setMaxWidth(Double.MAX_VALUE);
-				squares[i][j].setMaxHeight(Double.MAX_VALUE);
+				squares[i][j].setMaxWidth(size);
+				squares[i][j].setMaxHeight(size);
+				squares[i][j].setMinHeight(size);
+				squares[i][j].setMinWidth(size);
 
 				squares[i][j].setOnAction(bh);
+				
 			}
 		}
+
+
 	}
 	
 	
@@ -72,6 +81,10 @@ public class BattleshipBoardView extends GridPane {
 	
 	public Label getLabel(){
 		return currentChoice;
+	}
+	
+	public int getSize(){
+		return size;
 	}
 		
 	
