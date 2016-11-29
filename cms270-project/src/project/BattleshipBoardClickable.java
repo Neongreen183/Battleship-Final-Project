@@ -17,6 +17,7 @@ public class BattleshipBoardClickable extends GridPane {
 	private char currentRow = 'A';
 	private int currentColumn = 1;
 	private Board board;
+	private int size;
 
 	public BattleshipBoardClickable(Board b) {
 		super();
@@ -24,6 +25,7 @@ public class BattleshipBoardClickable extends GridPane {
 		//game = bg;
 		currentRow = 'A';
 		currentColumn = 1;
+		size = 35;
 		
 		currentChoice = new Label();
 		currentChoice.setText("Current Choice: A1");
@@ -52,7 +54,7 @@ public class BattleshipBoardClickable extends GridPane {
 				squares[i][j] = new Button();
 				//squares[i][j].setStyle("-fx-background-color:" + game.getSquareColor(i,j));
 				if(board.getSquare(i, j).getChar().equalsIgnoreCase("S")){
-					squares[i][j].setText(" - ");
+					squares[i][j].setText("-");
 					squares[i][j].setStyle("-fx-background-color:" + "#2B65EC");
 				}
 				else{
@@ -61,10 +63,14 @@ public class BattleshipBoardClickable extends GridPane {
 				}
 				add(squares[i][j], j, i);
 
-				squares[i][j].setMaxWidth(Double.MAX_VALUE);
-				squares[i][j].setMaxHeight(Double.MAX_VALUE);
+				squares[i][j].setMaxWidth(size);
+				squares[i][j].setMaxHeight(size);
+				squares[i][j].setMinHeight(size);
+				squares[i][j].setMinWidth(size);
 
 				squares[i][j].setOnAction(bh);
+				
+				
 			}
 		}
 	}
@@ -75,11 +81,15 @@ public class BattleshipBoardClickable extends GridPane {
 		for(int i = 0; i < 10; i++) {
 			for(int j = 0; j < 10; j++) {
 				if(board.getSquare(i, j).getChar().equalsIgnoreCase("S")){
-					squares[i][j].setText(" - ");
+					squares[i][j].setText("-");
 				}
 				else{
 					squares[i][j].setText(" " + board.getSquare(i, j).getChar());
 					squares[i][j].setStyle("-fx-background-color:" + board.getSquare(i, j).getSquareColor());
+					squares[i][j].setMaxWidth(size);
+					squares[i][j].setMaxHeight(size);
+					squares[i][j].setMinHeight(size);
+					squares[i][j].setMinWidth(size);
 				}
 			}
 		}
@@ -97,6 +107,10 @@ public class BattleshipBoardClickable extends GridPane {
 	
 	public char getCurrentRow(){
 		return currentRow;
+	}
+	
+	public int getSize(){
+		return size;
 	}
 	
 	public void updateRowAndColumn(char j, int i){
