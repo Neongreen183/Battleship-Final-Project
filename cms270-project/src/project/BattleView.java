@@ -59,18 +59,87 @@ public class BattleView extends VBox {
 		});
 		
 		
-		
 		HBox fireBox = new HBox();
 		fireBox.getChildren().addAll(fire,currentChoice);
 		fireBox.setAlignment(Pos.BASELINE_CENTER);
 		
 		
-	
+		VBox letters = new VBox();
+		Button label = new Button();
+		label.setText(" ");
+		//numbers.getChildren().addAll(label);
+		 for (int i =0; i<10; i++){
+			 label = new Button();
+			 String alphabet = "ABCDEFGHIJ";
+				label.setText("" + alphabet.charAt(i));
+				label.setMaxWidth(oppBoard.getSize());
+				label.setMaxHeight(oppBoard.getSize());
+				label.setMinWidth(oppBoard.getSize());
+				label.setMinHeight(oppBoard.getSize());
+				letters.getChildren().addAll(label);
+		}
+		
+		HBox numbers = new HBox();
+		label = new Button();
+		label.setText(" ");
+		label.setMaxWidth(oppBoard.getSize());
+		label.setMaxHeight(oppBoard.getSize());
+		label.setMinWidth(oppBoard.getSize());
+		label.setMinHeight(oppBoard.getSize());
+		numbers.getChildren().addAll(label);
+		for (int i=1 ;i<11; i++){
+			label = new Button();
+			label.setText("" + i);
+			label.setMaxWidth(oppBoard.getSize());
+			label.setMaxHeight(oppBoard.getSize());
+			label.setMinWidth(oppBoard.getSize());
+			label.setMinHeight(oppBoard.getSize());
+			numbers.getChildren().addAll(label);
+		}
 		
 		
-
+		HBox oppBoardView = new HBox();
+		oppBoardView.getChildren().addAll(letters,oppBoard);
 		
-		getChildren().addAll(prompt,humanLabel, oppBoard,fireBox,computerLabel, myBoard);
+		VBox letters2 = new VBox();
+		label = new Button();
+		label.setText(" ");
+		//numbers.getChildren().addAll(label);
+		 for (int i =0; i<10; i++){
+			 label = new Button();
+			 String alphabet = "ABCDEFGHIJ";
+				label.setText("" + alphabet.charAt(i));
+				label.setMaxWidth(myBoard.getSize());
+				label.setMaxHeight(myBoard.getSize());
+				label.setMinWidth(myBoard.getSize());
+				label.setMinHeight(myBoard.getSize());
+				letters2.getChildren().addAll(label);
+		}
+		
+		HBox numbers2 = new HBox();
+		label = new Button();
+		label.setText(" ");
+		label.setMaxWidth(myBoard.getSize());
+		label.setMaxHeight(myBoard.getSize());
+		label.setMinWidth(myBoard.getSize());
+		label.setMinHeight(myBoard.getSize());
+		numbers2.getChildren().addAll(label);
+		for (int i=1 ;i<11; i++){
+			label = new Button();
+			label.setText("" + i);
+			label.setMaxWidth(myBoard.getSize());
+			label.setMaxHeight(myBoard.getSize());
+			label.setMinWidth(myBoard.getSize());
+			label.setMinHeight(myBoard.getSize());
+			numbers2.getChildren().addAll(label);
+		}
+		
+		
+		HBox myBoardView = new HBox();
+		myBoardView.getChildren().addAll(letters2,myBoard);
+				
+		
+		getChildren().addAll(prompt,humanLabel, numbers, oppBoardView,fireBox,computerLabel,numbers2, myBoardView);
 	}
 
 	

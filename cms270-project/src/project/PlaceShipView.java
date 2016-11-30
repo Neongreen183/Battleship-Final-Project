@@ -90,11 +90,31 @@ public class PlaceShipView extends VBox {
 		
 		
 
-		VBox numbers = new VBox();
+		VBox letters = new VBox();
 		Button label = new Button();
 		label.setText(" ");
 		//numbers.getChildren().addAll(label);
-		for (int i=1;i<11;i++){
+			for (int i=0;i<10;i++){
+				label = new Button();
+				String alphabet = "ABCDEFGHIJ";
+				label.setText("" + alphabet.charAt(i));
+				label.setMaxWidth(view.getSize());
+				label.setMaxHeight(view.getSize());
+				label.setMinWidth(view.getSize());
+				label.setMinHeight(view.getSize());
+				letters.getChildren().addAll(label);
+			}
+
+		
+		HBox numbers = new HBox();
+		label = new Button();
+		label.setText(" ");
+		label.setMaxWidth(view.getSize());
+		label.setMaxHeight(view.getSize());
+		label.setMinWidth(view.getSize());
+		label.setMinHeight(view.getSize());
+		numbers.getChildren().addAll(label);
+		for (int i = 1;i<11;i++){
 			label = new Button();
 			label.setText("" + i);
 			label.setMaxWidth(view.getSize());
@@ -104,31 +124,12 @@ public class PlaceShipView extends VBox {
 			numbers.getChildren().addAll(label);
 		}
 		
-		HBox letters = new HBox();
-		label = new Button();
-		label.setText(" ");
-		label.setMaxWidth(view.getSize());
-		label.setMaxHeight(view.getSize());
-		label.setMinWidth(view.getSize());
-		label.setMinHeight(view.getSize());
-		letters.getChildren().addAll(label);
-		for (int i=0;i<10;i++){
-			String alphabet = "ABCDEFGHIJ";
-			label = new Button();
-			label.setText(alphabet.charAt(i) + "");
-			label.setMaxWidth(view.getSize());
-			label.setMaxHeight(view.getSize());
-			label.setMinWidth(view.getSize());
-			label.setMinHeight(view.getSize());
-			letters.getChildren().addAll(label);
-		}
-		
 		
 		HBox board = new HBox();
-		board.getChildren().addAll(numbers,view);
+		board.getChildren().addAll(letters,view);
 		
 		
-		getChildren().addAll(prompt,currentChoice,currentShip, letters, board, prompt2, vertical, place);
+		getChildren().addAll(prompt,currentChoice,currentShip, numbers, board, prompt2, vertical, place);
 	}
 	
 	protected void setVertical(ActionEvent event) {
