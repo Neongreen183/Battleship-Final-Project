@@ -101,7 +101,7 @@ public class BattleshipView extends Application {
 		
 		public void battle(Stage stage, Game g){
 			BattleView view2 = new BattleView(stage, g);
-			Scene scene = new Scene(view2, 500, 1000);
+			Scene scene = new Scene(view2, 1000, 500);
 			stage.setScene(scene);
 			stage.show();
 			

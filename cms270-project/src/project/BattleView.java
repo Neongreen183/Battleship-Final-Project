@@ -61,7 +61,6 @@ public class BattleView extends VBox {
 		
 		HBox fireBox = new HBox();
 		fireBox.getChildren().addAll(fire,currentChoice);
-		fireBox.setAlignment(Pos.BASELINE_CENTER);
 		
 		
 		VBox letters = new VBox();
@@ -137,9 +136,27 @@ public class BattleView extends VBox {
 		
 		HBox myBoardView = new HBox();
 		myBoardView.getChildren().addAll(letters2,myBoard);
-				
 		
-		getChildren().addAll(prompt,humanLabel, numbers, oppBoardView,fireBox,computerLabel,numbers2, myBoardView);
+		Label yourBoardLabel = new Label();
+		yourBoardLabel.setText("This is your board.");
+		
+		Label oppBoardLabel = new Label();
+		oppBoardLabel.setText("This is the computers Board, click here.");
+		
+		VBox board1 = new VBox();
+		VBox board2 = new VBox();
+		
+		board1.getChildren().addAll(oppBoardLabel,humanLabel, numbers, oppBoardView);
+		board2.getChildren().addAll(yourBoardLabel,computerLabel,numbers2,myBoardView);
+		
+		Label space = new Label();
+		space.setText("		");
+		label.setMinWidth(myBoard.getSize());
+		
+		HBox bothBoards = new HBox();
+		bothBoards.getChildren().addAll(board1,space, board2);
+		
+		getChildren().addAll(prompt,bothBoards,fireBox);
 	}
 
 	
@@ -167,10 +184,10 @@ public class BattleView extends VBox {
 		char cRow = g.getComputerPlayer().getRow();
 		int ccolumn = g.getComputerPlayer().getColumn();
 		success = g.getComputerPlayer().fire(row, column);
-		updateHumanLabel();
+		updateHumanLabel(row, column);
 		
 		if(success == true){
-			updateHumanLabel();
+			updateHumanLabel(row, column);
 			g.getHumanPlayer().fire(cRow, ccolumn);
 			updateComputerLabel(cRow,ccolumn);
 		}
@@ -187,15 +204,15 @@ public class BattleView extends VBox {
 		
 	}
 	
-	public void updateHumanLabel(){
+	public void updateHumanLabel(char row, int column){
 		if(g.getComputerBoard().getSquare(row, column).getChar().equalsIgnoreCase("O")){
-			humanLabel.setText("Miss! Nothing was Hit.");
+			humanLabel.setText("You fired at " + row + column + ". Miss! Nothing was Hit.");
 		}
-		else if(g.getComputerBoard().getSquare(row, column).getChar().equalsIgnoreCase("S")){
-			humanLabel.setText("Hit! A ship has been struck.");
+		else if(g.getComputerBoard().getSquare(row, column).getChar().equalsIgnoreCase("X")){
+			humanLabel.setText("You fired at " + row + column + ". Hit! A ship has been struck.");
 		}
 		else if(g.getComputerBoard().getSquare(row, column).getChar().equalsIgnoreCase("!")){
-			humanLabel.setText("Hit! A ship has been sunk.");
+			humanLabel.setText("You fired at " + row + column + ". Hit! A ship has been sunk.");
 		}
 	}
 	
