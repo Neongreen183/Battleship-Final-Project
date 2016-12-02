@@ -7,7 +7,6 @@ import java.util.Scanner;
  */
 public class Player {
 
-	//private Ship[] myShips;
 	private String playerName;
 	protected Board myBoard;
 	private Scanner scan;
@@ -39,9 +38,7 @@ public class Player {
 	 */
 	public Player(String name) {
 		this.playerName=name;
-		
 		myBoard = new Board();
-
 	}
 
 	/**
@@ -61,7 +58,6 @@ public class Player {
 	public int getShipsLeft(){
 		return myBoard.getShipsLeft();
 	}
-	
 
 	/**
 	 * Returns the board
@@ -72,15 +68,9 @@ public class Player {
 		return myBoard;
 	}
 
-
-	/**
-	 * Decrements the number of ships after one is sunk.
-	 */
-
 	/**
 	 * Utilized by the player to fire shots to the opponent and play the game.
 	 * 
-	 * @param player Which player is firing the missile
 	 * @param row Which row (A-J) to fire at 
 	 * @param column Which column (1-10) to fire at
 	 * @return Whether the shot was successful or not
@@ -122,18 +112,17 @@ public class Player {
 		String stringColumn;
 		int column;
 		boolean flag = true;
+		//Get input from the user
 		do{
 			System.out.print("Please select a column (1-10): ");
 			stringColumn = scan.nextLine();
 		}while(stringColumn.isEmpty());
-		Character c = stringColumn.charAt(0);
 
+		Character c = stringColumn.charAt(0);
 		if(c.isDigit(c) == false){
 			flag = false;
 			column = -1;
-		}
-		else{
-
+		}else{
 			column = Integer.parseInt(stringColumn.substring(0, 1));
 			if(stringColumn.length()>1){
 				column = Integer.parseInt(stringColumn.substring(0,2));
@@ -142,17 +131,18 @@ public class Player {
 				flag = false;
 			}
 		}
+		//Make sure the user inputs the right value.
 		while(flag == false){
 			flag = true;
 			System.out.println("Sorry, the column must be a number 1-10");
 			System.out.print("Please select a column (1-10): " );
 			stringColumn = scan.nextLine();
 			c = stringColumn.charAt(0);
+			//Checking to make sure it works with GUI
 			if(c.isDigit(c) == false){
 				flag = false;
 				column = -1;
-			}
-			else{
+			}else{
 				column = Integer.parseInt(stringColumn.substring(0, 1));
 				if(stringColumn.length()>1){
 					c = stringColumn.charAt(1);
@@ -160,6 +150,7 @@ public class Player {
 						column = Integer.parseInt(stringColumn.substring(0,2));
 					}
 				}
+				//Avoiding out of bounds errors
 				if(column>10 || column <1){
 					flag = false;
 				}
@@ -167,7 +158,12 @@ public class Player {
 		}
 		return column;
 	}
-	
+
+	/**
+	 * The direction in which the player will place their ship
+	 * 
+	 * @return Whether it's vertical or horizontal
+	 */
 	public boolean getVert(){
 		boolean vert;
 		System.out.print("Vertical or Horizontal? Please enter V or H: ");
@@ -184,20 +180,12 @@ public class Player {
 		}
 		return vert;
 	}
-	
-	
-
-	
 
 	/**
-	 * Places a ship for a player where they desire it.
+	 * Player places the ship where they want it to go.
 	 * 
-	 * @param player The player that is placing the ship
-	 * @param ship Ship number being placed
-	 * @param row The row where it's being placed. Between A-J.
-	 * @param column The column where it's being placed. Between 1-10.
-	 * @param vert Whether the ship is vertical or horizontal.
-	 * @return Whether it was successful or not to place the ship.
+	 * @param size How big the ship is.
+	 * @return Whether the placing of the ship was successful or not.
 	 */
 	public boolean placeShip(int size){
 		char row = getRow();
@@ -210,12 +198,19 @@ public class Player {
 		}
 		return success;
 	}
-	
+
+	/**
+	 * Places a ship for a player where they desire it.
+	 * 
+	 * @param size How big the ship is
+	 * @param row The row where it's being placed. Between A-J.
+	 * @param column The column where it's being placed. Between 1-10.
+	 * @param vert Whether the ship is vertical or horizontal.
+	 * @return Whether it was successful or not to place the ship.
+	 */
 	public boolean placeShip(int size, char row, int column, boolean vert){
 		boolean success;
 		success = myBoard.placeShip(row, column, vert, size);
 		return success;
 	}
-	
-	//Test
 }
