@@ -44,6 +44,7 @@ public class BattleshipView extends Application {
 			}
 		});
 		
+		
 		Optional<String> result = dialog.showAndWait();
 
 		//because of the button's event handler, we know a non-empty String
