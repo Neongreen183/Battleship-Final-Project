@@ -20,7 +20,7 @@ public class Square {
 	 * @param c Column for the square. Between 1-10.
 	 */
 	public Square(char r, int c){
-		
+
 		missle = false;
 		row = r;
 		column = c;
@@ -34,16 +34,14 @@ public class Square {
 	 */
 	public boolean hasMissle(){
 		return missle;
-		
+
 	}
-	/**
-	 * Lets the square know that a ship has been placed there
+	
+	/**Places a ship on a specific square
 	 * 
-	 * @param num The number of the ship that goes in that square
-	 * @param newShip The ship that is being placed there.
+	 * @param newShip The ship being placed on that square.
 	 */
 	public void placeShip(Ship newShip){ 
-
 		myShip = newShip;
 	}
 
@@ -83,7 +81,12 @@ public class Square {
 	public char getRow(){
 		return row;
 	}
-	
+
+	/**
+	 * Returns the character that should be on a specific square
+	 * 
+	 * @return The character (between !, X, O, S, or -) that goes on a square.
+	 */
 	public String getChar(){
 		if(myShip != null && missle && myShip.isAfloat() == false){
 			return "!";
@@ -102,9 +105,14 @@ public class Square {
 			return s;
 		}
 	}
-	
+
+	/**
+	 * Sets the square color based on the status of the square.
+	 * 
+	 * @return The square color
+	 */
 	public String getSquareColor() {
-		
+
 		if(myShip != null && missle && myShip.isAfloat() == false){
 			return "#696969";
 		}
@@ -120,11 +128,7 @@ public class Square {
 		else {
 			return "#2B65EC";
 		}
-		
-		
+
+
 	}
-	
-	//Test
-	
-	
 }
