@@ -185,7 +185,7 @@ public class BattleshipView extends Application {
 		}
 	}
 
-		
+	//Test	
 
 	public static void main(String[] args) {
 		launch(args);
