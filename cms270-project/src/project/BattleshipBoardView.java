@@ -102,8 +102,6 @@ public class BattleshipBoardView extends GridPane {
 		currentRow = j;
 	}
 	
-	
-	
 	private class ButtonHandler implements EventHandler<ActionEvent> {
 		public void handle (ActionEvent event) {
 			for(int i = 0; i < squares.length; i++) {
