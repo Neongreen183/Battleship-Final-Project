@@ -122,5 +122,7 @@ public class BattleshipBoardView extends GridPane {
 		return alphabet.charAt(i);
 	}
 	
+	//Test
+	
 	
 }

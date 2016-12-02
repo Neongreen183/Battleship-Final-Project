@@ -95,5 +95,6 @@ public class BattleshipBoardNotClickable extends GridPane {
 		currentRow = j;
 	}
 	
+	//Test
 	
 }

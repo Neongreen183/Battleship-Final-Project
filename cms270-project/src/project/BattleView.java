@@ -233,5 +233,7 @@ public class BattleView extends VBox {
 		launchConfirmDialog(winner);
 		
 	}
+	
+	//Test
 
 }

@@ -196,6 +196,8 @@ public class PlaceShipView extends VBox {
 	public void setView(BattleshipBoardView view) {
 		this.view = view;
 	}
+	
+	//Test
 }
 
 

@@ -141,5 +141,6 @@ public class BattleshipBoardClickable extends GridPane {
 		return alphabet.charAt(i);
 	}
 	
+	//Test
 	
 }

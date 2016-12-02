@@ -69,4 +69,6 @@ public class Ship {
 	public boolean isAfloat(){
 		return afloat;
 	}
+	
+	//Test
 }
