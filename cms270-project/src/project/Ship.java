@@ -32,7 +32,6 @@ public class Ship {
 		return size;
 	}
 
-
 	/**
 	 * Returns how many times the ship has been hit.
 	 * 
@@ -57,7 +56,7 @@ public class Ship {
 	 * Marks the ship as being sunk .
 	 */
 	private void sink() { 
-		System.out.println("A ships has Been sunk!");
+		System.out.println("A ships has been sunk!");
 		afloat = false;
 	}
 
@@ -69,6 +68,4 @@ public class Ship {
 	public boolean isAfloat(){
 		return afloat;
 	}
-	
-	//Test
 }
