@@ -35,7 +35,12 @@ public class Computer extends Player {
 		row = options[rand.nextInt(9)];
 		return row;
 	}
-	
+
+	/**
+	 * Randomly decided whether the ship the computer is placing is vertical or not
+	 * 
+	 * @return i Whether the ship is vertical or not.
+	 */
 	public boolean getVert(){
 		boolean i = rand.nextBoolean();
 		return i;
@@ -59,7 +64,6 @@ public class Computer extends Player {
 	/**
 	 * Generates random square for the computer to fire to.
 	 * 
-	 * @param player The player that is firing the missile.
 	 * @param row The row the missile is going to.
 	 * @param column The column the missile is going to.
 	 * @return Whether the a ship was hit or not.
@@ -72,40 +76,13 @@ public class Computer extends Player {
 			updateRowAndColumn();
 		}
 		success = getMyBoard().placeMissle(row, column);
-		
-		
-		//Intelligence for the computer to know where to fire to next
-		/*
-		if(player.getMyBoard().getSquare(row, column).hasShip()){
-			System.out.println("A ship has been struck!");
-			if(turn == 0){
-
-				updateGuesses(row,column);
-				updateRowAndColumn();
-			}
-			player.getShip(player.getMyBoard().getSquare(row, column).getShipNum()).hit();
-
-			if(player.getShip(player.getMyBoard().getSquare(row, column).getShipNum()).isAfloat() == false){
-				System.out.println("A ship has been sunk!");
-				turn = 0;
-				player.sinkShip();
-			} 
-		}else{
-			System.out.println("Miss! nothing was hit.");
-		}
-		return true;
-		*/
 		return success;
 	}
 
 	/**
 	 * Randomly places the ships across the board for the computer.
 	 * 
-	 * @param player Which player is placing the ships.
-	 * @param ship Which ship is being placed.
-	 * @param row What row the ship is going to.
-	 * @param column What column the ship is going to
-	 * @param vert Whether the board is vertical or not
+	 * @param size The size of the ship
 	 * @return Whether the placing of the ship was successful.
 	 */
 	public boolean placeShip(int size){
@@ -115,7 +92,6 @@ public class Computer extends Player {
 		boolean success;
 		success = myBoard.placeShip(row, column, vert, size);
 		return success;
-	
 	}
 
 	/**
@@ -157,28 +133,18 @@ public class Computer extends Player {
 	 * Updates which row and column is being fired to.
 	 */
 	private void updateRowAndColumn(){
-
 		CRow = random.get(turn).getRow();
 		CColumn = random.get(turn).getColumn();
 		turn++;
-
 		if(turn == 4){
 			turn = 0;
-
 		}
-	}
-	
-	public Board getMyBoard(){
-		return myBoard;
 	}
 
 	/**
-	 * Changes the char (between A-J) to a number.
-	 * 
-	 * @param c The letter that is being input (between A-J).
-	 * @return Number between 1-10 for the location of the row.
+	 * Getter for the computer's board
 	 */
-	
-	//Test
-	
+	public Board getMyBoard(){
+		return myBoard;
+	}
 }
