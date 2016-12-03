@@ -10,34 +10,63 @@ public class Game {
 	Player computer = new Computer();
 
 	/**
-	 * Creates both players and loops through the game until there is a winner.
+	 * Establishes that this will be a human player to be utilized later.
+	 * 
+	 * @param name The name of the user.
 	 */
 	public void setHumanPlayer(String name) {
 		player = new Player(name);
 	}
+
+	/**
+	 * Establishes that this will be the computer player to be utilized later.
+	 */
 	public void setComputerPlayer(){
 		placeShips(computer,false);
 	}
-	
+
+	/**
+	 * Getter for the player board
+	 * 
+	 * @return The player board
+	 */
 	public Board getPlayerBoard(){
 		return player.getMyBoard();
 	}
-	
+
+	/**
+	 *  Getter for the human player.
+	 *  
+	 * @return The human player.
+	 */
 	public Player getHumanPlayer(){
 		return player;
 	}
+	
+	/**
+	 * Getter for the computer.
+	 * 
+	 * @return The computer
+	 */
 	public Player getComputerPlayer(){
 		return computer;
 	}
-	
+
+	/**
+	 * Getter for the computer board.
+	 * 
+	 * @return The computer board.
+	 */
 	public Board getComputerBoard(){
 		return computer.getMyBoard();
 	}
-	
+
+	/**
+	 * Plays the game
+	 */
 	public void playGame(){
 		Boolean winner;
 
-		
 		System.out.println(player.getName() + " VS. " + computer.getName() + ". Prepare to battle!");
 		System.out.println("This is what your board looks like:");
 		player.getMyBoard().displayWithShips();
@@ -66,7 +95,7 @@ public class Game {
 	 * Loops through until the player has placed each of their ships on the board.
 	 * 
 	 * @param player The individual that is placing the ships on their board.
-	 * @param scan Takes input from the individual for where the ship will go.
+	 * @param error Whether there have been any errors with the code so far.
 	 */
 	public void placeShips(Player player, Boolean errors){
 		boolean success;
@@ -76,11 +105,11 @@ public class Game {
 		success = player.placeShip(2);
 		while(success == false){
 			if(errors){
-			System.out.println("You cannot place a ship there");
+				System.out.println("You cannot place a ship there");
 			}
 			success = player.placeShip(2);
 		}
-		
+
 		if(errors){
 			System.out.println("Placing ship 1");
 		}
@@ -91,7 +120,7 @@ public class Game {
 			}
 			success = player.placeShip(3);
 		}
-		
+
 		if(errors){
 			System.out.println("Placing ship 1");
 		}
@@ -102,7 +131,7 @@ public class Game {
 			}
 			success = player.placeShip(3);
 		}
-		
+
 		if(errors){
 			System.out.println("Placing ship 1");
 		}
@@ -113,7 +142,7 @@ public class Game {
 			}
 			success = player.placeShip(4);
 		}
-		
+
 		if(errors){
 			System.out.println("Placing ship 1");
 		}
@@ -125,7 +154,17 @@ public class Game {
 			success = player.placeShip(5);
 		}
 	}
-	
+
+	/**
+	 * Calls the placeShip method from each player and checks to see if it was successful
+	 * 
+	 * @param player Which player's ships are being called
+	 * @param size How big the ship is
+	 * @param row Which row the ship goes on
+	 * @param column Which column the ship goes on
+	 * @param vert Whether it's vertical or not
+	 * @return Whether it was succesful or not.
+	 */
 	public boolean placeShip(Player player, int size, char row, int column, boolean vert){
 		return player.placeShip(size, row, column, vert);
 	}
@@ -169,7 +208,7 @@ public class Game {
 					success = player1.fire(row, column);
 					turnCounter = 0;
 				}while(success == false);
-				
+
 				player1.getMyBoard().displayWithShips();
 			} 
 		}
@@ -178,7 +217,12 @@ public class Game {
 		}
 		return true;
 	}
-	
+
+	/**
+	 * Creates a human player 
+	 * 
+	 * @param name The name of the player
+	 */
 	public void makeHumanPlayer(String name){
 		Scanner scan = new Scanner(System.in);
 		player = new Player(name,scan);
