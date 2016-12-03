@@ -34,7 +34,7 @@ public class BattleshipView extends Application {
 	public String launchTextDialog(String title, String message) {
 		//Text Input from a single field
 		TextInputDialog dialog = new TextInputDialog();
-		dialog.setTitle("battleship");
+		dialog.setTitle("Battleship");
 		dialog.setHeaderText(title);
 		dialog.setContentText(message);
 
